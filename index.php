@@ -1,51 +1,34 @@
 <?php
-include("moduls/db.php");//ЊЭ?†ОЄД?Нї? † љЉЂ? ?ЉННЯТ (љ?)
+include("moduls/db.php");
 
-//ЂЉҐїУЉ GET Њ?Ц?Ю?ННЭЕ - topic (Этдельно вз§та§ тема)
-if(isset($_GET['topic']))//Эпредел§ю, существует ли глобальна§ переменна§ GET, если ?Љ...
-{
-    $topic = $_GET['topic']; //...Ђаношу е™ содержимое в переменную
-    if(!preg_match("/^[0-9]+$/",$topic))//Цегул§рное выражение провер§ет переменную на наличие только числа
-    {//если в переменной был передан символ или буква...
-        header("location: index.php");//...пользовател§ перенаправит на первую страницу новостей
+if (isset($_GET['topic'])) {
+    $topic = $_GET['topic'];
+    if (!preg_match("/^[0-9]+$/", $topic)) {
+        header("location: index.php");
         exit;
     }
 }
-//ЂЉҐїУЉ GET Њ?Ц?Ю?ННЭЕ - topic (Этдельно вз§та§ тема)
 
-//ЂЉҐїУЉ GET Њ?Ц?Ю?ННЭЕ - page (Дасть постраничной навигации)
-if(isset($_GET['page']))//Эпредел§ю, существует ли глобальна§ переменна§ GET, если ?Љ...
-{
-    $pn = $_GET['page'];//...Ђаношу е™ содержимое в переменную
-    if(!preg_match("/^[0-9]+$/",$pn))//Цегул§рное выражение провер§ет переменную на наличие только числа
-    {//если в переменной был передан символ или буква...
-        header("location: index.php");//...пользовател§ перенаправит на первую страницу новостей
+if (isset($_GET['page'])) {
+    $pn = $_GET['page'];
+    if (!preg_match("/^[0-9]+$/", $pn)) {
+        header("location: index.php");
         exit;
     }
 }
-if(!isset($pn))$pn = 1;
-//ЂЉҐїУЉ GET Њ?Ц?Ю?ННЭЕ - page (Дасть постраничной навигации)
+if (!isset($pn)) $pn = 1;
 
-//ЮЭ?ФОє ђЯђЭ?Љ НЭђЭЧУ?Е
-if(!$topic)//Эпредел§ю, существует ли $topic (переменна§ GET), если Н?У...
-{
-	include("moduls/news.php");//...подключаю модуль news.php
-	include("moduls/news_fixed.php");//подключаю модуль закрепленного поста
-	$content2 = news_fixed().news();//Ђаношу результат функций в переменную главного шаблона
+if (!$topic) {
+    include("moduls/news.php");
+    include("moduls/news_fixed.php");
+    $content2 = news_fixed() . news();
 }
-//ЮЭ?ФОє ђЯђЭ?Љ НЭђЭЧУ?Е
 
-//ЮЭ?ФОє CУЉУ?Е
-if($topic)//Эпредел§ю, существует ли $topic (переменна§ GET), если ?Љ...
-{
-	include("moduls/news_topic.php");
-	$content2 = news_topic($topic);//Ђаношу результат функций в переменную главного шаблона
+if ($topic) {
+    include("moduls/news_topic.php");
+    $content2 = news_topic($topic);
 }
-//ЮЭ?ФОє CУЉУ?Е
 
-//ЮЭ?ФОє Ю?НЄ
 include("moduls/menu.php");
-$menu = menu();//Ђаношу результат функций в переменную главного шаблона
-//ЮЭ?ФОє Ю?НЄ
-include("templates/index.html");//Њодключение шаблона
-?>
+$menu = menu();
+include("templates/index.html");

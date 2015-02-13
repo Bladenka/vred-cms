@@ -1,42 +1,41 @@
 <?php
-@$result_meta = mysql_query("SELECT title FROM page WHERE id='1'");//Çàïðîñ íà âûâîä ñèñòåìíûõ äàííûõ (çàãîëîâîê ñàéòà)
+@$result_meta = mysql_query("SELECT title FROM page WHERE id='1'");//Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð½Ð° Ð²Ñ‹Ð²Ð¾Ð´ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… (Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÐ°Ð¹Ñ‚Ð°)
 @$myrow_meta = mysql_fetch_array($result_meta);
 
 if($myrow_meta != "")
 {
-    $result_meta_news = mysql_query("SELECT title,meta_d,meta_k FROM news WHERE id='$topic'");//Çàïðîñ íà âûâîä çàãîëîâêà âûáðàííîé ñòàòüè
+    $result_meta_news = mysql_query("SELECT title,meta_d,meta_k FROM news WHERE id='$topic'");//Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð½Ð° Ð²Ñ‹Ð²Ð¾Ð´ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ° Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ð¹ ÑÑ‚Ð°Ñ‚ÑŒÐ¸
     $meta_news = mysql_fetch_array($result_meta_news);
-	if($meta_news[title] != "") $header_title = $meta_news[title]." - ".$myrow_meta[title];//Çàãîëîâîê ñòðàíèöû (Èìÿ àêêàóíòà - èìÿ ñàéòà)
-		else $header_title = $meta_news[title];//Çàãîëîâîê ñòðàíèöû (Èìÿ àêêàóíòà - èìÿ ñàéòà)
-	$header_metaD = $myrow_meta[meta_d]; //ìåòàòåãè
-    $header_metaK = $myrow_meta[meta_k]; //êëþ÷èâûå ñëîâà
+    if($meta_news[title] != "") $header_title = $meta_news[title]." - ".$myrow_meta[title];//Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ (Ð˜Ð¼Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð° - Ð¸Ð¼Ñ ÑÐ°Ð¹Ñ‚Ð°)
+    else $header_title = $meta_news[title];//Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ (Ð˜Ð¼Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð° - Ð¸Ð¼Ñ ÑÐ°Ð¹Ñ‚Ð°)
+    $header_metaD = $myrow_meta[meta_d]; //Ð¼ÐµÑ‚Ð°Ñ‚ÐµÐ³Ð¸
+    $header_metaK = $myrow_meta[meta_k]; //ÐºÐ»ÑŽÑ‡Ð¸Ð²Ñ‹Ðµ ÑÐ»Ð¾Ð²Ð°
 }
 
-function news_topic($topic)//Ôóíêöèÿ âûâîäà äåòàëüíîãî îïèñàíèÿ àêêàóíòà
+function news_topic($topic)//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð´ÐµÑ‚Ð°Ð»ÑŒÐ½Ð¾Ð³Ð¾ Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð°
 {
-	$result_index = mysql_query("SELECT * FROM news WHERE id = '$topic'");//Âûâîæó èç ÁÄ âûáðàííóþ ïîëüçîâàòåëåì íîâîñòü
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Åñëè ðåçóëüòàò çàïðîñà èìååò äàííûå...
-		{
-			$templates = file("templates/news_topic.html");//Ïîäêëþ÷àþ øàáëîí
-			$templates = implode("",$templates);//Ñêëåèâàíèå ìàññèâà, âîçâðàùåííîãî ôóíêöèåé file()
+    $result_index = mysql_query("SELECT * FROM news WHERE id = '$topic'");//Ð’Ñ‹Ð²Ð¾Ð¶Ñƒ Ð¸Ð· Ð‘Ð” Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½ÑƒÑŽ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¼ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ...
+    {
+        $templates = file("templates/news_topic.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+        $templates = implode("",$templates);//Ð¡ÐºÐ»ÐµÐ¸Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°, Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file()
 
-			$templates = str_replace("[_title]",$myrow_index[title],$templates);//Íàçâàíèå ñòàòüè
-			$templates = str_replace("[_text]",$myrow_index[text],$templates);//Òåêñò
-			$templates = str_replace("[_publisher]",$myrow_index[publisher],$templates);//Àâòîð ñòàòüè
-			$templates = str_replace("[_date_pub]",$myrow_index[date_pub],$templates);//Äàòà ðàçìåùåíèÿ
-			$news_topic .= $templates;//Ñêëåþ âåñü ñãåíåðèðîâàííûé êîä â îäíó ïåðåìåííóþ
-		}
-		else //Åñëè ðåçóëüòàò çàïðîñà äàííûõ íå èìååò (ïóñòîé)...
-		{
-			$templates = file("templates/error.html");//Ïîäêëþ÷åíèå øàáëîíà îøèáêè
-			$templates = implode("",$templates); //Ñêëåèâàíèå ìàññèâà, âîçâðàùåííîãî ôóíêöèåé file()
-			$title = 'Ñîîáùåíèå ñàéòà'; //Çàãîëîâîê îøèáêè
-			$message = 'Òåìà íå ñóùåñòâóåò èëè íå óêàçàí èäåíòèôèêàòîð (íîìåð). Åñëè âû óâåðåíû, ÷òî èñïîëüçîâàëè ïðàâèëüíóþ ññûëêó, ñâÿæèòåñü ñ àäìèíèñòðàöèåé'; //Âûâîäèìîå ñîîáùåíèå
-			$templates = preg_replace("[err_title]",$title,$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà çàãîëîâîê îøèáêè
-			$templates = preg_replace("[err_message]",$message,$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà âûâîäèìîå ñîîáùåíèå
-			$news_topic .= $templates; //Ñêëåþ âåñü ñãåíåðèðîâàííûé êîä â îäíó ïåðåìåííóþ
-		}
-	return $news_topic;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+        $templates = str_replace("[_title]",$myrow_index[title],$templates);//ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÑÑ‚Ð°Ñ‚ÑŒÐ¸
+        $templates = str_replace("[_text]",$myrow_index[text],$templates);//Ð¢ÐµÐºÑÑ‚
+        $templates = str_replace("[_publisher]",$myrow_index[publisher],$templates);//ÐÐ²Ñ‚Ð¾Ñ€ ÑÑ‚Ð°Ñ‚ÑŒÐ¸
+        $templates = str_replace("[_date_pub]",$myrow_index[date_pub],$templates);//Ð”Ð°Ñ‚Ð° Ñ€Ð°Ð·Ð¼ÐµÑ‰ÐµÐ½Ð¸Ñ
+        $news_topic .= $templates;//Ð¡ÐºÐ»ÐµÑŽ Ð²ÐµÑÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð² Ð¾Ð´Ð½Ñƒ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+    }
+    else //Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð½Ðµ Ð¸Ð¼ÐµÐµÑ‚ (Ð¿ÑƒÑÑ‚Ð¾Ð¹)...
+    {
+        $templates = file("templates/error.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $templates = implode("",$templates); //Ð¡ÐºÐ»ÐµÐ¸Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°, Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file()
+        $title = 'Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ ÑÐ°Ð¹Ñ‚Ð°'; //Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $message = 'Ð¢ÐµÐ¼Ð° Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸Ð»Ð¸ Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð½ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ (Ð½Ð¾Ð¼ÐµÑ€). Ð•ÑÐ»Ð¸ Ð²Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð»Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½ÑƒÑŽ ÑÑÑ‹Ð»ÐºÑƒ, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÐµÐ¹'; //Ð’Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+        $templates = preg_replace("[err_title]",$title,$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $templates = preg_replace("[err_message]",$message,$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+        $news_topic .= $templates; //Ð¡ÐºÐ»ÐµÑŽ Ð²ÐµÑÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð² Ð¾Ð´Ð½Ñƒ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+    }
+    return $news_topic;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
 }
-?>

@@ -1,68 +1,67 @@
 <?php
-@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Запрос на вывод системных данных (заголовок сайта, метатеги, ключивые слова)
+@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Р—Р°РїСЂРѕСЃ РЅР° РІС‹РІРѕРґ СЃРёСЃС‚РµРјРЅС‹С… РґР°РЅРЅС‹С… (Р·Р°РіРѕР»РѕРІРѕРє СЃР°Р№С‚Р°, РјРµС‚Р°С‚РµРіРё, РєР»СЋС‡РёРІС‹Рµ СЃР»РѕРІР°)
 @$myrow_meta = mysql_fetch_array($result_meta);
 
-if($myrow_meta != "") //Если результат запроса имеет данные...
+if($myrow_meta != "") //Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёРјРµРµС‚ РґР°РЅРЅС‹Рµ...
 {
-	$meta_title = 'Каталог аккаунтов DarkOrbit';
-    $header_title = $meta_title." - ".$myrow_meta[title];//Заголовок страницы (Имя аккаунта - имя сайта)
-    $header_metaD = $myrow_meta[meta_d]; //метатеги
-    $header_metaK = $myrow_meta[meta_k]; //ключивые слова
+    $meta_title = 'РљР°С‚Р°Р»РѕРі Р°РєРєР°СѓРЅС‚РѕРІ DarkOrbit';
+    $header_title = $meta_title." - ".$myrow_meta[title];//Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ (РРјСЏ Р°РєРєР°СѓРЅС‚Р° - РёРјСЏ СЃР°Р№С‚Р°)
+    $header_metaD = $myrow_meta[meta_d]; //РјРµС‚Р°С‚РµРіРё
+    $header_metaK = $myrow_meta[meta_k]; //РєР»СЋС‡РёРІС‹Рµ СЃР»РѕРІР°
 }
 
-function acc_preview()//Функция вывода одобренных аккаунтов на предпросмотр
+function acc_preview()//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РѕРґРѕР±СЂРµРЅРЅС‹С… Р°РєРєР°СѓРЅС‚РѕРІ РЅР° РїСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ
 {
-global $pn; //Переменная постраничной навигации
-include("moduls/acc_navigation.php"); //Модуль навигации
-$limit = acc_navigation(10,$pn); //Количество выводимых аккаунтов на одну страницу
-$links = $limit[2];
-	$result_index = mysql_query("SELECT * FROM accounts WHERE status = '1' ORDER BY price DESC LIMIT $limit[0], $limit[1]");////Вывожу из БД заданное выше количество записей со статусом "В продаже"
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Если результат запроса имеет данные...
-		{
-			$templates = file("templates/acc_preview.html");//Подключаю шаблон
-			$templates = implode("",$templates);//Т.к. функция file() возвращает массив, его нужно склеить
-			preg_match("/\[_div_content\](.*?)\[_div_content\]/s",$templates,$div_content);//Регулярное выражение, позволяющее вырезать из шаблона только ту часть, которая должна повторяться (Результат заносится в $div_content)
-				do
-				{
-					$change_ids = $div_content[1];/*Так как ниже придется править шаблон(заменить идентификаторы на информацию из запроса), сохраню его(шаблон) в отдельную переменную, 
-				иначе придется пользоваться функцией file() чаще чем 1 раз, а это дополнительная нагрузка на сервер*/
-					
-					//Замена идентификаторов в шаблоне на переменные из БД
-					$change_ids = str_replace("[_id]",$myrow_index[id],$change_ids);//ид
-					$change_ids = str_replace("[_title]",$myrow_index[title],$change_ids);//Заголовок
-					$change_ids = str_replace("[_preview_ship]",$myrow_index[preview_ship],$change_ids);//Предпросмотр корабля
-					$change_ids = str_replace("[_server]",$myrow_index[server],$change_ids);//Сервер
-					$change_ids = str_replace("[_corp]",$myrow_index[corp],$change_ids);//Сервер
-					if($myrow_index[level] != "") $change_ids = str_replace("[_level]",'<tr><td class="line1">Игровой уровень</td><td class="line2">'.$myrow_index[level].'</td></tr>',$change_ids);//Игровой уровень
-						else $change_ids = str_replace("[_level]",'',$change_ids);
-					if($myrow_index[drones] != "") $change_ids = str_replace("[_drones]",'<tr><td class="line1">Дроиды ('.strlen($myrow_index[drones]).')</td><td class="line2">'.$myrow_index[drones].'</td></tr>',$change_ids);//Дроиды
-						else $change_ids = str_replace("[_drones]",'',$change_ids);
-					if($myrow_index[uri] != "") $change_ids = str_replace("[_uri]",'<tr><td class="line1">Уридиум</td><td class="line2">'.number_format($myrow_index[uri],0,'','.').'</td></tr>',$change_ids);//Уридиум
-						else $change_ids = str_replace("[_uri]",'',$change_ids);
-					if($myrow_index[cr] != "") $change_ids = str_replace("[_cr]",'<tr><td class="line1">Кредиты</td><td class="line2">'.number_format($myrow_index[cr],0,'','.').'</td></tr>',$change_ids);//Кредиты
-						else $change_ids = str_replace("[_cr]",'',$change_ids);
-					if($myrow_index[jackpot] != "") $change_ids = str_replace("[_jackpot]",'<tr><td class="line1">Джекпот</td><td class="line2">'.number_format($myrow_index[jackpot],0,'','.').'&nbsp;EUR</td></tr>',$change_ids);//Джекпот
-						else $change_ids = str_replace("[_jackpot]",'',$change_ids);
-					if($myrow_index[prog] != "") $change_ids = str_replace("[_prog]",'<tr><td class="line1">Очки прогресса</td><td class="line2">'.$myrow_index[prog].'</td></tr>',$change_ids);//Древо умений
-						else $change_ids = str_replace("[_prog]",'',$change_ids);					
-					$change_ids = str_replace("[_price]",number_format($myrow_index[price],0,'','.'),$change_ids);//Цена
-					$preview .= $change_ids;//Склею весь сгенерированный код в одну переменную
-				}
-				while($myrow_index = mysql_fetch_array($result_index));
-			$preview = preg_replace("/\[_div_content\].*?\[_div_content\]/s",$preview,$templates);//Вместо [_div_news]...[_div_news] вклеивается сгенерированный html код из $preview
-			if($links > 1)$preview .= listnav($links,$pn,4);//Вывод ссылок на страницы (4 - это количество ссылок в центральной части панели навигации)
-		}
-		else //Если результат запроса данных не имеет (пустой)...
-		{
-			$templates = file("templates/error.html"); //Подключение шаблона ошибки
-			$templates = implode("",$templates); //Склеивание массива, возвращенного функцией file()
-			$title = 'Каталог аккаунтов Dark Orbit';//Заголовок ошибки
-			$message = 'Страница не существует или в каталоге аккаунтов на данный момент нет товара'; //Выводимое сообщение
-			$templates = preg_replace("[err_title]",$title,$templates);//Замена идентификаторов в шаблоне на заголовок ошибки
-			$templates = preg_replace("[err_message]",$message,$templates);//Замена идентификаторов в шаблоне на выводимое сообщение
-			$preview .= $templates; //Склею весь сгенерированный код в одну переменную
-		}
-	return $preview;//Вывод сгенерированного html кода
+    global $pn; //РџРµСЂРµРјРµРЅРЅР°СЏ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕР№ РЅР°РІРёРіР°С†РёРё
+    include("moduls/acc_navigation.php"); //РњРѕРґСѓР»СЊ РЅР°РІРёРіР°С†РёРё
+    $limit = acc_navigation(10,$pn); //РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹РІРѕРґРёРјС‹С… Р°РєРєР°СѓРЅС‚РѕРІ РЅР° РѕРґРЅСѓ СЃС‚СЂР°РЅРёС†Сѓ
+    $links = $limit[2];
+    $result_index = mysql_query("SELECT * FROM accounts WHERE status = '1' ORDER BY price DESC LIMIT $limit[0], $limit[1]");////Р’С‹РІРѕР¶Сѓ РёР· Р‘Р” Р·Р°РґР°РЅРЅРѕРµ РІС‹С€Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СЃРѕ СЃС‚Р°С‚СѓСЃРѕРј "Р’ РїСЂРѕРґР°Р¶Рµ"
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёРјРµРµС‚ РґР°РЅРЅС‹Рµ...
+    {
+        $templates = file("templates/acc_preview.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ
+        $templates = implode("",$templates);//Рў.Рє. С„СѓРЅРєС†РёСЏ file() РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ, РµРіРѕ РЅСѓР¶РЅРѕ СЃРєР»РµРёС‚СЊ
+        preg_match("/\[_div_content\](.*?)\[_div_content\]/s",$templates,$div_content);//Р РµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ, РїРѕР·РІРѕР»СЏСЋС‰РµРµ РІС‹СЂРµР·Р°С‚СЊ РёР· С€Р°Р±Р»РѕРЅР° С‚РѕР»СЊРєРѕ С‚Сѓ С‡Р°СЃС‚СЊ, РєРѕС‚РѕСЂР°СЏ РґРѕР»Р¶РЅР° РїРѕРІС‚РѕСЂСЏС‚СЊСЃСЏ (Р РµР·СѓР»СЊС‚Р°С‚ Р·Р°РЅРѕСЃРёС‚СЃСЏ РІ $div_content)
+        do
+        {
+            $change_ids = $div_content[1];/*РўР°Рє РєР°Рє РЅРёР¶Рµ РїСЂРёРґРµС‚СЃСЏ РїСЂР°РІРёС‚СЊ С€Р°Р±Р»РѕРЅ(Р·Р°РјРµРЅРёС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅР° РёРЅС„РѕСЂРјР°С†РёСЋ РёР· Р·Р°РїСЂРѕСЃР°), СЃРѕС…СЂР°РЅСЋ РµРіРѕ(С€Р°Р±Р»РѕРЅ) РІ РѕС‚РґРµР»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ,
+				РёРЅР°С‡Рµ РїСЂРёРґРµС‚СЃСЏ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ С„СѓРЅРєС†РёРµР№ file() С‡Р°С‰Рµ С‡РµРј 1 СЂР°Р·, Р° СЌС‚Рѕ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РЅР°РіСЂСѓР·РєР° РЅР° СЃРµСЂРІРµСЂ*/
+
+            //Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РІ С€Р°Р±Р»РѕРЅРµ РЅР° РїРµСЂРµРјРµРЅРЅС‹Рµ РёР· Р‘Р”
+            $change_ids = str_replace("[_id]",$myrow_index[id],$change_ids);//РёРґ
+            $change_ids = str_replace("[_title]",$myrow_index[title],$change_ids);//Р—Р°РіРѕР»РѕРІРѕРє
+            $change_ids = str_replace("[_preview_ship]",$myrow_index[preview_ship],$change_ids);//РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ РєРѕСЂР°Р±Р»СЏ
+            $change_ids = str_replace("[_server]",$myrow_index[server],$change_ids);//РЎРµСЂРІРµСЂ
+            $change_ids = str_replace("[_corp]",$myrow_index[corp],$change_ids);//РЎРµСЂРІРµСЂ
+            if($myrow_index[level] != "") $change_ids = str_replace("[_level]",'<tr><td class="line1">РРіСЂРѕРІРѕР№ СѓСЂРѕРІРµРЅСЊ</td><td class="line2">'.$myrow_index[level].'</td></tr>',$change_ids);//РРіСЂРѕРІРѕР№ СѓСЂРѕРІРµРЅСЊ
+            else $change_ids = str_replace("[_level]",'',$change_ids);
+            if($myrow_index[drones] != "") $change_ids = str_replace("[_drones]",'<tr><td class="line1">Р”СЂРѕРёРґС‹ ('.strlen($myrow_index[drones]).')</td><td class="line2">'.$myrow_index[drones].'</td></tr>',$change_ids);//Р”СЂРѕРёРґС‹
+            else $change_ids = str_replace("[_drones]",'',$change_ids);
+            if($myrow_index[uri] != "") $change_ids = str_replace("[_uri]",'<tr><td class="line1">РЈСЂРёРґРёСѓРј</td><td class="line2">'.number_format($myrow_index[uri],0,'','.').'</td></tr>',$change_ids);//РЈСЂРёРґРёСѓРј
+            else $change_ids = str_replace("[_uri]",'',$change_ids);
+            if($myrow_index[cr] != "") $change_ids = str_replace("[_cr]",'<tr><td class="line1">РљСЂРµРґРёС‚С‹</td><td class="line2">'.number_format($myrow_index[cr],0,'','.').'</td></tr>',$change_ids);//РљСЂРµРґРёС‚С‹
+            else $change_ids = str_replace("[_cr]",'',$change_ids);
+            if($myrow_index[jackpot] != "") $change_ids = str_replace("[_jackpot]",'<tr><td class="line1">Р”Р¶РµРєРїРѕС‚</td><td class="line2">'.number_format($myrow_index[jackpot],0,'','.').'&nbsp;EUR</td></tr>',$change_ids);//Р”Р¶РµРєРїРѕС‚
+            else $change_ids = str_replace("[_jackpot]",'',$change_ids);
+            if($myrow_index[prog] != "") $change_ids = str_replace("[_prog]",'<tr><td class="line1">РћС‡РєРё РїСЂРѕРіСЂРµСЃСЃР°</td><td class="line2">'.$myrow_index[prog].'</td></tr>',$change_ids);//Р”СЂРµРІРѕ СѓРјРµРЅРёР№
+            else $change_ids = str_replace("[_prog]",'',$change_ids);
+            $change_ids = str_replace("[_price]",number_format($myrow_index[price],0,'','.'),$change_ids);//Р¦РµРЅР°
+            $preview .= $change_ids;//РЎРєР»РµСЋ РІРµСЃСЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРґ РІ РѕРґРЅСѓ РїРµСЂРµРјРµРЅРЅСѓСЋ
+        }
+        while($myrow_index = mysql_fetch_array($result_index));
+        $preview = preg_replace("/\[_div_content\].*?\[_div_content\]/s",$preview,$templates);//Р’РјРµСЃС‚Рѕ [_div_news]...[_div_news] РІРєР»РµРёРІР°РµС‚СЃСЏ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ html РєРѕРґ РёР· $preview
+        if($links > 1)$preview .= listnav($links,$pn,4);//Р’С‹РІРѕРґ СЃСЃС‹Р»РѕРє РЅР° СЃС‚СЂР°РЅРёС†С‹ (4 - СЌС‚Рѕ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃСЃС‹Р»РѕРє РІ С†РµРЅС‚СЂР°Р»СЊРЅРѕР№ С‡Р°СЃС‚Рё РїР°РЅРµР»Рё РЅР°РІРёРіР°С†РёРё)
+    }
+    else //Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РґР°РЅРЅС‹С… РЅРµ РёРјРµРµС‚ (РїСѓСЃС‚РѕР№)...
+    {
+        $templates = file("templates/error.html"); //РџРѕРґРєР»СЋС‡РµРЅРёРµ С€Р°Р±Р»РѕРЅР° РѕС€РёР±РєРё
+        $templates = implode("",$templates); //РЎРєР»РµРёРІР°РЅРёРµ РјР°СЃСЃРёРІР°, РІРѕР·РІСЂР°С‰РµРЅРЅРѕРіРѕ С„СѓРЅРєС†РёРµР№ file()
+        $title = 'РљР°С‚Р°Р»РѕРі Р°РєРєР°СѓРЅС‚РѕРІ Dark Orbit';//Р—Р°РіРѕР»РѕРІРѕРє РѕС€РёР±РєРё
+        $message = 'РЎС‚СЂР°РЅРёС†Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РёР»Рё РІ РєР°С‚Р°Р»РѕРіРµ Р°РєРєР°СѓРЅС‚РѕРІ РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµС‚ С‚РѕРІР°СЂР°'; //Р’С‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+        $templates = preg_replace("[err_title]",$title,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РІ С€Р°Р±Р»РѕРЅРµ РЅР° Р·Р°РіРѕР»РѕРІРѕРє РѕС€РёР±РєРё
+        $templates = preg_replace("[err_message]",$message,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РІ С€Р°Р±Р»РѕРЅРµ РЅР° РІС‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+        $preview .= $templates; //РЎРєР»РµСЋ РІРµСЃСЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРґ РІ РѕРґРЅСѓ РїРµСЂРµРјРµРЅРЅСѓСЋ
+    }
+    return $preview;//Р’С‹РІРѕРґ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ html РєРѕРґР°
 }
-?>

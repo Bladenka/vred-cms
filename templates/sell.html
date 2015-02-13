@@ -1,529 +1,529 @@
 <form name="form" action="sell.php" method="post" id="registration">
-	<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1" align="center">
-		<tr>
-			<td class="header_block"><font>Продать</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td align="center"><font class="star" color="rgb(165, 42, 42)"><strong>Внимание!</strong></font></td>
-						</tr>
-						<tr>
-							<td>
-								<ul type="square">
-									<li><font>Несмотря на то что описывается один сервер, <strong>аккаунт продается со всеми серверами сразу</strong></font></li>
-									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные через darkorbit.rambler.ru</font></li>
-									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные с почтой gmail.com</font></li>
-									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные с почтой rambler.ru</font></li>
-									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные с корпоративной почтой</font></li>
-									<li><font>Комиссия за продажу составляет <strong>20%</strong>, назначайте цену по формуле <i><желаемая сумма * 1.20></i></font></li>
-								</ul>
-							</td>
-						</tr>
-						<tr>
-							<td align="center"><font class="star"><strong>Строки отмеченные звездочкой ОБЯЗАТЕЛЬНЫ для заполнения! Если Вы хотите, что бы Ваш аккаунт быстрее продался, заполняйте максимальное количество полей.
-							<br>ВВОДИТЕ ЧИСЛОВЫЕ ДАННЫЕ ТОЛЬКО ЦЕЛЫМИ ЧИСЛАМИ, БЕЗ ЗАПЯТЫХ И ТОЧЕК!</strong></font></td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Укажите, какой корабль будет отображен на главной странице</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td>
-								<input type="radio" name="post_preview_ship" value="aegis">&nbsp;<font>Aegis</font>
-									<br>
-								<input type="radio" name="post_preview_ship" value="citadel">&nbsp;<font>Citadel</font>
-									<br>
-								<input type="radio" name="post_preview_ship" value="spearhead">&nbsp;<font>Spearhead</font>
-									<br>
-								<input type="radio" name="post_preview_ship" value="goliath">&nbsp;<font>Goliath</font>
-									<br>
-								<input type="radio" name="post_preview_ship" value="vengeance">&nbsp;<font>Vengeance</font>
-									<br>
-								<input type="radio" name="post_preview_ship" value="leonov">&nbsp;<font>Leonov</font>
-							</td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Основное</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td width="20%"><font>Заголовок</font><font class="star">*</font></td>
-							<td width="80%" colspan="2"><input type="text" name="post_title" value="" maxlength="255" style="width:99%" /></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>ID</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_id" value="" maxlength="10" style="width:95%" /></td>
-							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Сервер</font><font class="star">*</font></td>
-							<td width="20%">
-								<select name="post_server" style="width:99%" >
-									<option value="">Пусто</option>
-									<option value="Америка 1">Америка 1</option>
-									<option value="Америка 2">Америка 2</option>
-									<option value="Америка 3">Америка 3</option>
-									<option value="Америка 4">Америка 4</option>
-									<option value="Америка 5">Америка 5</option>
-									<option value="Англия 1">Англия 1</option>
-									<option value="Англия 2">Англия 2</option>
-									<option value="Бразилия 1">Бразилия 1</option>
-									<option value="Бразилия 2">Бразилия 2</option>
-									<option value="Великобритания 1">Великобритания 1</option>
-									<option value="Венгрия 1">Венгрия 1</option>
-									<option value="Германия 1">Германия 1</option>
-									<option value="Германия 2">Германия 2</option>
-									<option value="Германия 3">Германия 3</option>
-									<option value="Германия 4">Германия 4</option>
-									<option value="Германия 5">Германия 5</option>
-									<option value="Германия 6">Германия 6</option>
-									<option value="Германия 7">Германия 7</option>
-									<option value="Европа 1">Европа 1</option>
-									<option value="Европа 2">Европа 2</option>
-									<option value="Европа 3">Европа 3</option>
-									<option value="Европа 4">Европа 4</option>
-									<option value="Европа 5">Европа 5</option>
-									<option value="Европа 6">Европа 6</option>
-									<option value="Европа 7">Европа 7</option>
-									<option value="Испания 1">Испания 1</option>
-									<option value="Испания 2">Испания 2</option>
-									<option value="Испания 3">Испания 3</option>
-									<option value="Испания 4">Испания 4</option>
-									<option value="Италия 1">Италия 1</option>
-									<option value="Италия 2">Италия 2</option>
-									<option value="Италия 3">Италия 3</option>
-									<option value="Мексика 1">Мексика 1</option>
-									<option value="Польша 1">Польша 1</option>
-									<option value="Польша 2">Польша 2</option>
-									<option value="Польша 3">Польша 3</option>
-									<option value="Россия 1">Россия 1</option>
-									<option value="Россия 2">Россия 2</option>
-									<option value="Россия 3">Россия 3</option>
-									<option value="Россия 4">Россия 4</option>
-									<option value="Россия 5">Россия 5</option>
-									<option value="Россия 6">Россия 6</option>
-									<option value="Скандинавия 1">Скандинавия 1</option>
-									<option value="Скандинавия 2">Скандинавия 2</option>
-									<option value="США Восток 1">США Восток 1</option>
-									<option value="США Восток 2">США Восток 2</option>
-									<option value="США Восток 3">США восток 3</option>
-									<option value="США Запад 1">США Запад 1</option>
-									<option value="Турция 1">Турция 1</option>
-									<option value="Турция 2">Турция 2</option>
-									<option value="Турция 3">Турция 3</option>
-									<option value="Турция 4">Турция 4</option>
-									<option value="Турция 5">Турция 5</option>
-									<option value="Турция 6">Турция 6</option>
-									<option value="Франция 1">Франция 1</option>
-									<option value="Франция 2">Франция 2</option>
-									<option value="Франция 3">Франция 3</option>
-									<option value="Франция 4">Франция 4</option>
-									<option value="Чехия 1">Чехия 1</option>
-									<option value="Чехия 2">Чехия 2</option>
-									<option value="Чехия 3">Чехия 3</option>
-								</select>
-							</td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Компания</font><font class="star">*</font></td>
-							<td width="20%">
-								<select name="post_corp" style="width:99%" >
-									<option value="">Пусто</option>
-									<option value="MMO">MMO</option>
-									<option value="EIC">EIC</option>
-									<option value="VRU">VRU</option>
-								</select>
-							</td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Игровой уровень</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_level" value="" maxlength="2" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Опыт</font></td>
-							<td width="20%"><input type="text" name="post_exp" value="" maxlength="15" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Честь</font></td>
-							<td width="20%"><input type="text" name="post_honor" value="" maxlength="15" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Очки ранга</font></td>
-							<td width="20%"><input type="text" name="post_rank" value="" maxlength="15" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Уридиум</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_uri" value="" maxlength="15" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Кредиты</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_cr" value="" maxlength="15" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Джекпот</font></td>
-							<td width="20%"><input type="text" name="post_jackpot" value="" maxlength="5" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Округляйте значение Джекпота до целого числа! (<b>1234,56</b> = <b>1235</b>)</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Количество ангаров</font></td>
-							<td width="20%">
-								<select name="post_hangar" style="width:99%">
-									<option value="">Пусто</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select>
-							</td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Количество слотов хай-тек</font></td>
-							<td width="20%">
-								<select name="post_tech" style="width:99%">
-									<option value="">Пусто</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</td>
-							<td width="60%"></td>
-						</tr>
-						<tr>
-							<td><font>Очки прогресса</font></td>
-							<td><input type="text" name="post_prog" value="" maxlength="2" style="width:95%"/></td>
-							<td width="60%"></td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Дроиды</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table border="0" cellpadding="2" cellspacing="0" align="center">
-						<tr>
-							<td>
-								<select name="post_drone1">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone2">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone3">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone4">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone5">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone6">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone7">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone8">
-									<option value="">Пусто</option>
-									<option value="F">Flax</option>
-									<option value="I">Iris</option>
-								</select>&nbsp;
-								<select name="post_drone9">
-									<option value="">Пусто</option>
-									<option value="A">Apis</option>
-								</select>&nbsp;
-								<select name="post_drone10">
-									<option value="">Пусто</option>
-									<option value="Z">Zeus</option>
-								</select>
-							</td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Оружие</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td width="20%"><font>Лазеры типа LF-3</font></td>
-							<td width="20%"><input type="text" name="post_lf3" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Мощный лазер. Наносит до 150 ед. урона за выстрел</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Лазеры типа LF-4</font></td>
-							<td width="20%"><input type="text" name="post_lf4" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Убер-лазер. Наносит до 200 ед. урона за выстрел</font></td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Генераторы</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td width="20%"><font>Двигатели G3N-7900</font></td>
-							<td width="20%"><input type="text" name="post_g3n7900" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Увеличивает скорость корабля на 10</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Щиты SG3N-B02</font></td>
-							<td width="20%"><input type="text" name="post_sg3nb02" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Лучший щит! Добавляет 10 000 ед. к прочности щита и абсорбирует 80% урона</font></td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Боеприпасы</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td width="20%"><font>Батареи типа MCB-25</font></td>
-							<td width="20%"><input type="text" name="post_mcb25" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Базовый урон от лазера х2</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Батареи типа MCB-50</font></td>
-							<td width="20%"><input type="text" name="post_mcb50" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Базовый урон от лазера х3</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Батареи типа SAB-50</font></td>
-							<td width="20%"><input type="text" name="post_sab50" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Трансфер энергии щита х2</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Батареи типа UCB-100</font></td>
-							<td width="20%"><input type="text" name="post_ucb100" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Базовый урон от лазера х4</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Батареи типа RSB-75</font></td>
-							<td width="20%"><input type="text" name="post_rsb75" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Базовый урон от лазера х6</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Батареи типа CBO-100</font></td>
-							<td width="20%"><input type="text" name="post_cbo100" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Базовый урон от лазера х3 / Трансфер энергии щита х1</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Батареи типа JOB-100</font></td>
-							<td width="20%"><input type="text" name="post_job100" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Базовый урон от лазера х2 PVP / х1,75 PVE</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракеты типа PLT-2021</font></td>
-							<td width="20%"><input type="text" name="post_plt2021" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Средний урон: 4000</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракеты типа PLT-3030</font></td>
-							<td width="20%"><input type="text" name="post_plt3030" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Средний урон: 6000</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракеты типа DCR-250</font></td>
-							<td width="20%"><input type="text" name="post_dcr250" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Снижает скорость противника на 30% длительность: 5 секунд</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракетомёты типа HSTRM-01</font></td>
-							<td width="20%"><input type="text" name="post_hstrm01" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Средний урон: 4000</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракетомёты типа UBR-100</font></td>
-							<td width="20%"><input type="text" name="post_ubr100" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Средний урон: 7500</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракетомёты типа SAR-02</font></td>
-							<td width="20%"><input type="text" name="post_sar02" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Средний трансфер энергии щита: 4000</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Ракетомёты типа CBR</font></td>
-							<td width="20%"><input type="text" name="post_cbr" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Средний урон: 3000 / Средний трансфер энергии щита: 3000</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Мины типа ACM-1</font></td>
-							<td width="20%"><input type="text" name="post_acm1" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Наносит 20% урона</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Мины типа EMP-M01</font></td>
-							<td width="20%"><input type="text" name="post_empm01" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Снимает камуфляж противника</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Мины типа SUB-M01</font></td>
-							<td width="20%"><input type="text" name="post_subm01" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Снижает энергию щита противника на 50%</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Мины типа DD-M01</font></td>
-							<td width="20%"><input type="text" name="post_ddm01" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Наносит 20% урона от базовой прочности корабля</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Мины типа SL-M01</font></td>
-							<td width="20%"><input type="text" name="post_slm01" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Снижает скорость на 50% длительность: 5 секунд</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Импульс EMP-01</font></td>
-							<td width="20%"><input type="text" name="post_emp01" value="" maxlength="10" style="width:95%"/></td>
-							<td width="60%"><font class="footnote">- Снимает камуфляж противника</font></td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Дополнительное описание</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td><textarea name="post_more" rows="15" style="width:99%;"></textarea></td>
-						</tr>
-					</table>
-				</blockquote>
-			</td>
-		</tr>
-		<tr>
-			<td class="subtitle_block"><font>Личные данные</font></td>
-		</tr>
-		<tr>
-			<td class="body_block">
-				<blockquote>
-					<table width="100%" border="0" cellpadding="2" cellspacing="0">
-						<tr>
-							<td colspan="3"><font class="star"><strong>Данные авторизации, которые будут выданы покупателю! Внимание, указывайте только сложные пароли!</strong></font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Логин</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_login_acc" value="" maxlength="20" style="width:95%;"/></td>
-							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Пароль</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_pass_acc" value="" maxlength="45" style="width:95%;"/></td>
-							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>E-mail</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_mail" value="" maxlength="255" style="width:95%;"/></td>
-							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Пароль E-mail</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_mail_pass" value="" maxlength="255" style="width:95%;"/></td>
-							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
-						</tr>
-						<tr>
-							<td colspan="3"><font class="star"><strong>Цена аккаунта не должна быть меньше 400 руб. Заявки с ценой меньше 400 руб рассматриваться не будут</strong></font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Цена</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_price" value="" maxlength="6" style="width:95%;"/></td>
-							<td width="60%"><font class="footnote">- Рублей</font></td>
-						</tr>
-						<tr>
-							<td colspan="3"><font class="star"><strong>Указывайте Ваши действительные реквизиты, так как выплата средств будет осуществлятся на указаный счет.</strong></font></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Тип кошелька</font><font class="star">*</font></td>
-							<td width="20%">
-								<select name="post_wallet_type" style="width:99%;">
-									<option value="" selected="selected">Пусто</option>
-									<option value="ЯндексДеньги">ЯндексДеньги</option>
-									<option value="WebMoney">WebMoney</option>
-								</select>
-							</td>
-							<td width="40%"></td>
-						</tr>
-						<tr>
-							<td width="20%"><font>Номер счета</font><font class="star">*</font></td>
-							<td width="20%"><input type="text" name="post_wallet" value="" maxlength="32" style="width:95%;"/></td>
-							<td width="40%"><font class="footnote">- Доступно только Администрации</font></td>
-						</tr>
-					</table>
-				</blockquote>
-				<table width="100%" border="0" cellpadding="10" cellspacing="0" >
-					<tr>
-						<td align="center"><input type="submit" class="button" value="Продолжить" onclick="return form_sell()"></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
+<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1" align="center">
+<tr>
+    <td class="header_block"><font>РџСЂРѕРґР°С‚СЊ</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td align="center"><font class="star" color="rgb(165, 42, 42)"><strong>Р’РЅРёРјР°РЅРёРµ!</strong></font></td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul type="square">
+                            <li><font>РќРµСЃРјРѕС‚СЂСЏ РЅР° С‚Рѕ С‡С‚Рѕ РѕРїРёСЃС‹РІР°РµС‚СЃСЏ РѕРґРёРЅ СЃРµСЂРІРµСЂ, <strong>Р°РєРєР°СѓРЅС‚ РїСЂРѕРґР°РµС‚СЃСЏ СЃРѕ РІСЃРµРјРё СЃРµСЂРІРµСЂР°РјРё СЃСЂР°Р·Сѓ</strong></font></li>
+                            <li><font><strong>РќР• РџР РРќРРњРђР®РўРЎРЇ!</strong> Р°РєРєР°СѓРЅС‚С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ С‡РµСЂРµР· darkorbit.rambler.ru</font></li>
+                            <li><font><strong>РќР• РџР РРќРРњРђР®РўРЎРЇ!</strong> Р°РєРєР°СѓРЅС‚С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ СЃ РїРѕС‡С‚РѕР№ gmail.com</font></li>
+                            <li><font><strong>РќР• РџР РРќРРњРђР®РўРЎРЇ!</strong> Р°РєРєР°СѓРЅС‚С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ СЃ РїРѕС‡С‚РѕР№ rambler.ru</font></li>
+                            <li><font><strong>РќР• РџР РРќРРњРђР®РўРЎРЇ!</strong> Р°РєРєР°СѓРЅС‚С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ СЃ РєРѕСЂРїРѕСЂР°С‚РёРІРЅРѕР№ РїРѕС‡С‚РѕР№</font></li>
+                            <li><font>РљРѕРјРёСЃСЃРёСЏ Р·Р° РїСЂРѕРґР°Р¶Сѓ СЃРѕСЃС‚Р°РІР»СЏРµС‚ <strong>20%</strong>, РЅР°Р·РЅР°С‡Р°Р№С‚Рµ С†РµРЅСѓ РїРѕ С„РѕСЂРјСѓР»Рµ <i><Р¶РµР»Р°РµРјР°СЏ СЃСѓРјРјР° * 1.20></i></font></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center"><font class="star"><strong>РЎС‚СЂРѕРєРё РѕС‚РјРµС‡РµРЅРЅС‹Рµ Р·РІРµР·РґРѕС‡РєРѕР№ РћР‘РЇР—РђРўР•Р›Р¬РќР« РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ! Р•СЃР»Рё Р’С‹ С…РѕС‚РёС‚Рµ, С‡С‚Рѕ Р±С‹ Р’Р°С€ Р°РєРєР°СѓРЅС‚ Р±С‹СЃС‚СЂРµРµ РїСЂРѕРґР°Р»СЃСЏ, Р·Р°РїРѕР»РЅСЏР№С‚Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»РµР№.
+                        <br>Р’Р’РћР”РРўР• Р§РРЎР›РћР’Р«Р• Р”РђРќРќР«Р• РўРћР›Р¬РљРћ Р¦Р•Р›Р«РњР Р§РРЎР›РђРњР, Р‘Р•Р— Р—РђРџРЇРўР«РҐ Р РўРћР§Р•Рљ!</strong></font></td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>РЈРєР°Р¶РёС‚Рµ, РєР°РєРѕР№ РєРѕСЂР°Р±Р»СЊ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶РµРЅ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td>
+                        <input type="radio" name="post_preview_ship" value="aegis">&nbsp;<font>Aegis</font>
+                        <br>
+                        <input type="radio" name="post_preview_ship" value="citadel">&nbsp;<font>Citadel</font>
+                        <br>
+                        <input type="radio" name="post_preview_ship" value="spearhead">&nbsp;<font>Spearhead</font>
+                        <br>
+                        <input type="radio" name="post_preview_ship" value="goliath">&nbsp;<font>Goliath</font>
+                        <br>
+                        <input type="radio" name="post_preview_ship" value="vengeance">&nbsp;<font>Vengeance</font>
+                        <br>
+                        <input type="radio" name="post_preview_ship" value="leonov">&nbsp;<font>Leonov</font>
+                    </td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>РћСЃРЅРѕРІРЅРѕРµ</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td width="20%"><font>Р—Р°РіРѕР»РѕРІРѕРє</font><font class="star">*</font></td>
+                    <td width="80%" colspan="2"><input type="text" name="post_title" value="" maxlength="255" style="width:99%" /></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>ID</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_id" value="" maxlength="10" style="width:95%" /></td>
+                    <td width="60%"><font class="footnote">- Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РЎРµСЂРІРµСЂ</font><font class="star">*</font></td>
+                    <td width="20%">
+                        <select name="post_server" style="width:99%" >
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="РђРјРµСЂРёРєР° 1">РђРјРµСЂРёРєР° 1</option>
+                            <option value="РђРјРµСЂРёРєР° 2">РђРјРµСЂРёРєР° 2</option>
+                            <option value="РђРјРµСЂРёРєР° 3">РђРјРµСЂРёРєР° 3</option>
+                            <option value="РђРјРµСЂРёРєР° 4">РђРјРµСЂРёРєР° 4</option>
+                            <option value="РђРјРµСЂРёРєР° 5">РђРјРµСЂРёРєР° 5</option>
+                            <option value="РђРЅРіР»РёСЏ 1">РђРЅРіР»РёСЏ 1</option>
+                            <option value="РђРЅРіР»РёСЏ 2">РђРЅРіР»РёСЏ 2</option>
+                            <option value="Р‘СЂР°Р·РёР»РёСЏ 1">Р‘СЂР°Р·РёР»РёСЏ 1</option>
+                            <option value="Р‘СЂР°Р·РёР»РёСЏ 2">Р‘СЂР°Р·РёР»РёСЏ 2</option>
+                            <option value="Р’РµР»РёРєРѕР±СЂРёС‚Р°РЅРёСЏ 1">Р’РµР»РёРєРѕР±СЂРёС‚Р°РЅРёСЏ 1</option>
+                            <option value="Р’РµРЅРіСЂРёСЏ 1">Р’РµРЅРіСЂРёСЏ 1</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 1">Р“РµСЂРјР°РЅРёСЏ 1</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 2">Р“РµСЂРјР°РЅРёСЏ 2</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 3">Р“РµСЂРјР°РЅРёСЏ 3</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 4">Р“РµСЂРјР°РЅРёСЏ 4</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 5">Р“РµСЂРјР°РЅРёСЏ 5</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 6">Р“РµСЂРјР°РЅРёСЏ 6</option>
+                            <option value="Р“РµСЂРјР°РЅРёСЏ 7">Р“РµСЂРјР°РЅРёСЏ 7</option>
+                            <option value="Р•РІСЂРѕРїР° 1">Р•РІСЂРѕРїР° 1</option>
+                            <option value="Р•РІСЂРѕРїР° 2">Р•РІСЂРѕРїР° 2</option>
+                            <option value="Р•РІСЂРѕРїР° 3">Р•РІСЂРѕРїР° 3</option>
+                            <option value="Р•РІСЂРѕРїР° 4">Р•РІСЂРѕРїР° 4</option>
+                            <option value="Р•РІСЂРѕРїР° 5">Р•РІСЂРѕРїР° 5</option>
+                            <option value="Р•РІСЂРѕРїР° 6">Р•РІСЂРѕРїР° 6</option>
+                            <option value="Р•РІСЂРѕРїР° 7">Р•РІСЂРѕРїР° 7</option>
+                            <option value="РСЃРїР°РЅРёСЏ 1">РСЃРїР°РЅРёСЏ 1</option>
+                            <option value="РСЃРїР°РЅРёСЏ 2">РСЃРїР°РЅРёСЏ 2</option>
+                            <option value="РСЃРїР°РЅРёСЏ 3">РСЃРїР°РЅРёСЏ 3</option>
+                            <option value="РСЃРїР°РЅРёСЏ 4">РСЃРїР°РЅРёСЏ 4</option>
+                            <option value="РС‚Р°Р»РёСЏ 1">РС‚Р°Р»РёСЏ 1</option>
+                            <option value="РС‚Р°Р»РёСЏ 2">РС‚Р°Р»РёСЏ 2</option>
+                            <option value="РС‚Р°Р»РёСЏ 3">РС‚Р°Р»РёСЏ 3</option>
+                            <option value="РњРµРєСЃРёРєР° 1">РњРµРєСЃРёРєР° 1</option>
+                            <option value="РџРѕР»СЊС€Р° 1">РџРѕР»СЊС€Р° 1</option>
+                            <option value="РџРѕР»СЊС€Р° 2">РџРѕР»СЊС€Р° 2</option>
+                            <option value="РџРѕР»СЊС€Р° 3">РџРѕР»СЊС€Р° 3</option>
+                            <option value="Р РѕСЃСЃРёСЏ 1">Р РѕСЃСЃРёСЏ 1</option>
+                            <option value="Р РѕСЃСЃРёСЏ 2">Р РѕСЃСЃРёСЏ 2</option>
+                            <option value="Р РѕСЃСЃРёСЏ 3">Р РѕСЃСЃРёСЏ 3</option>
+                            <option value="Р РѕСЃСЃРёСЏ 4">Р РѕСЃСЃРёСЏ 4</option>
+                            <option value="Р РѕСЃСЃРёСЏ 5">Р РѕСЃСЃРёСЏ 5</option>
+                            <option value="Р РѕСЃСЃРёСЏ 6">Р РѕСЃСЃРёСЏ 6</option>
+                            <option value="РЎРєР°РЅРґРёРЅР°РІРёСЏ 1">РЎРєР°РЅРґРёРЅР°РІРёСЏ 1</option>
+                            <option value="РЎРєР°РЅРґРёРЅР°РІРёСЏ 2">РЎРєР°РЅРґРёРЅР°РІРёСЏ 2</option>
+                            <option value="РЎРЁРђ Р’РѕСЃС‚РѕРє 1">РЎРЁРђ Р’РѕСЃС‚РѕРє 1</option>
+                            <option value="РЎРЁРђ Р’РѕСЃС‚РѕРє 2">РЎРЁРђ Р’РѕСЃС‚РѕРє 2</option>
+                            <option value="РЎРЁРђ Р’РѕСЃС‚РѕРє 3">РЎРЁРђ РІРѕСЃС‚РѕРє 3</option>
+                            <option value="РЎРЁРђ Р—Р°РїР°Рґ 1">РЎРЁРђ Р—Р°РїР°Рґ 1</option>
+                            <option value="РўСѓСЂС†РёСЏ 1">РўСѓСЂС†РёСЏ 1</option>
+                            <option value="РўСѓСЂС†РёСЏ 2">РўСѓСЂС†РёСЏ 2</option>
+                            <option value="РўСѓСЂС†РёСЏ 3">РўСѓСЂС†РёСЏ 3</option>
+                            <option value="РўСѓСЂС†РёСЏ 4">РўСѓСЂС†РёСЏ 4</option>
+                            <option value="РўСѓСЂС†РёСЏ 5">РўСѓСЂС†РёСЏ 5</option>
+                            <option value="РўСѓСЂС†РёСЏ 6">РўСѓСЂС†РёСЏ 6</option>
+                            <option value="Р¤СЂР°РЅС†РёСЏ 1">Р¤СЂР°РЅС†РёСЏ 1</option>
+                            <option value="Р¤СЂР°РЅС†РёСЏ 2">Р¤СЂР°РЅС†РёСЏ 2</option>
+                            <option value="Р¤СЂР°РЅС†РёСЏ 3">Р¤СЂР°РЅС†РёСЏ 3</option>
+                            <option value="Р¤СЂР°РЅС†РёСЏ 4">Р¤СЂР°РЅС†РёСЏ 4</option>
+                            <option value="Р§РµС…РёСЏ 1">Р§РµС…РёСЏ 1</option>
+                            <option value="Р§РµС…РёСЏ 2">Р§РµС…РёСЏ 2</option>
+                            <option value="Р§РµС…РёСЏ 3">Р§РµС…РёСЏ 3</option>
+                        </select>
+                    </td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РљРѕРјРїР°РЅРёСЏ</font><font class="star">*</font></td>
+                    <td width="20%">
+                        <select name="post_corp" style="width:99%" >
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="MMO">MMO</option>
+                            <option value="EIC">EIC</option>
+                            <option value="VRU">VRU</option>
+                        </select>
+                    </td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РРіСЂРѕРІРѕР№ СѓСЂРѕРІРµРЅСЊ</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_level" value="" maxlength="2" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РћРїС‹С‚</font></td>
+                    <td width="20%"><input type="text" name="post_exp" value="" maxlength="15" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р§РµСЃС‚СЊ</font></td>
+                    <td width="20%"><input type="text" name="post_honor" value="" maxlength="15" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РћС‡РєРё СЂР°РЅРіР°</font></td>
+                    <td width="20%"><input type="text" name="post_rank" value="" maxlength="15" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РЈСЂРёРґРёСѓРј</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_uri" value="" maxlength="15" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РљСЂРµРґРёС‚С‹</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_cr" value="" maxlength="15" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р”Р¶РµРєРїРѕС‚</font></td>
+                    <td width="20%"><input type="text" name="post_jackpot" value="" maxlength="5" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РћРєСЂСѓРіР»СЏР№С‚Рµ Р·РЅР°С‡РµРЅРёРµ Р”Р¶РµРєРїРѕС‚Р° РґРѕ С†РµР»РѕРіРѕ С‡РёСЃР»Р°! (<b>1234,56</b> = <b>1235</b>)</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РљРѕР»РёС‡РµСЃС‚РІРѕ Р°РЅРіР°СЂРѕРІ</font></td>
+                    <td width="20%">
+                        <select name="post_hangar" style="width:99%">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ С…Р°Р№-С‚РµРє</font></td>
+                    <td width="20%">
+                        <select name="post_tech" style="width:99%">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td width="60%"></td>
+                </tr>
+                <tr>
+                    <td><font>РћС‡РєРё РїСЂРѕРіСЂРµСЃСЃР°</font></td>
+                    <td><input type="text" name="post_prog" value="" maxlength="2" style="width:95%"/></td>
+                    <td width="60%"></td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>Р”СЂРѕРёРґС‹</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table border="0" cellpadding="2" cellspacing="0" align="center">
+                <tr>
+                    <td>
+                        <select name="post_drone1">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone2">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone3">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone4">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone5">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone6">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone7">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone8">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="F">Flax</option>
+                            <option value="I">Iris</option>
+                        </select>&nbsp;
+                        <select name="post_drone9">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="A">Apis</option>
+                        </select>&nbsp;
+                        <select name="post_drone10">
+                            <option value="">РџСѓСЃС‚Рѕ</option>
+                            <option value="Z">Zeus</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>РћСЂСѓР¶РёРµ</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td width="20%"><font>Р›Р°Р·РµСЂС‹ С‚РёРїР° LF-3</font></td>
+                    <td width="20%"><input type="text" name="post_lf3" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РњРѕС‰РЅС‹Р№ Р»Р°Р·РµСЂ. РќР°РЅРѕСЃРёС‚ РґРѕ 150 РµРґ. СѓСЂРѕРЅР° Р·Р° РІС‹СЃС‚СЂРµР»</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р›Р°Р·РµСЂС‹ С‚РёРїР° LF-4</font></td>
+                    <td width="20%"><input type="text" name="post_lf4" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЈР±РµСЂ-Р»Р°Р·РµСЂ. РќР°РЅРѕСЃРёС‚ РґРѕ 200 РµРґ. СѓСЂРѕРЅР° Р·Р° РІС‹СЃС‚СЂРµР»</font></td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>Р“РµРЅРµСЂР°С‚РѕСЂС‹</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td width="20%"><font>Р”РІРёРіР°С‚РµР»Рё G3N-7900</font></td>
+                    <td width="20%"><input type="text" name="post_g3n7900" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЈРІРµР»РёС‡РёРІР°РµС‚ СЃРєРѕСЂРѕСЃС‚СЊ РєРѕСЂР°Р±Р»СЏ РЅР° 10</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р©РёС‚С‹ SG3N-B02</font></td>
+                    <td width="20%"><input type="text" name="post_sg3nb02" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р›СѓС‡С€РёР№ С‰РёС‚! Р”РѕР±Р°РІР»СЏРµС‚ 10 000 РµРґ. Рє РїСЂРѕС‡РЅРѕСЃС‚Рё С‰РёС‚Р° Рё Р°Р±СЃРѕСЂР±РёСЂСѓРµС‚ 80% СѓСЂРѕРЅР°</font></td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>Р‘РѕРµРїСЂРёРїР°СЃС‹</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° MCB-25</font></td>
+                    <td width="20%"><input type="text" name="post_mcb25" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р‘Р°Р·РѕРІС‹Р№ СѓСЂРѕРЅ РѕС‚ Р»Р°Р·РµСЂР° С…2</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° MCB-50</font></td>
+                    <td width="20%"><input type="text" name="post_mcb50" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р‘Р°Р·РѕРІС‹Р№ СѓСЂРѕРЅ РѕС‚ Р»Р°Р·РµСЂР° С…3</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° SAB-50</font></td>
+                    <td width="20%"><input type="text" name="post_sab50" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РўСЂР°РЅСЃС„РµСЂ СЌРЅРµСЂРіРёРё С‰РёС‚Р° С…2</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° UCB-100</font></td>
+                    <td width="20%"><input type="text" name="post_ucb100" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р‘Р°Р·РѕРІС‹Р№ СѓСЂРѕРЅ РѕС‚ Р»Р°Р·РµСЂР° С…4</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° RSB-75</font></td>
+                    <td width="20%"><input type="text" name="post_rsb75" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р‘Р°Р·РѕРІС‹Р№ СѓСЂРѕРЅ РѕС‚ Р»Р°Р·РµСЂР° С…6</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° CBO-100</font></td>
+                    <td width="20%"><input type="text" name="post_cbo100" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р‘Р°Р·РѕРІС‹Р№ СѓСЂРѕРЅ РѕС‚ Р»Р°Р·РµСЂР° С…3 / РўСЂР°РЅСЃС„РµСЂ СЌРЅРµСЂРіРёРё С‰РёС‚Р° С…1</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р‘Р°С‚Р°СЂРµРё С‚РёРїР° JOB-100</font></td>
+                    <td width="20%"><input type="text" name="post_job100" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- Р‘Р°Р·РѕРІС‹Р№ СѓСЂРѕРЅ РѕС‚ Р»Р°Р·РµСЂР° С…2 PVP / С…1,75 PVE</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚С‹ С‚РёРїР° PLT-2021</font></td>
+                    <td width="20%"><input type="text" name="post_plt2021" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎСЂРµРґРЅРёР№ СѓСЂРѕРЅ: 4000</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚С‹ С‚РёРїР° PLT-3030</font></td>
+                    <td width="20%"><input type="text" name="post_plt3030" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎСЂРµРґРЅРёР№ СѓСЂРѕРЅ: 6000</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚С‹ С‚РёРїР° DCR-250</font></td>
+                    <td width="20%"><input type="text" name="post_dcr250" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎРЅРёР¶Р°РµС‚ СЃРєРѕСЂРѕСЃС‚СЊ РїСЂРѕС‚РёРІРЅРёРєР° РЅР° 30% РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ: 5 СЃРµРєСѓРЅРґ</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° HSTRM-01</font></td>
+                    <td width="20%"><input type="text" name="post_hstrm01" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎСЂРµРґРЅРёР№ СѓСЂРѕРЅ: 4000</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° UBR-100</font></td>
+                    <td width="20%"><input type="text" name="post_ubr100" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎСЂРµРґРЅРёР№ СѓСЂРѕРЅ: 7500</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° SAR-02</font></td>
+                    <td width="20%"><input type="text" name="post_sar02" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎСЂРµРґРЅРёР№ С‚СЂР°РЅСЃС„РµСЂ СЌРЅРµСЂРіРёРё С‰РёС‚Р°: 4000</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° CBR</font></td>
+                    <td width="20%"><input type="text" name="post_cbr" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎСЂРµРґРЅРёР№ СѓСЂРѕРЅ: 3000 / РЎСЂРµРґРЅРёР№ С‚СЂР°РЅСЃС„РµСЂ СЌРЅРµСЂРіРёРё С‰РёС‚Р°: 3000</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РњРёРЅС‹ С‚РёРїР° ACM-1</font></td>
+                    <td width="20%"><input type="text" name="post_acm1" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РќР°РЅРѕСЃРёС‚ 20% СѓСЂРѕРЅР°</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РњРёРЅС‹ С‚РёРїР° EMP-M01</font></td>
+                    <td width="20%"><input type="text" name="post_empm01" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎРЅРёРјР°РµС‚ РєР°РјСѓС„Р»СЏР¶ РїСЂРѕС‚РёРІРЅРёРєР°</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РњРёРЅС‹ С‚РёРїР° SUB-M01</font></td>
+                    <td width="20%"><input type="text" name="post_subm01" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎРЅРёР¶Р°РµС‚ СЌРЅРµСЂРіРёСЋ С‰РёС‚Р° РїСЂРѕС‚РёРІРЅРёРєР° РЅР° 50%</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РњРёРЅС‹ С‚РёРїР° DD-M01</font></td>
+                    <td width="20%"><input type="text" name="post_ddm01" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РќР°РЅРѕСЃРёС‚ 20% СѓСЂРѕРЅР° РѕС‚ Р±Р°Р·РѕРІРѕР№ РїСЂРѕС‡РЅРѕСЃС‚Рё РєРѕСЂР°Р±Р»СЏ</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РњРёРЅС‹ С‚РёРїР° SL-M01</font></td>
+                    <td width="20%"><input type="text" name="post_slm01" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎРЅРёР¶Р°РµС‚ СЃРєРѕСЂРѕСЃС‚СЊ РЅР° 50% РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ: 5 СЃРµРєСѓРЅРґ</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РРјРїСѓР»СЊСЃ EMP-01</font></td>
+                    <td width="20%"><input type="text" name="post_emp01" value="" maxlength="10" style="width:95%"/></td>
+                    <td width="60%"><font class="footnote">- РЎРЅРёРјР°РµС‚ РєР°РјСѓС„Р»СЏР¶ РїСЂРѕС‚РёРІРЅРёРєР°</font></td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ РѕРїРёСЃР°РЅРёРµ</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td><textarea name="post_more" rows="15" style="width:99%;"></textarea></td>
+                </tr>
+            </table>
+        </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="subtitle_block"><font>Р›РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ</font></td>
+</tr>
+<tr>
+    <td class="body_block">
+        <blockquote>
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td colspan="3"><font class="star"><strong>Р”Р°РЅРЅС‹Рµ Р°РІС‚РѕСЂРёР·Р°С†РёРё, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ РІС‹РґР°РЅС‹ РїРѕРєСѓРїР°С‚РµР»СЋ! Р’РЅРёРјР°РЅРёРµ, СѓРєР°Р·С‹РІР°Р№С‚Рµ С‚РѕР»СЊРєРѕ СЃР»РѕР¶РЅС‹Рµ РїР°СЂРѕР»Рё!</strong></font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р›РѕРіРёРЅ</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_login_acc" value="" maxlength="20" style="width:95%;"/></td>
+                    <td width="60%"><font class="footnote">- Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РџР°СЂРѕР»СЊ</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_pass_acc" value="" maxlength="45" style="width:95%;"/></td>
+                    <td width="60%"><font class="footnote">- Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>E-mail</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_mail" value="" maxlength="255" style="width:95%;"/></td>
+                    <td width="60%"><font class="footnote">- Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё</font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РџР°СЂРѕР»СЊ E-mail</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_mail_pass" value="" maxlength="255" style="width:95%;"/></td>
+                    <td width="60%"><font class="footnote">- Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё</font></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><font class="star"><strong>Р¦РµРЅР° Р°РєРєР°СѓРЅС‚Р° РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 400 СЂСѓР±. Р—Р°СЏРІРєРё СЃ С†РµРЅРѕР№ РјРµРЅСЊС€Рµ 400 СЂСѓР± СЂР°СЃСЃРјР°С‚СЂРёРІР°С‚СЊСЃСЏ РЅРµ Р±СѓРґСѓС‚</strong></font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>Р¦РµРЅР°</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_price" value="" maxlength="6" style="width:95%;"/></td>
+                    <td width="60%"><font class="footnote">- Р СѓР±Р»РµР№</font></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><font class="star"><strong>РЈРєР°Р·С‹РІР°Р№С‚Рµ Р’Р°С€Рё РґРµР№СЃС‚РІРёС‚РµР»СЊРЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹, С‚Р°Рє РєР°Рє РІС‹РїР»Р°С‚Р° СЃСЂРµРґСЃС‚РІ Р±СѓРґРµС‚ РѕСЃСѓС‰РµСЃС‚РІР»СЏС‚СЃСЏ РЅР° СѓРєР°Р·Р°РЅС‹Р№ СЃС‡РµС‚.</strong></font></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РўРёРї РєРѕС€РµР»СЊРєР°</font><font class="star">*</font></td>
+                    <td width="20%">
+                        <select name="post_wallet_type" style="width:99%;">
+                            <option value="" selected="selected">РџСѓСЃС‚Рѕ</option>
+                            <option value="РЇРЅРґРµРєСЃР”РµРЅСЊРіРё">РЇРЅРґРµРєСЃР”РµРЅСЊРіРё</option>
+                            <option value="WebMoney">WebMoney</option>
+                        </select>
+                    </td>
+                    <td width="40%"></td>
+                </tr>
+                <tr>
+                    <td width="20%"><font>РќРѕРјРµСЂ СЃС‡РµС‚Р°</font><font class="star">*</font></td>
+                    <td width="20%"><input type="text" name="post_wallet" value="" maxlength="32" style="width:95%;"/></td>
+                    <td width="40%"><font class="footnote">- Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РђРґРјРёРЅРёСЃС‚СЂР°С†РёРё</font></td>
+                </tr>
+            </table>
+        </blockquote>
+        <table width="100%" border="0" cellpadding="10" cellspacing="0" >
+            <tr>
+                <td align="center"><input type="submit" class="button" value="РџСЂРѕРґРѕР»Р¶РёС‚СЊ" onclick="return form_sell()"></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
 </form>

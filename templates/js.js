@@ -1,152 +1,152 @@
 function capcha(v,val) //
 {
-	document.getElementById("post_id").value = "";
+    document.getElementById("post_id").value = "";
     for(var i=1;i<=4;i++)document.getElementById("cp"+i+"OK").style.display = "none";
-    
+
     document.getElementById("cp"+v+"OK").style.display = "block";
-    document.getElementById("post_id").value = val;	
+    document.getElementById("post_id").value = val;
 }
 
 //========================================================================
 
-function form_sell() //Проверка формы продажи аккаунтов
+function form_sell() //РџСЂРѕРІРµСЂРєР° С„РѕСЂРјС‹ РїСЂРѕРґР°Р¶Рё Р°РєРєР°СѓРЅС‚РѕРІ
 {
-//------------------- Обработка обязательных полей
-	var names = ["post_title", "post_id", "post_server", "post_corp", "post_level", "post_uri", "post_cr", "post_login_acc", "post_pass_acc", "post_mail", "post_mail_pass", "post_price", "post_wallet_type", "post_wallet"];//Обязательные поля
-	var title = ["Заголовок", "ID", "Сервер", "Компания", "Игровой уровень", "Уридиум", "Кредиты", "Логин", "Пароль", "E-mail", "Пароль E-mail", "Цена", "Тип кошелька", "Номер счета"];//Имена полей в тексте ошибки
-	var elements = document.forms["form"].elements;
-	var element;
-	for(i = 0; i < names.length; i++) 
-	{
-		element = elements[names[i]];
-		if (element.value == "")
-		{
-			element.style.borderColor='red';
-			element.focus();
-			alert ('Поле "'+title[i]+'" является обязательным и должно быть заполнено!');
-			return false;
-		}
-		else
-		{
-			element.style.borderColor='#1b1b1b';
-		}
-	}
-//------------------- Обработка обязательных полей
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№
+    var names = ["post_title", "post_id", "post_server", "post_corp", "post_level", "post_uri", "post_cr", "post_login_acc", "post_pass_acc", "post_mail", "post_mail_pass", "post_price", "post_wallet_type", "post_wallet"];//РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ
+    var title = ["Р—Р°РіРѕР»РѕРІРѕРє", "ID", "РЎРµСЂРІРµСЂ", "РљРѕРјРїР°РЅРёСЏ", "РРіСЂРѕРІРѕР№ СѓСЂРѕРІРµРЅСЊ", "РЈСЂРёРґРёСѓРј", "РљСЂРµРґРёС‚С‹", "Р›РѕРіРёРЅ", "РџР°СЂРѕР»СЊ", "E-mail", "РџР°СЂРѕР»СЊ E-mail", "Р¦РµРЅР°", "РўРёРї РєРѕС€РµР»СЊРєР°", "РќРѕРјРµСЂ СЃС‡РµС‚Р°"];//РРјРµРЅР° РїРѕР»РµР№ РІ С‚РµРєСЃС‚Рµ РѕС€РёР±РєРё
+    var elements = document.forms["form"].elements;
+    var element;
+    for(i = 0; i < names.length; i++)
+    {
+        element = elements[names[i]];
+        if (element.value == "")
+        {
+            element.style.borderColor='red';
+            element.focus();
+            alert ('РџРѕР»Рµ "'+title[i]+'" СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р·Р°РїРѕР»РЅРµРЅРѕ!');
+            return false;
+        }
+        else
+        {
+            element.style.borderColor='#1b1b1b';
+        }
+    }
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№
 
-//------------------- Обработка полей с числовыми значениями
-	var names = ["post_id", "post_level", "post_exp", "post_honor", "post_rank", "post_uri", "post_cr", "post_jackpot", "post_prog", "post_lf3", "post_lf4", "post_g3n7900", "post_sg3nb02", "post_mcb25", "post_mcb50", 
-	"post_sab50", "post_ucb100", "post_rsb75", "post_cbo100", "post_job100", "post_plt2021", "post_plt3030", "post_dcr250", "post_hstrm01", "post_ubr100", "post_sar02", "post_cbr", "post_acm1", "post_empm01", "post_subm01", 
-	"post_ddm01", "post_slm01", "post_emp01", "post_price"];//Обязательные поля
-	var title = ["ID", "Игровой уровень", "Опыт", "Честь", "Очки ранга", "Уридиум", "Кредиты", "Джекпот", "Очки прогресса", "Лазеры типа LF-3", "Лазеры типа LF-4", "Двигатели G3N-7900", "Щиты SG3N-B02", "Батареи типа MCB-25", 
-	"Батареи типа MCB-50", "Батареи типа SAB-50", "Батареи типа UCB-100", "Батареи типа RSB-75", "Батареи типа CBO-100", "Батареи типа JOB-100", "Ракеты типа PLT-2021", "Ракеты типа PLT-3030", "Ракеты типа DCR-250", "Ракетомёты типа HSTRM-01", 
-	"Ракетомёты типа UBR-100", "Ракетомёты типа SAR-02", "Ракетомёты типа CBR", "Мины типа ACM-1", "Мины типа EMP-M01", "Мины типа SUB-M01", "Мины типа DD-M01", "Мины типа SL-M01", "Импульс EMP-01", "Цена"];//Имена полей в тексте ошибки
-	var regPRICE = /^[0-9]+$/gi;
-	var elements = document.forms["form"].elements;
-	var element;
-	for(i = 0; i < names.length; i++) 
-	{
-		element = elements[names[i]];
-		var result = element.value.match(regPRICE);
-		if(element.value != "" & !result)
-		{
-			element.style.borderColor='red';
-			element.focus();
-			alert ('Поле "'+title[i]+'" может содержать только цифры!');
-			return false;
-		}
-		else
-		{
-			element.style.borderColor='#1b1b1b';
-		}
-	}
-//------------------- Обработка полей с числовыми значениями
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»РµР№ СЃ С‡РёСЃР»РѕРІС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё
+    var names = ["post_id", "post_level", "post_exp", "post_honor", "post_rank", "post_uri", "post_cr", "post_jackpot", "post_prog", "post_lf3", "post_lf4", "post_g3n7900", "post_sg3nb02", "post_mcb25", "post_mcb50",
+        "post_sab50", "post_ucb100", "post_rsb75", "post_cbo100", "post_job100", "post_plt2021", "post_plt3030", "post_dcr250", "post_hstrm01", "post_ubr100", "post_sar02", "post_cbr", "post_acm1", "post_empm01", "post_subm01",
+        "post_ddm01", "post_slm01", "post_emp01", "post_price"];//РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ
+    var title = ["ID", "РРіСЂРѕРІРѕР№ СѓСЂРѕРІРµРЅСЊ", "РћРїС‹С‚", "Р§РµСЃС‚СЊ", "РћС‡РєРё СЂР°РЅРіР°", "РЈСЂРёРґРёСѓРј", "РљСЂРµРґРёС‚С‹", "Р”Р¶РµРєРїРѕС‚", "РћС‡РєРё РїСЂРѕРіСЂРµСЃСЃР°", "Р›Р°Р·РµСЂС‹ С‚РёРїР° LF-3", "Р›Р°Р·РµСЂС‹ С‚РёРїР° LF-4", "Р”РІРёРіР°С‚РµР»Рё G3N-7900", "Р©РёС‚С‹ SG3N-B02", "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° MCB-25",
+        "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° MCB-50", "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° SAB-50", "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° UCB-100", "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° RSB-75", "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° CBO-100", "Р‘Р°С‚Р°СЂРµРё С‚РёРїР° JOB-100", "Р Р°РєРµС‚С‹ С‚РёРїР° PLT-2021", "Р Р°РєРµС‚С‹ С‚РёРїР° PLT-3030", "Р Р°РєРµС‚С‹ С‚РёРїР° DCR-250", "Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° HSTRM-01",
+        "Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° UBR-100", "Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° SAR-02", "Р Р°РєРµС‚РѕРјС‘С‚С‹ С‚РёРїР° CBR", "РњРёРЅС‹ С‚РёРїР° ACM-1", "РњРёРЅС‹ С‚РёРїР° EMP-M01", "РњРёРЅС‹ С‚РёРїР° SUB-M01", "РњРёРЅС‹ С‚РёРїР° DD-M01", "РњРёРЅС‹ С‚РёРїР° SL-M01", "РРјРїСѓР»СЊСЃ EMP-01", "Р¦РµРЅР°"];//РРјРµРЅР° РїРѕР»РµР№ РІ С‚РµРєСЃС‚Рµ РѕС€РёР±РєРё
+    var regPRICE = /^[0-9]+$/gi;
+    var elements = document.forms["form"].elements;
+    var element;
+    for(i = 0; i < names.length; i++)
+    {
+        element = elements[names[i]];
+        var result = element.value.match(regPRICE);
+        if(element.value != "" & !result)
+        {
+            element.style.borderColor='red';
+            element.focus();
+            alert ('РџРѕР»Рµ "'+title[i]+'" РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹!');
+            return false;
+        }
+        else
+        {
+            element.style.borderColor='#1b1b1b';
+        }
+    }
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»РµР№ СЃ С‡РёСЃР»РѕРІС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё
 
-//------------------- Обработка поля "Цена"
-	var price = form.post_price;
-	if(price.value < 400)
-	{	
-		price.style.borderColor='red';
-		price.focus();
-		alert ('Мы не рассматриваем заявки с ценой меньше 400 руб!');
-		return false;
-	}
-	else
-	{
-		price.style.borderColor='#1b1b1b';
-	}
-//------------------- Обработка поля "Цена"
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ "Р¦РµРЅР°"
+    var price = form.post_price;
+    if(price.value < 400)
+    {
+        price.style.borderColor='red';
+        price.focus();
+        alert ('РњС‹ РЅРµ СЂР°СЃСЃРјР°С‚СЂРёРІР°РµРј Р·Р°СЏРІРєРё СЃ С†РµРЅРѕР№ РјРµРЅСЊС€Рµ 400 СЂСѓР±!');
+        return false;
+    }
+    else
+    {
+        price.style.borderColor='#1b1b1b';
+    }
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ "Р¦РµРЅР°"
 
-//------------------- Обработка поля "Майл"
-	if(form.post_mail.value != "")
-	{
-		var email = form.post_mail.value;
-		var regV = /[a-z0-9-_]{2,1000}\@[a-z0-9\-\_]{2,100}\.[a-z0-9]{2,4}/gi;
-		var result = email.match(regV);
-		if(!result)
-		{	
-			form.post_mail.style.borderColor='red';
-			form.post_mail.focus();
-			alert ('Введите корректный email!');
-			return false;
-		}
-	}
-//------------------- Обработка поля "Майл"	
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ "РњР°Р№Р»"
+    if(form.post_mail.value != "")
+    {
+        var email = form.post_mail.value;
+        var regV = /[a-z0-9-_]{2,1000}\@[a-z0-9\-\_]{2,100}\.[a-z0-9]{2,4}/gi;
+        var result = email.match(regV);
+        if(!result)
+        {
+            form.post_mail.style.borderColor='red';
+            form.post_mail.focus();
+            alert ('Р’РІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ email!');
+            return false;
+        }
+    }
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ "РњР°Р№Р»"
 }
 
 //========================================================================
 
-function form_reviews()//Проверка формы отзывов
+function form_reviews()//РџСЂРѕРІРµСЂРєР° С„РѕСЂРјС‹ РѕС‚Р·С‹РІРѕРІ
 {
-//------------------- Обработка обязательных полей	
-	var names = ["post_title", "post_user_text", "post_author", "post_id"]; //массив имен инпутов на проверку
-	var title = ["Вы не выставили оценку!", "Вы не заполнил поле отзыва!", "Вы не представились!", "Вы не выбрали картинку!"]; //массив ошибок выдаваемых пользователю
-	var elements = document.forms["form"].elements;
-	var element;
-	for(i = 0; i < names.length; i++)
-	{
-		element = elements[names[i]];
-		if (element.value == "")
-		{
-			element.style.borderColor='red';
-			element.focus();
-			alert (title[i]);
-			return false;
-		}
-		else
-		{
-			element.style.borderColor='#1b1b1b';
-		}
-	}
-//------------------- Обработка обязательных полей	
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№
+    var names = ["post_title", "post_user_text", "post_author", "post_id"]; //РјР°СЃСЃРёРІ РёРјРµРЅ РёРЅРїСѓС‚РѕРІ РЅР° РїСЂРѕРІРµСЂРєСѓ
+    var title = ["Р’С‹ РЅРµ РІС‹СЃС‚Р°РІРёР»Рё РѕС†РµРЅРєСѓ!", "Р’С‹ РЅРµ Р·Р°РїРѕР»РЅРёР» РїРѕР»Рµ РѕС‚Р·С‹РІР°!", "Р’С‹ РЅРµ РїСЂРµРґСЃС‚Р°РІРёР»РёСЃСЊ!", "Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РєР°СЂС‚РёРЅРєСѓ!"]; //РјР°СЃСЃРёРІ РѕС€РёР±РѕРє РІС‹РґР°РІР°РµРјС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
+    var elements = document.forms["form"].elements;
+    var element;
+    for(i = 0; i < names.length; i++)
+    {
+        element = elements[names[i]];
+        if (element.value == "")
+        {
+            element.style.borderColor='red';
+            element.focus();
+            alert (title[i]);
+            return false;
+        }
+        else
+        {
+            element.style.borderColor='#1b1b1b';
+        }
+    }
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№
 
-//------------------- Обработка поля "Автор"	
-	var author = form.post_author;
-	if(author.value != "")
-	{
-		if(author.value.length < 3 || author.value.length > 25)
-		{	
-			author.style.borderColor='red';
-			author.focus();
-			alert ('Имя пользователя не может быть короче 3 или длиннее 25 символов!');
-			return false;
-		}
-		else
-		{
-			author.style.borderColor='#1b1b1b';
-			var regAUTHOR = /^[-_0-9a-zA-Zа-яА-Я ]+$/gi;
-			var result = author.value.match(regAUTHOR);
-			if(!result)
-			{	
-				author.style.borderColor='red';
-				author.focus();
-				alert ('Имя пользователя содержит недопустимые символы!');
-				return false;
-			}
-			else
-			{
-				author.style.borderColor='#1b1b1b';
-			}
-		}
-	}
-//------------------- Обработка поля "Автор"
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ "РђРІС‚РѕСЂ"
+    var author = form.post_author;
+    if(author.value != "")
+    {
+        if(author.value.length < 3 || author.value.length > 25)
+        {
+            author.style.borderColor='red';
+            author.focus();
+            alert ('РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РєРѕСЂРѕС‡Рµ 3 РёР»Рё РґР»РёРЅРЅРµРµ 25 СЃРёРјРІРѕР»РѕРІ!');
+            return false;
+        }
+        else
+        {
+            author.style.borderColor='#1b1b1b';
+            var regAUTHOR = /^[-_0-9a-zA-ZР°-СЏРђ-РЇ ]+$/gi;
+            var result = author.value.match(regAUTHOR);
+            if(!result)
+            {
+                author.style.borderColor='red';
+                author.focus();
+                alert ('РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃРѕРґРµСЂР¶РёС‚ РЅРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹!');
+                return false;
+            }
+            else
+            {
+                author.style.borderColor='#1b1b1b';
+            }
+        }
+    }
+//------------------- РћР±СЂР°Р±РѕС‚РєР° РїРѕР»СЏ "РђРІС‚РѕСЂ"
 }

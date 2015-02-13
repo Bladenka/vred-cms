@@ -1,98 +1,97 @@
 <?php
-//УДАЛЕНИЕ
-if($_GET['del_post'])$del_post = $_GET['del_post'];//Объявляю GET-переменную содержащею ID удаляемой новости
-if($del_post)//Если переменная существует...
+//РЈР”РђР›Р•РќРР•
+if($_GET['del_post'])$del_post = $_GET['del_post'];//РћР±СЉСЏРІР»СЏСЋ GET-РїРµСЂРµРјРµРЅРЅСѓСЋ СЃРѕРґРµСЂР¶Р°С‰РµСЋ ID СѓРґР°Р»СЏРµРјРѕР№ РЅРѕРІРѕСЃС‚Рё
+if($del_post)//Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ СЃСѓС‰РµСЃС‚РІСѓРµС‚...
 {
-    $result_del_post = mysql_query ("DELETE FROM news WHERE id='$del_post'");//Удаляю запись в которой id равен GET-переменной
-    header("location: ?page=news_list");//Перенаправление на страницу со списком новостей
+    $result_del_post = mysql_query ("DELETE FROM news WHERE id='$del_post'");//РЈРґР°Р»СЏСЋ Р·Р°РїРёСЃСЊ РІ РєРѕС‚РѕСЂРѕР№ id СЂР°РІРµРЅ GET-РїРµСЂРµРјРµРЅРЅРѕР№
+    header("location: ?page=news_list");//РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃРѕ СЃРїРёСЃРєРѕРј РЅРѕРІРѕСЃС‚РµР№
     exit;
 }
-//УДАЛЕНИЕ
+//РЈР”РђР›Р•РќРР•
 
-//------ОБРАБОТЧИК РЕДАКТИРОВАНИЯ НОВОСТИ
-//Объявляю переменные, если форма была отправлена (sumbit на форме редактирования данных)
+//------РћР‘Р РђР‘РћРўР§РРљ Р Р•Р”РђРљРўРР РћР’РђРќРРЇ РќРћР’РћРЎРўР
+//РћР±СЉСЏРІР»СЏСЋ РїРµСЂРµРјРµРЅРЅС‹Рµ, РµСЃР»Рё С„РѕСЂРјР° Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР° (sumbit РЅР° С„РѕСЂРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР°РЅРЅС‹С…)
 if($_POST['update_post_id'])$update_post_id = $_POST['update_post_id'];//ID
-if($_POST['update_post_title'])$update_post_title = $_POST['update_post_title'];//Заголовок
-if($_POST['update_post_text'])$update_post_text = $_POST['update_post_text'];//Текст новости
+if($_POST['update_post_title'])$update_post_title = $_POST['update_post_title'];//Р—Р°РіРѕР»РѕРІРѕРє
+if($_POST['update_post_text'])$update_post_text = $_POST['update_post_text'];//РўРµРєСЃС‚ РЅРѕРІРѕСЃС‚Рё
 if($_POST['update_post_metad'])$update_post_metad = $_POST['update_post_metad'];
 if($_POST['update_post_metak'])$update_post_metak = $_POST['update_post_metak'];
-//Объявляю переменные, если форма была отправлена (sumbit на форме редактирования данных)
+//РћР±СЉСЏРІР»СЏСЋ РїРµСЂРµРјРµРЅРЅС‹Рµ, РµСЃР»Рё С„РѕСЂРјР° Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР° (sumbit РЅР° С„РѕСЂРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР°РЅРЅС‹С…)
 
-if($update_post_title & $update_post_text)//Если посланные переменные определены как существующие...
-{   
-    //Замена символа (') на спец символ
+if($update_post_title & $update_post_text)//Р•СЃР»Рё РїРѕСЃР»Р°РЅРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РѕРїСЂРµРґРµР»РµРЅС‹ РєР°Рє СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ...
+{
+    //Р—Р°РјРµРЅР° СЃРёРјРІРѕР»Р° (') РЅР° СЃРїРµС† СЃРёРјРІРѕР»
     $update_post_title = str_replace("'","&#039",$update_post_title);
     $update_post_text = str_replace("'","&#039",$update_post_text);
     $update_post_metad = str_replace("'","&#039",$update_post_metad);
-	$update_post_metak = str_replace("'","&#039",$update_post_metak);
-    //Замена символа (') на спец символ	
+    $update_post_metak = str_replace("'","&#039",$update_post_metak);
+    //Р—Р°РјРµРЅР° СЃРёРјРІРѕР»Р° (') РЅР° СЃРїРµС† СЃРёРјРІРѕР»
 
-    $edd_blog = mysql_query ("UPDATE news SET title='$update_post_title', text='$update_post_text', meta_d = '$update_post_metad', meta_k = '$update_post_metak' WHERE id='$update_post_id'");//обновляю данные в БД   
-    header("location: ?page=news_config&id=$update_post_id");//Перенаправление на страницу с настройками статьи
+    $edd_blog = mysql_query ("UPDATE news SET title='$update_post_title', text='$update_post_text', meta_d = '$update_post_metad', meta_k = '$update_post_metak' WHERE id='$update_post_id'");//РѕР±РЅРѕРІР»СЏСЋ РґР°РЅРЅС‹Рµ РІ Р‘Р”
+    header("location: ?page=news_config&id=$update_post_id");//РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё СЃС‚Р°С‚СЊРё
     exit;
 }
-//------ОБРАБОТЧИК РЕДАКТИРОВАНИЯ НОВОСТИ
+//------РћР‘Р РђР‘РћРўР§РРљ Р Р•Р”РђРљРўРР РћР’РђРќРРЇ РќРћР’РћРЎРўР
 
-function news_list()//Функция вывода списка новостей
+function news_list()//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° РЅРѕРІРѕСЃС‚РµР№
 {
-	$templates = file("templates/news_list.html");//Подключаю шаблон
-	$templates = implode("",$templates);//Склеивание массива, возвращенного функцией file()
-	$result_index = mysql_query("SELECT * FROM news ORDER BY id DESC");//Вывожу из таблицы "news(новости)" все записи (сортировка по Убыванию)
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Если результат запроса имеет данные...
-		{
-			preg_match("/\[_while\](.*?)\[_while\]/s",$templates,$tamp_while);//Регулярное выражение, позволяющее вырезать из шаблона только ту часть, которая должна повторяться
-			do
-			{
-				$copy_tamp = $tamp_while[1];/*Так как ниже придется править шаблон(заменить идентификаторы на информацию из запроса), сохраню его(шаблон) в отдельную переменную, 
-				иначе придется пользоваться функцией file() чаще чем 1 раз, а это дополнительная нагрузка на сервер*/
-				
-				//Замена идентификаторов на информацию из запроса
-				$copy_tamp = str_replace("[_id]",$myrow_index[id],$copy_tamp);//ID
-				$copy_tamp = str_replace("[_block]",$myrow_index[block],$copy_tamp);//Статус - шапка ленты новостей
-				$copy_tamp = str_replace("[_status]",$myrow_index[status],$copy_tamp);//Статус - отображается ли новость в ленте новостей
-				$copy_tamp = str_replace("[_title]",$myrow_index[title],$copy_tamp);//Заголовок
-				$copy_tamp = str_replace("[_date_pub]",$myrow_index[date_pub],$copy_tamp);//Дата
-				$list .= $copy_tamp;//Склею весь сгенерированный код в одну переменную
-			}
-			while($myrow_index = mysql_fetch_array($result_index));
-			$templates = preg_replace("/\[_while\].*?\[_while\]/s",$list,$templates);//Вместо [_while]...[_while] вклеивается сгенерированный html код из $list
-		}
-		else 
-		{//Если записей нет, вывести сообщение...
-			$message = '<tr><td class="bottom_cfg" align="center" height="16"><font>Нет записей в базе данных</font></tr></td>'; //Выводимое сообщение
-			$templates = preg_replace("/\[_while\].*?\[_while\]/s",$message,$templates);//Замена идентификаторов на выводимое сообщение
-		}
-	return $templates;//Вывод сгенерированного html кода
+    $templates = file("templates/news_list.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ
+    $templates = implode("",$templates);//РЎРєР»РµРёРІР°РЅРёРµ РјР°СЃСЃРёРІР°, РІРѕР·РІСЂР°С‰РµРЅРЅРѕРіРѕ С„СѓРЅРєС†РёРµР№ file()
+    $result_index = mysql_query("SELECT * FROM news ORDER BY id DESC");//Р’С‹РІРѕР¶Сѓ РёР· С‚Р°Р±Р»РёС†С‹ "news(РЅРѕРІРѕСЃС‚Рё)" РІСЃРµ Р·Р°РїРёСЃРё (СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РЈР±С‹РІР°РЅРёСЋ)
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёРјРµРµС‚ РґР°РЅРЅС‹Рµ...
+    {
+        preg_match("/\[_while\](.*?)\[_while\]/s",$templates,$tamp_while);//Р РµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ, РїРѕР·РІРѕР»СЏСЋС‰РµРµ РІС‹СЂРµР·Р°С‚СЊ РёР· С€Р°Р±Р»РѕРЅР° С‚РѕР»СЊРєРѕ С‚Сѓ С‡Р°СЃС‚СЊ, РєРѕС‚РѕСЂР°СЏ РґРѕР»Р¶РЅР° РїРѕРІС‚РѕСЂСЏС‚СЊСЃСЏ
+        do
+        {
+            $copy_tamp = $tamp_while[1];/*РўР°Рє РєР°Рє РЅРёР¶Рµ РїСЂРёРґРµС‚СЃСЏ РїСЂР°РІРёС‚СЊ С€Р°Р±Р»РѕРЅ(Р·Р°РјРµРЅРёС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅР° РёРЅС„РѕСЂРјР°С†РёСЋ РёР· Р·Р°РїСЂРѕСЃР°), СЃРѕС…СЂР°РЅСЋ РµРіРѕ(С€Р°Р±Р»РѕРЅ) РІ РѕС‚РґРµР»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ,
+				РёРЅР°С‡Рµ РїСЂРёРґРµС‚СЃСЏ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ С„СѓРЅРєС†РёРµР№ file() С‡Р°С‰Рµ С‡РµРј 1 СЂР°Р·, Р° СЌС‚Рѕ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РЅР°РіСЂСѓР·РєР° РЅР° СЃРµСЂРІРµСЂ*/
+
+            //Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РЅР° РёРЅС„РѕСЂРјР°С†РёСЋ РёР· Р·Р°РїСЂРѕСЃР°
+            $copy_tamp = str_replace("[_id]",$myrow_index[id],$copy_tamp);//ID
+            $copy_tamp = str_replace("[_block]",$myrow_index[block],$copy_tamp);//РЎС‚Р°С‚СѓСЃ - С€Р°РїРєР° Р»РµРЅС‚С‹ РЅРѕРІРѕСЃС‚РµР№
+            $copy_tamp = str_replace("[_status]",$myrow_index[status],$copy_tamp);//РЎС‚Р°С‚СѓСЃ - РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ Р»Рё РЅРѕРІРѕСЃС‚СЊ РІ Р»РµРЅС‚Рµ РЅРѕРІРѕСЃС‚РµР№
+            $copy_tamp = str_replace("[_title]",$myrow_index[title],$copy_tamp);//Р—Р°РіРѕР»РѕРІРѕРє
+            $copy_tamp = str_replace("[_date_pub]",$myrow_index[date_pub],$copy_tamp);//Р”Р°С‚Р°
+            $list .= $copy_tamp;//РЎРєР»РµСЋ РІРµСЃСЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРґ РІ РѕРґРЅСѓ РїРµСЂРµРјРµРЅРЅСѓСЋ
+        }
+        while($myrow_index = mysql_fetch_array($result_index));
+        $templates = preg_replace("/\[_while\].*?\[_while\]/s",$list,$templates);//Р’РјРµСЃС‚Рѕ [_while]...[_while] РІРєР»РµРёРІР°РµС‚СЃСЏ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ html РєРѕРґ РёР· $list
+    }
+    else
+    {//Р•СЃР»Рё Р·Р°РїРёСЃРµР№ РЅРµС‚, РІС‹РІРµСЃС‚Рё СЃРѕРѕР±С‰РµРЅРёРµ...
+        $message = '<tr><td class="bottom_cfg" align="center" height="16"><font>РќРµС‚ Р·Р°РїРёСЃРµР№ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С…</font></tr></td>'; //Р’С‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+        $templates = preg_replace("/\[_while\].*?\[_while\]/s",$message,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РЅР° РІС‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+    }
+    return $templates;//Р’С‹РІРѕРґ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ html РєРѕРґР°
 }
 
-function news_update($id)//Функция вывода выбранной новости для редактирования
+function news_update($id)//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РІС‹Р±СЂР°РЅРЅРѕР№ РЅРѕРІРѕСЃС‚Рё РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
 {
-	$result_index = mysql_query("SELECT * FROM news WHERE id='$id'");//Вывожу из таблицы "news(новости)" запись с определённым id
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Если результат запроса имеет данные...
-		{
-			$templates = file("templates/news_update.html");//Подключаю шаблон
-			$templates = implode("",$templates);//Склеивание массива, возвращенного функцией file()
+    $result_index = mysql_query("SELECT * FROM news WHERE id='$id'");//Р’С‹РІРѕР¶Сѓ РёР· С‚Р°Р±Р»РёС†С‹ "news(РЅРѕРІРѕСЃС‚Рё)" Р·Р°РїРёСЃСЊ СЃ РѕРїСЂРµРґРµР»С‘РЅРЅС‹Рј id
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёРјРµРµС‚ РґР°РЅРЅС‹Рµ...
+    {
+        $templates = file("templates/news_update.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ
+        $templates = implode("",$templates);//РЎРєР»РµРёРІР°РЅРёРµ РјР°СЃСЃРёРІР°, РІРѕР·РІСЂР°С‰РµРЅРЅРѕРіРѕ С„СѓРЅРєС†РёРµР№ file()
 
-			$text_post = str_replace("<BR>","",$myrow_index[text]);//Замена тега <br> на пустоту
-			//Замена идентификаторов на информацию из запроса
-			$templates = str_replace("[_id]",$myrow_index[id],$templates);//ID
-			$templates = str_replace("[_title]",$myrow_index[title],$templates);//Заголовок
-			$templates = str_replace("[_text]",$text_post,$templates);//Текст поста
-			$templates = str_replace("[_date_pub]",$myrow_index[date_pub],$templates);//Автор
-			$templates = str_replace("[_metad]",$myrow_index[meta_d],$templates);//Описание поста
-			$templates = str_replace("[_metak]",$myrow_index[meta_k],$templates);//Ключевые слова поста
-		}
-		else 
-		{//Если результат запроса данных не имеет (пустой)...
-			$templates = file("templates/error.html"); //Подключение шаблона
-			$templates = implode("",$templates); //Склеивание массива, возвращенного функцией file()
-			$title = 'Ошибка'; //Заголовок ошибки
-			$message = 'Указан несуществующий идентификатор новости'; //Выводимое сообщение
-			$templates = preg_replace("[err_title]",$title,$templates);//Замена идентификаторов в шаблоне на заголовок ошибки
-			$templates = preg_replace("[err_message]",$message,$templates);//Замена идентификаторов в шаблоне на выводимое сообщение
-		}
-	return $templates;//Вывод сгенерированного html кода
+        $text_post = str_replace("<BR>","",$myrow_index[text]);//Р—Р°РјРµРЅР° С‚РµРіР° <br> РЅР° РїСѓСЃС‚РѕС‚Сѓ
+        //Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РЅР° РёРЅС„РѕСЂРјР°С†РёСЋ РёР· Р·Р°РїСЂРѕСЃР°
+        $templates = str_replace("[_id]",$myrow_index[id],$templates);//ID
+        $templates = str_replace("[_title]",$myrow_index[title],$templates);//Р—Р°РіРѕР»РѕРІРѕРє
+        $templates = str_replace("[_text]",$text_post,$templates);//РўРµРєСЃС‚ РїРѕСЃС‚Р°
+        $templates = str_replace("[_date_pub]",$myrow_index[date_pub],$templates);//РђРІС‚РѕСЂ
+        $templates = str_replace("[_metad]",$myrow_index[meta_d],$templates);//РћРїРёСЃР°РЅРёРµ РїРѕСЃС‚Р°
+        $templates = str_replace("[_metak]",$myrow_index[meta_k],$templates);//РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РїРѕСЃС‚Р°
+    }
+    else
+    {//Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РґР°РЅРЅС‹С… РЅРµ РёРјРµРµС‚ (РїСѓСЃС‚РѕР№)...
+        $templates = file("templates/error.html"); //РџРѕРґРєР»СЋС‡РµРЅРёРµ С€Р°Р±Р»РѕРЅР°
+        $templates = implode("",$templates); //РЎРєР»РµРёРІР°РЅРёРµ РјР°СЃСЃРёРІР°, РІРѕР·РІСЂР°С‰РµРЅРЅРѕРіРѕ С„СѓРЅРєС†РёРµР№ file()
+        $title = 'РћС€РёР±РєР°'; //Р—Р°РіРѕР»РѕРІРѕРє РѕС€РёР±РєРё
+        $message = 'РЈРєР°Р·Р°РЅ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РЅРѕРІРѕСЃС‚Рё'; //Р’С‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+        $templates = preg_replace("[err_title]",$title,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РІ С€Р°Р±Р»РѕРЅРµ РЅР° Р·Р°РіРѕР»РѕРІРѕРє РѕС€РёР±РєРё
+        $templates = preg_replace("[err_message]",$message,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РІ С€Р°Р±Р»РѕРЅРµ РЅР° РІС‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+    }
+    return $templates;//Р’С‹РІРѕРґ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ html РєРѕРґР°
 }
-?>

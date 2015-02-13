@@ -1,16 +1,15 @@
 <?php
-$nameDB = "vred";//Íàçâàíèå ÁÄ
-$nameSERVER = "localhost";//Ñåðâåð
-$nameUSER = "root";//Èìÿ ïîëüçîâàòåëÿ ÁÄ
-$passUSER = "";//Ïàðîëü ïîëüçîâàòåëÿ ÁÄ
+$nameDB = "vred";//ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð‘Ð”
+$nameSERVER = "localhost";//Ð¡ÐµÑ€Ð²ÐµÑ€
+$nameUSER = "root";//Ð˜Ð¼Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð‘Ð”
+$passUSER = "";//ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð‘Ð”
 mysql_select_db($nameDB, mysql_connect($nameSERVER,$nameUSER,$passUSER));
 
-mysql_query("set character_set_client='cp1251'"); 
-mysql_query("set character_set_results='cp1251'"); 
-mysql_query("set collation_connection='cp1251_general_ci'"); 
+mysql_query("set character_set_client='cp1251'");
+mysql_query("set character_set_results='cp1251'");
+mysql_query("set collation_connection='cp1251_general_ci'");
 
 if(isset($_GET["server_root"])){$server_root = $_GET["server_root"];unset($server_root);}
 if(isset($_POST["server_root"])){$server_root = $_POST["server_root"];unset($server_root);}
 
 $server_root = "http://darktrader.ru/";
-?>

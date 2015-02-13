@@ -1,14 +1,13 @@
 <?php
-function statistics()//Ôóíêöèÿ âûâîäà ñòàòèñòèêè
+function statistics()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸
 {
-	$templates = file("templates/module_statistics.html");//Ïîäêëþ÷àþ øàáëîí
-	$templates = implode("",$templates); //Ò.ê. ôóíêöèÿ file() âîçâðàùàåò ìàññèâ, åãî íóæíî ñêëåèòü
-	$result_index_sell = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='1'");//Âûâîæó èç ÁÄ êîëè÷åñòâî àêêàóíòîâ â ïðîäàæå =1
-		$myrow_index_sell = mysql_fetch_array($result_index_sell);
-	$result_index_sold = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='2'");//Âûâîæó èç ÁÄ êîëè÷åñòâî ïðîäàííûõ àêêàóíòîâ =2
-		$myrow_index_sold = mysql_fetch_array($result_index_sold);
-		$templates = str_replace("[_sell]",$myrow_index_sell[0],$templates);//Çàíîøó â ïåðåìåííóþ ðåçóëüòàò çàïðîñà (êîë-âî àêêàóíòîâ â ïðîäàæå)
-		$templates = str_replace("[_sold]",$myrow_index_sold[0],$templates);//Çàíîøó â ïåðåìåííóþ ðåçóëüòàò çàïðîñà (êîë-âî ïðîäàííûõ àêêàóíòîâ)
-	return $templates;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+    $templates = file("templates/module_statistics.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+    $templates = implode("",$templates); //Ð¢.Ðº. Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ file() Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð², ÐµÐ³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐºÐ»ÐµÐ¸Ñ‚ÑŒ
+    $result_index_sell = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='1'");//Ð’Ñ‹Ð²Ð¾Ð¶Ñƒ Ð¸Ð· Ð‘Ð” ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð² Ð² Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ðµ =1
+    $myrow_index_sell = mysql_fetch_array($result_index_sell);
+    $result_index_sold = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='2'");//Ð’Ñ‹Ð²Ð¾Ð¶Ñƒ Ð¸Ð· Ð‘Ð” ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð² =2
+    $myrow_index_sold = mysql_fetch_array($result_index_sold);
+    $templates = str_replace("[_sell]",$myrow_index_sell[0],$templates);//Ð—Ð°Ð½Ð¾ÑˆÑƒ Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (ÐºÐ¾Ð»-Ð²Ð¾ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð² Ð² Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ðµ)
+    $templates = str_replace("[_sold]",$myrow_index_sold[0],$templates);//Ð—Ð°Ð½Ð¾ÑˆÑƒ Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (ÐºÐ¾Ð»-Ð²Ð¾ Ð¿Ñ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð²)
+    return $templates;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
 }
-?>

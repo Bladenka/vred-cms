@@ -1,5 +1,5 @@
 <?php
-//ОБРАБОТЧИК
+//РћР‘Р РђР‘РћРўР§РРљ
 if(isset($_POST['cfgtitle']))$cfgtitle = $_POST['cfgtitle'];
 if(isset($_POST['cfgmetaD']))$cfgmetaD = $_POST['cfgmetaD'];
 if(isset($_POST['cfgmetaK']))$cfgmetaK = $_POST['cfgmetaK'];
@@ -12,45 +12,44 @@ if(isset($_POST['cfgnote']))$cfgnote = $_POST['cfgnote'];
 
 if(isset($cfglogin) AND $cfglogin != "" AND isset($cfgpassD) AND isset($cfgtitle) AND isset($cfgmetaD) AND isset($cfgmetaK) AND isset($cfgskype) AND isset($cfgicq) AND isset($cfgmail) AND isset($cfgnote))
 {
-    $newCONFIGpage = mysql_query ("UPDATE page SET title='$cfgtitle',meta_d='$cfgmetaD',meta_k='$cfgmetaK' WHERE id='1'");//обнавление настроек
-    $cfgnote = str_replace("\n","<br>",$cfgnote);//Замена переноса строки на тег <BR>
-    //ОБНОВЛЕНИЕ ЛИЧНЫХ ДАННЫХ
-    if($cfgpassD != "")//Если поле пароль не пустое
-    {		
-        $newpass = md5($cfgpassD);//Шифруем новый пароль
+    $newCONFIGpage = mysql_query ("UPDATE page SET title='$cfgtitle',meta_d='$cfgmetaD',meta_k='$cfgmetaK' WHERE id='1'");//РѕР±РЅР°РІР»РµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє
+    $cfgnote = str_replace("\n","<br>",$cfgnote);//Р—Р°РјРµРЅР° РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё РЅР° С‚РµРі <BR>
+    //РћР‘РќРћР’Р›Р•РќРР• Р›РР§РќР«РҐ Р”РђРќРќР«РҐ
+    if($cfgpassD != "")//Р•СЃР»Рё РїРѕР»Рµ РїР°СЂРѕР»СЊ РЅРµ РїСѓСЃС‚РѕРµ
+    {
+        $newpass = md5($cfgpassD);//РЁРёС„СЂСѓРµРј РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ
         $sql = "UPDATE user SET login='$cfglogin',password='$newpass',skype='$cfgskype',icq='$cfgicq',mail='$cfgmail',note='$cfgnote' WHERE id='1'";
     }
-    else 
-	{//Если пароль пустой
-		$sql = "UPDATE user SET login='$cfglogin',skype='$cfgskype',icq='$cfgicq',mail='$cfgmail',note='$cfgnote' WHERE id='1'";
-    }     
-    $newCONFIGuser = mysql_query ($sql);//Обновление личных данных
-    //ОБНОВЛЕНИЕ ЛИЧНЫХ ДАННЫХ
-    header("location: ?page=config");//Переносим пользовотеля на страницу со списком настроек
+    else
+    {//Р•СЃР»Рё РїР°СЂРѕР»СЊ РїСѓСЃС‚РѕР№
+        $sql = "UPDATE user SET login='$cfglogin',skype='$cfgskype',icq='$cfgicq',mail='$cfgmail',note='$cfgnote' WHERE id='1'";
+    }
+    $newCONFIGuser = mysql_query ($sql);//РћР±РЅРѕРІР»РµРЅРёРµ Р»РёС‡РЅС‹С… РґР°РЅРЅС‹С…
+    //РћР‘РќРћР’Р›Р•РќРР• Р›РР§РќР«РҐ Р”РђРќРќР«РҐ
+    header("location: ?page=config");//РџРµСЂРµРЅРѕСЃРёРј РїРѕР»СЊР·РѕРІРѕС‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃРѕ СЃРїРёСЃРєРѕРј РЅР°СЃС‚СЂРѕРµРє
     exit;
 }
-//ОБРАБОТЧИК
+//РћР‘Р РђР‘РћРўР§РРљ
 
-function global_config()//Функция вывода списка настроек
+function global_config()//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° РЅР°СЃС‚СЂРѕРµРє
 {
-    $result_page = mysql_query("SELECT * FROM page WHERE id='1'");//Вывод данных из первой строки таблицы с системными данными сайта
+    $result_page = mysql_query("SELECT * FROM page WHERE id='1'");//Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РёР· РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРё С‚Р°Р±Р»РёС†С‹ СЃ СЃРёСЃС‚РµРјРЅС‹РјРё РґР°РЅРЅС‹РјРё СЃР°Р№С‚Р°
     $myrow_page = mysql_fetch_array($result_page);
-	
-	$result_user = mysql_query("SELECT * FROM user WHERE id='1'");//Вывод данных из первой строки таблицы личных данных администратора
+
+    $result_user = mysql_query("SELECT * FROM user WHERE id='1'");//Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РёР· РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРё С‚Р°Р±Р»РёС†С‹ Р»РёС‡РЅС‹С… РґР°РЅРЅС‹С… Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
     $myrow_user = mysql_fetch_array($result_user);
-        
-    $sm_read = file("templates/global_config.html");//Подключаю шаблон
-    $sm_read = implode("",$sm_read);//Склеивание массива, возвращенного функцией file()
-	$cfgnote = str_replace("<br>","",$myrow_user[note]);//заменяем br в тексте на пустоту
-    //Замена код-слов
-    $sm_read = str_replace("[_title]",$myrow_page['title'],$sm_read);//Заголовок
-    $sm_read = str_replace("[_metaD]",$myrow_page['meta_d'],$sm_read);//описание сайта
-    $sm_read = str_replace("[_metaK]",$myrow_page['meta_k'],$sm_read);//Ключевые слова
-	$sm_read = str_replace("[_login]",$myrow_user['login'],$sm_read);//логин
-	$sm_read = str_replace("[_skype]",$myrow_user['skype'],$sm_read);//Скайп
-    $sm_read = str_replace("[_icq]",$myrow_user['icq'],$sm_read);//Аська
-    $sm_read = str_replace("[_mail]",$myrow_user['mail'],$sm_read);//Майл
-	$sm_read = str_replace("[_note]",$cfgnote,$sm_read);//Доп.инфа
-    return $sm_read;//Вывод сгенерированного html кода
+
+    $sm_read = file("templates/global_config.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ
+    $sm_read = implode("",$sm_read);//РЎРєР»РµРёРІР°РЅРёРµ РјР°СЃСЃРёРІР°, РІРѕР·РІСЂР°С‰РµРЅРЅРѕРіРѕ С„СѓРЅРєС†РёРµР№ file()
+    $cfgnote = str_replace("<br>","",$myrow_user[note]);//Р·Р°РјРµРЅСЏРµРј br РІ С‚РµРєСЃС‚Рµ РЅР° РїСѓСЃС‚РѕС‚Сѓ
+    //Р—Р°РјРµРЅР° РєРѕРґ-СЃР»РѕРІ
+    $sm_read = str_replace("[_title]",$myrow_page['title'],$sm_read);//Р—Р°РіРѕР»РѕРІРѕРє
+    $sm_read = str_replace("[_metaD]",$myrow_page['meta_d'],$sm_read);//РѕРїРёСЃР°РЅРёРµ СЃР°Р№С‚Р°
+    $sm_read = str_replace("[_metaK]",$myrow_page['meta_k'],$sm_read);//РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°
+    $sm_read = str_replace("[_login]",$myrow_user['login'],$sm_read);//Р»РѕРіРёРЅ
+    $sm_read = str_replace("[_skype]",$myrow_user['skype'],$sm_read);//РЎРєР°Р№Рї
+    $sm_read = str_replace("[_icq]",$myrow_user['icq'],$sm_read);//РђСЃСЊРєР°
+    $sm_read = str_replace("[_mail]",$myrow_user['mail'],$sm_read);//РњР°Р№Р»
+    $sm_read = str_replace("[_note]",$cfgnote,$sm_read);//Р”РѕРї.РёРЅС„Р°
+    return $sm_read;//Р’С‹РІРѕРґ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ html РєРѕРґР°
 }
-?>

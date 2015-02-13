@@ -9,16 +9,16 @@ if(isset($_POST['server_root']))$server_root = $_POST['server_root'];
 
 if(isset($nameDB) & isset($nameSERVER) & isset($nameUSER) & isset($passUSER) & isset($server_root))
 {
-$dbNEW = "<?php
-\$nameDB = \"".$nameDB."\";//Название БД
-\$nameSERVER = \"".$nameSERVER."\";//Сервер
-\$nameUSER = \"".$nameUSER."\";//Имя пользователя БД
-\$passUSER = \"".$passUSER."\";//Пароль пользователя БД
+    $dbNEW = "<?php
+\$nameDB = \"".$nameDB."\";//РќР°Р·РІР°РЅРёРµ Р‘Р”
+\$nameSERVER = \"".$nameSERVER."\";//РЎРµСЂРІРµСЂ
+\$nameUSER = \"".$nameUSER."\";//РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р‘Р”
+\$passUSER = \"".$passUSER."\";//РџР°СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р‘Р”
 mysql_select_db(\$nameDB, mysql_connect(\$nameSERVER,\$nameUSER,\$passUSER));
 
-mysql_query(\"set character_set_client='cp1251'\"); 
-mysql_query(\"set character_set_results='cp1251'\"); 
-mysql_query(\"set collation_connection='cp1251_general_ci'\"); 
+mysql_query(\"set character_set_client='cp1251'\");
+mysql_query(\"set character_set_results='cp1251'\");
+mysql_query(\"set collation_connection='cp1251_general_ci'\");
 
 if(isset(\$_GET[\"server_root\"])){\$server_root = \$_GET[\"server_root\"];unset(\$server_root);}
 if(isset(\$_POST[\"server_root\"])){\$server_root = \$_POST[\"server_root\"];unset(\$server_root);}
@@ -29,16 +29,16 @@ if(isset(\$_POST[\"server_root\"])){\$server_root = \$_POST[\"server_root\"];uns
     $DBfileUser = fopen("moduls/db.php", "w+");
     fwrite($DBfileUser,$dbNEW);
     fclose($DBfileUser);
-    
+
     $DBfileAdmin = fopen("admin/moduls/db.php", "w+");
     fwrite($DBfileAdmin,$dbNEW);
     fclose($DBfileAdmin);
-	
-//ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ (БД)
-include("moduls/db.php");
-//ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ (БД)
 
-$accounts = "CREATE TABLE IF NOT EXISTS accounts
+//РџРћР”РљР›Р®Р§Р•РќРР• Рљ Р‘РђР—Р• Р”РђРќРќР«РҐ (Р‘Р”)
+    include("moduls/db.php");
+//РџРћР”РљР›Р®Р§Р•РќРР• Рљ Р‘РђР—Р• Р”РђРќРќР«РҐ (Р‘Р”)
+
+    $accounts = "CREATE TABLE IF NOT EXISTS accounts
 (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	status int(1) NOT NULL,
@@ -96,17 +96,17 @@ $accounts = "CREATE TABLE IF NOT EXISTS accounts
 )
 ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1;";
 
-$menu = "CREATE TABLE IF NOT EXISTS menu 
+    $menu = "CREATE TABLE IF NOT EXISTS menu
 (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	name varchar(255) NOT NULL,
 	href varchar(255) NOT NULL,
 	position int(2) NOT NULL,
 	PRIMARY KEY (id)
-) 
+)
 ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1;";
 
-$news = "CREATE TABLE IF NOT EXISTS news 
+    $news = "CREATE TABLE IF NOT EXISTS news
 (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	block	int(1) NOT NULL,
@@ -117,20 +117,20 @@ $news = "CREATE TABLE IF NOT EXISTS news
 	meta_d varchar(255) NOT NULL,
 	meta_k varchar(255) NOT NULL,
 	PRIMARY KEY (id)
-) 
+)
 ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1;";
 
-$page = "CREATE TABLE IF NOT EXISTS page 
+    $page = "CREATE TABLE IF NOT EXISTS page
 (
 	id int(1) NOT NULL AUTO_INCREMENT,
 	title varchar(255) NOT NULL,
 	meta_d text NOT NULL,
 	meta_k text NOT NULL,
 	PRIMARY KEY (id)
-) 
+)
 ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1;";
 
-$reviews = "CREATE TABLE IF NOT EXISTS reviews
+    $reviews = "CREATE TABLE IF NOT EXISTS reviews
 (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	status int(1) NOT NULL,
@@ -140,10 +140,10 @@ $reviews = "CREATE TABLE IF NOT EXISTS reviews
 	user_text text NOT NULL,
 	admin_text text NOT NULL,
 	PRIMARY KEY (id)
-) 
+)
 ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1;";
 
-$user = "CREATE TABLE IF NOT EXISTS user 
+    $user = "CREATE TABLE IF NOT EXISTS user
 (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	login varchar(16) NOT NULL,
@@ -153,196 +153,196 @@ $user = "CREATE TABLE IF NOT EXISTS user
 	mail varchar(32) NOT NULL,
 	note varchar(255) NOT NULL,
 	PRIMARY KEY (id)
-) 
+)
 ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1;";
 
-mysql_query($accounts);
-mysql_query($menu);
-mysql_query($news);
-mysql_query($page);
-mysql_query($reviews);
-mysql_query($user);
+    mysql_query($accounts);
+    mysql_query($menu);
+    mysql_query($news);
+    mysql_query($page);
+    mysql_query($reviews);
+    mysql_query($user);
 
-$title1 = "Порядок покупки игрового аккаунта";
-$text1 = '<p style="text-align: center;"><span style="font-size: 12pt; color: #99cc00;"><strong>Порядок покупки игрового аккаунта*</strong></span></p>
+    $title1 = "РџРѕСЂСЏРґРѕРє РїРѕРєСѓРїРєРё РёРіСЂРѕРІРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°";
+    $text1 = '<p style="text-align: center;"><span style="font-size: 12pt; color: #99cc00;"><strong>РџРѕСЂСЏРґРѕРє РїРѕРєСѓРїРєРё РёРіСЂРѕРІРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°*</strong></span></p>
 <ol style="list-style-type: upper-roman;">
-<li>Свяжитесь с Администратором, контактные данные указаны в <a href="../buy.php">Каталоге</a> и сообщите ему id желаемого лота (пример: #123).</li>
-<li>Оплатите игровой аккаунт электронными деньгами Webmoney или Яндекс.Деньги по представленным ниже реквизитам.</li>
-<li>После оплаты, предоставьте Администратору электронную почту для перевода на нее игрового аккаунта.</li>
-<li>В течении одного рабочего дня Вы получите логин и пароль от приобретённого игрового аккаунта.</li>
+<li>РЎРІСЏР¶РёС‚РµСЃСЊ СЃ РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј, РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ СѓРєР°Р·Р°РЅС‹ РІ <a href="../buy.php">РљР°С‚Р°Р»РѕРіРµ</a> Рё СЃРѕРѕР±С‰РёС‚Рµ РµРјСѓ id Р¶РµР»Р°РµРјРѕРіРѕ Р»РѕС‚Р° (РїСЂРёРјРµСЂ: #123).</li>
+<li>РћРїР»Р°С‚РёС‚Рµ РёРіСЂРѕРІРѕР№ Р°РєРєР°СѓРЅС‚ СЌР»РµРєС‚СЂРѕРЅРЅС‹РјРё РґРµРЅСЊРіР°РјРё Webmoney РёР»Рё РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё РїРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅС‹Рј РЅРёР¶Рµ СЂРµРєРІРёР·РёС‚Р°Рј.</li>
+<li>РџРѕСЃР»Рµ РѕРїР»Р°С‚С‹, РїСЂРµРґРѕСЃС‚Р°РІСЊС‚Рµ РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ РїРѕС‡С‚Сѓ РґР»СЏ РїРµСЂРµРІРѕРґР° РЅР° РЅРµРµ РёРіСЂРѕРІРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°.</li>
+<li>Р’ С‚РµС‡РµРЅРёРё РѕРґРЅРѕРіРѕ СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ Р’С‹ РїРѕР»СѓС‡РёС‚Рµ Р»РѕРіРёРЅ Рё РїР°СЂРѕР»СЊ РѕС‚ РїСЂРёРѕР±СЂРµС‚С‘РЅРЅРѕРіРѕ РёРіСЂРѕРІРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°.</li>
 </ol>
-<p style="text-align: center;"><strong><span style="color: #ff0000;">Остерегайтесь мошенничества!</span></strong></p>
-<p style="text-align: center;"><strong><span style="color: #ff0000;">При оплате игрового акаунта электронными деньгами счет на который вы оплачиваете должен быть:</span></strong></p>
+<p style="text-align: center;"><strong><span style="color: #ff0000;">РћСЃС‚РµСЂРµРіР°Р№С‚РµСЃСЊ РјРѕС€РµРЅРЅРёС‡РµСЃС‚РІР°!</span></strong></p>
+<p style="text-align: center;"><strong><span style="color: #ff0000;">РџСЂРё РѕРїР»Р°С‚Рµ РёРіСЂРѕРІРѕРіРѕ Р°РєР°СѓРЅС‚Р° СЌР»РµРєС‚СЂРѕРЅРЅС‹РјРё РґРµРЅСЊРіР°РјРё СЃС‡РµС‚ РЅР° РєРѕС‚РѕСЂС‹Р№ РІС‹ РѕРїР»Р°С‡РёРІР°РµС‚Рµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ:</span></strong></p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="color: #99cc00;"><strong>Яндекс-Деньги:</strong></span></p>
+<p style="text-align: center;"><span style="color: #99cc00;"><strong>РЇРЅРґРµРєСЃ-Р”РµРЅСЊРіРё:</strong></span></p>
 <p style="text-align: center;"><span style="color: #99cc00;"><strong>Webmoney:</strong></span></p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><strong><span style="color: #ff0000;">Если он отличается ни в коем случае не переводите!</span></strong></p>
+<p style="text-align: center;"><strong><span style="color: #ff0000;">Р•СЃР»Рё РѕРЅ РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РЅРё РІ РєРѕРµРј СЃР»СѓС‡Р°Рµ РЅРµ РїРµСЂРµРІРѕРґРёС‚Рµ!</span></strong></p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;">Не забудьте оставить свой <a href="../reviews.php">отзыв</a> о работе нашего игрового портала.</p>
-<p style="text-align: center;"><span style="font-size: 12pt; color: #99cc00;"><strong>Благодарим за покупку!</strong></span></p>
+<p style="text-align: center;">РќРµ Р·Р°Р±СѓРґСЊС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ СЃРІРѕР№ <a href="../reviews.php">РѕС‚Р·С‹РІ</a> Рѕ СЂР°Р±РѕС‚Рµ РЅР°С€РµРіРѕ РёРіСЂРѕРІРѕРіРѕ РїРѕСЂС‚Р°Р»Р°.</p>
+<p style="text-align: center;"><span style="font-size: 12pt; color: #99cc00;"><strong>Р‘Р»Р°РіРѕРґР°СЂРёРј Р·Р° РїРѕРєСѓРїРєСѓ!</strong></span></p>
 <p style="text-align: center;">&nbsp;</p>
-<p><span style="font-size: 8pt; color: #333333;">* претензии после покупки игровых аккаунтов принимаются в течении 4 дней, возврат денежных средств по истечении этого времени не производится.</span></p>';
+<p><span style="font-size: 8pt; color: #333333;">* РїСЂРµС‚РµРЅР·РёРё РїРѕСЃР»Рµ РїРѕРєСѓРїРєРё РёРіСЂРѕРІС‹С… Р°РєРєР°СѓРЅС‚РѕРІ РїСЂРёРЅРёРјР°СЋС‚СЃСЏ РІ С‚РµС‡РµРЅРёРё 4 РґРЅРµР№, РІРѕР·РІСЂР°С‚ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїРѕ РёСЃС‚РµС‡РµРЅРёРё СЌС‚РѕРіРѕ РІСЂРµРјРµРЅРё РЅРµ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ.</span></p>';
 
-$title2 = "Добро пожаловать в CMS V-Red";
-$text2 = '<p style="text-align: center;"><strong>Добро пожаловать, Администратор!</strong></p>
+    $title2 = "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ CMS V-Red";
+    $text2 = '<p style="text-align: center;"><strong>Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ, РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ!</strong></p>
 <p style="text-align: center;"><strong>&nbsp;</strong></p>
-<p style="text-align: center;"><strong>Если Вы видите это сообщение, значит скрипт сайта полностью настроен и готов к работе.</strong></p>
-<p style="text-align: center;"><strong>Попасть в панель Администратора, Вы можете перейдя по ссылке, или набрав в адресной строке браузера:</strong></p>
+<p style="text-align: center;"><strong>Р•СЃР»Рё Р’С‹ РІРёРґРёС‚Рµ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ, Р·РЅР°С‡РёС‚ СЃРєСЂРёРїС‚ СЃР°Р№С‚Р° РїРѕР»РЅРѕСЃС‚СЊСЋ РЅР°СЃС‚СЂРѕРµРЅ Рё РіРѕС‚РѕРІ Рє СЂР°Р±РѕС‚Рµ.</strong></p>
+<p style="text-align: center;"><strong>РџРѕРїР°СЃС‚СЊ РІ РїР°РЅРµР»СЊ РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°, Р’С‹ РјРѕР¶РµС‚Рµ РїРµСЂРµР№РґСЏ РїРѕ СЃСЃС‹Р»РєРµ, РёР»Рё РЅР°Р±СЂР°РІ РІ Р°РґСЂРµСЃРЅРѕР№ СЃС‚СЂРѕРєРµ Р±СЂР°СѓР·РµСЂР°:</strong></p>
 <p style="text-align: center;"><strong><a target="_blank" href="'.$server_root.'admin/">'.$server_root.'admin/</a></strong></p>';
 
-$add_post = mysql_query("INSERT INTO news (block,status,title,text,date_pub) VALUES ('0','0','$title1','$text1',NOW()), ('0','1','$title2','$text2',NOW())");
-$add_main_menu = mysql_query("INSERT INTO menu (name,href,position) 
-VALUES ('Новости','index.php','1'),('Купить','buy.php','2'),('Продать','sell.php','3'),('Проданные','sold.php','4'),('Отзывы','reviews.php','5')");
-header("location: installer.php?step=2");
-exit;
+    $add_post = mysql_query("INSERT INTO news (block,status,title,text,date_pub) VALUES ('0','0','$title1','$text1',NOW()), ('0','1','$title2','$text2',NOW())");
+    $add_main_menu = mysql_query("INSERT INTO menu (name,href,position)
+VALUES ('РќРѕРІРѕСЃС‚Рё','index.php','1'),('РљСѓРїРёС‚СЊ','buy.php','2'),('РџСЂРѕРґР°С‚СЊ','sell.php','3'),('РџСЂРѕРґР°РЅРЅС‹Рµ','sold.php','4'),('РћС‚Р·С‹РІС‹','reviews.php','5')");
+    header("location: installer.php?step=2");
+    exit;
 }
 
-//Сохраняем данных присланные из второй формы
+//РЎРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹С… РїСЂРёСЃР»Р°РЅРЅС‹Рµ РёР· РІС‚РѕСЂРѕР№ С„РѕСЂРјС‹
 if(isset($_POST['titleSITE']))$titleSITE = $_POST['titleSITE'];
 if(isset($_POST['discSITE']))$discSITE = $_POST['discSITE'];
 if(isset($_POST['keySITE']))$keySITE = $_POST['keySITE'];
 if(isset($_POST['nameADMIN']))$nameADMIN = $_POST['nameADMIN'];
 if(isset($_POST['passADMIN']))$passADMIN = $_POST['passADMIN'];
-//Сохраняем данных присланные из второй формы
+//РЎРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹С… РїСЂРёСЃР»Р°РЅРЅС‹Рµ РёР· РІС‚РѕСЂРѕР№ С„РѕСЂРјС‹
 
-//Если был послан запрос из второй формы
+//Р•СЃР»Рё Р±С‹Р» РїРѕСЃР»Р°РЅ Р·Р°РїСЂРѕСЃ РёР· РІС‚РѕСЂРѕР№ С„РѕСЂРјС‹
 if(isset($titleSITE) & isset($discSITE) & isset($keySITE) & isset($nameADMIN) & isset($passADMIN))
 {
-//ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ (БД)
-include("moduls/db.php");
-//ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ (БД)
+//РџРћР”РљР›Р®Р§Р•РќРР• Рљ Р‘РђР—Р• Р”РђРќРќР«РҐ (Р‘Р”)
+    include("moduls/db.php");
+//РџРћР”РљР›Р®Р§Р•РќРР• Рљ Р‘РђР—Р• Р”РђРќРќР«РҐ (Р‘Р”)
 
-$passADMIN = md5($passADMIN);//Зашифровываем пароль через функцию md5
+    $passADMIN = md5($passADMIN);//Р—Р°С€РёС„СЂРѕРІС‹РІР°РµРј РїР°СЂРѕР»СЊ С‡РµСЂРµР· С„СѓРЅРєС†РёСЋ md5
 
-$confIndex = mysql_query("INSERT INTO page (title,meta_d,meta_k) VALUES ('$titleSITE','$discSITE','$keySITE')");//Создаем запись в таблице page. Этим самым мы определим мета теги сайта
-$addADMIN = mysql_query("INSERT INTO user (login,password) VALUES ('$nameADMIN','$passADMIN')");//Создаем аккаунт администратора
+    $confIndex = mysql_query("INSERT INTO page (title,meta_d,meta_k) VALUES ('$titleSITE','$discSITE','$keySITE')");//РЎРѕР·РґР°РµРј Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ page. Р­С‚РёРј СЃР°РјС‹Рј РјС‹ РѕРїСЂРµРґРµР»РёРј РјРµС‚Р° С‚РµРіРё СЃР°Р№С‚Р°
+    $addADMIN = mysql_query("INSERT INTO user (login,password) VALUES ('$nameADMIN','$passADMIN')");//РЎРѕР·РґР°РµРј Р°РєРєР°СѓРЅС‚ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
 
-header("location: installer.php?step=3");//Пересылаем пользователя на третий шаг
-exit;
+    header("location: installer.php?step=3");//РџРµСЂРµСЃС‹Р»Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° С‚СЂРµС‚РёР№ С€Р°Рі
+    exit;
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Установка CMS V-Red</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-<link rel="stylesheet" type="text/css" href="/admin/templates/style.css">
-<link rel="shortcut icon" href="/templates/img/body/myicon.ico" type="image/x-icon">
+    <title>РЈСЃС‚Р°РЅРѕРІРєР° CMS V-Red</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <link rel="stylesheet" type="text/css" href="/admin/templates/style.css">
+    <link rel="shortcut icon" href="/templates/img/body/myicon.ico" type="image/x-icon">
 </head>
 <body>
-	<div class="div_body_center">
-		<table width="700px" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
-			<tr>
-				<td class="left_top" width="22px" height="22px"></td>
-				<td class="top_reap"></td>
-				<td class="right_top" width="22px" height="22px"></td>
-			</tr>
-			<tr>
-				<td class="left" width="22px"></td>
-				<td class="center" valign="top">
-					<table width="100%" border="0" cellpadding="10" cellspacing="0">
-						<tr>
-							<td valign="top">
-								<p align="center" style="font-size:13pt;">Добро пожаловать на установку CMS V-Red!</p>
-								
-								<!-- ШАГ 1 -->
-								<?php if($step == 1){ ?>
-									<form action="installer.php" method="post" name="conf_DB">
-									<table width="400" border="0" cellpadding="5" cellspacing="0" align="center" style="margin-top:50px;margin-bottom:50px;" >
-										<tr>
-											<td colspan="2" align="center"><strong>Шаг 1 - Подключение к БД</strong></td>
-										</tr>
-										<tr>
-											<td width="180px">Введите имя БД</td>
-											<td><input style="width:220px;" type="text" name="nameDB"/></td>
-										</tr>
-										<tr>
-											<td width="180px">Имя сервера</td>
-											<td><input style="width:220px;" type="text" name="nameSERVER" value="localhost"/></td>
-										</tr>
-										<tr>
-											<td width="180px">Доменное имя</td>
-											<td><input style="width:220px;" type="text" name="server_root" value="http://имя.ru/"/></td>
-										</tr>
-										<tr>
-											<td width="180px">Логин БД</td>
-											<td><input style="width:220px;" type="text" name="nameUSER"/></td>
-										</tr>
-										<tr>
-											<td width="180px">Пароль БД</td>
-											<td><input style="width:220px;" type="password" name="passUSER"/></td>
-										</tr>
-										<tr>
-											<td colspan="2" align="center"><input class="button" type="submit" value="Далее"/></td>
-										</tr>
-									</table>
-									</form>
-								<?php } ?>
-								<!-- ШАГ 1 -->
-								
-								<!-- ШАГ 2 -->
-								<?php if($step == 2){ ?>
-									<form action="installer.php?step=2" method="post" name="conf_DB">
-									<table width="400" border="0" cellpadding="5" cellspacing="0" align="center" style="margin-top:50px;margin-bottom:50px;" >
-										<tr>
-											<td colspan="2" align="center"><strong>Шаг 2 - Сбор данных</strong></td>
-										</tr>
-										<tr>
-											<td width="180px">Название сайта</td>
-											<td><input style="width:220px;" type="text" name="titleSITE"/></td>
-										</tr>
-										<tr>
-											<td width="180px">Описание сайта</td>
-											<td><input style="width:220px;" type="text" name="discSITE" value=""/></td>
-										</tr>
-										<tr>
-											<td width="180px">Ключевые слова сайта</td>
-											<td><input style="width:220px;" type="text" name="keySITE" value=""/></td>
-										</tr>
-										<tr>
-											<td width="180px">Логин администратора</td>
-											<td><input style="width:220px;" type="text" name="nameADMIN" value="admin"/></td>
-										</tr>
-										<tr>
-											<td width="180px">Пароль администратора</td>
-											<td><input style="width:220px;" type="password" name="passADMIN"/></td>
-										</tr>
-										<tr>
-											<td colspan="2" align="center"><input class="button" type="submit" value="Далее" /></td>
-										</tr>
-									</table>
-									</form>
-								<?php } ?>
-								<!-- ШАГ 2 -->
-								
-								<!-- ШАГ 3 -->
-								<?php if($step == 3){ ?>
-									<table width="400" border="0" cellpadding="5" cellspacing="0" align="center" style="margin-top:50px;margin-bottom:50px;" >
-										<tr>
-											<td colspan="2" align="center"><strong>Установка прошла успешно!</strong></td>
-										</tr>
-										<tr>
-											<td colspan="2" align="center"><p style="color:red;font-size:15px;">Удалите файл installer.php из корня сайта</p></td>
-										</tr>
-										<tr>
-											<td colspan="2" align="center"><a href="index.php">На главную</a></td>
-										</tr>
-									</table>
-								<?php } ?>
-								<!-- ШАГ 3 -->
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td class="right" width="22px"></td>
-			</tr>
-			<tr>
-				<td class="left_bottom" width="22px" height="22px"></td>
-				<td class="bottom_reap"></td>
-				<td class="right_bottom" width="22px" height="22px"></td>
-			</tr>
-		</table>
-	</div>
+<div class="div_body_center">
+    <table width="700px" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+            <td class="left_top" width="22px" height="22px"></td>
+            <td class="top_reap"></td>
+            <td class="right_top" width="22px" height="22px"></td>
+        </tr>
+        <tr>
+            <td class="left" width="22px"></td>
+            <td class="center" valign="top">
+                <table width="100%" border="0" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <p align="center" style="font-size:13pt;">Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° СѓСЃС‚Р°РЅРѕРІРєСѓ CMS V-Red!</p>
+
+                            <!-- РЁРђР“ 1 -->
+                            <?php if($step == 1){ ?>
+                                <form action="installer.php" method="post" name="conf_DB">
+                                    <table width="400" border="0" cellpadding="5" cellspacing="0" align="center" style="margin-top:50px;margin-bottom:50px;" >
+                                        <tr>
+                                            <td colspan="2" align="center"><strong>РЁР°Рі 1 - РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">Р’РІРµРґРёС‚Рµ РёРјСЏ Р‘Р”</td>
+                                            <td><input style="width:220px;" type="text" name="nameDB"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">РРјСЏ СЃРµСЂРІРµСЂР°</td>
+                                            <td><input style="width:220px;" type="text" name="nameSERVER" value="localhost"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">Р”РѕРјРµРЅРЅРѕРµ РёРјСЏ</td>
+                                            <td><input style="width:220px;" type="text" name="server_root" value="http://РёРјСЏ.ru/"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">Р›РѕРіРёРЅ Р‘Р”</td>
+                                            <td><input style="width:220px;" type="text" name="nameUSER"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">РџР°СЂРѕР»СЊ Р‘Р”</td>
+                                            <td><input style="width:220px;" type="password" name="passUSER"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center"><input class="button" type="submit" value="Р”Р°Р»РµРµ"/></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            <?php } ?>
+                            <!-- РЁРђР“ 1 -->
+
+                            <!-- РЁРђР“ 2 -->
+                            <?php if($step == 2){ ?>
+                                <form action="installer.php?step=2" method="post" name="conf_DB">
+                                    <table width="400" border="0" cellpadding="5" cellspacing="0" align="center" style="margin-top:50px;margin-bottom:50px;" >
+                                        <tr>
+                                            <td colspan="2" align="center"><strong>РЁР°Рі 2 - РЎР±РѕСЂ РґР°РЅРЅС‹С…</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">РќР°Р·РІР°РЅРёРµ СЃР°Р№С‚Р°</td>
+                                            <td><input style="width:220px;" type="text" name="titleSITE"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">РћРїРёСЃР°РЅРёРµ СЃР°Р№С‚Р°</td>
+                                            <td><input style="width:220px;" type="text" name="discSITE" value=""/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° СЃР°Р№С‚Р°</td>
+                                            <td><input style="width:220px;" type="text" name="keySITE" value=""/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">Р›РѕРіРёРЅ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°</td>
+                                            <td><input style="width:220px;" type="text" name="nameADMIN" value="admin"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="180px">РџР°СЂРѕР»СЊ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°</td>
+                                            <td><input style="width:220px;" type="password" name="passADMIN"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center"><input class="button" type="submit" value="Р”Р°Р»РµРµ" /></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            <?php } ?>
+                            <!-- РЁРђР“ 2 -->
+
+                            <!-- РЁРђР“ 3 -->
+                            <?php if($step == 3){ ?>
+                                <table width="400" border="0" cellpadding="5" cellspacing="0" align="center" style="margin-top:50px;margin-bottom:50px;" >
+                                    <tr>
+                                        <td colspan="2" align="center"><strong>РЈСЃС‚Р°РЅРѕРІРєР° РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center"><p style="color:red;font-size:15px;">РЈРґР°Р»РёС‚Рµ С„Р°Р№Р» installer.php РёР· РєРѕСЂРЅСЏ СЃР°Р№С‚Р°</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center"><a href="index.php">РќР° РіР»Р°РІРЅСѓСЋ</a></td>
+                                    </tr>
+                                </table>
+                            <?php } ?>
+                            <!-- РЁРђР“ 3 -->
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td class="right" width="22px"></td>
+        </tr>
+        <tr>
+            <td class="left_bottom" width="22px" height="22px"></td>
+            <td class="bottom_reap"></td>
+            <td class="right_bottom" width="22px" height="22px"></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

@@ -1,112 +1,111 @@
 <?php
-@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Запрос на вывод системных данных (заголовок сайта, метатеги, ключивые слова)
+@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Р—Р°РїСЂРѕСЃ РЅР° РІС‹РІРѕРґ СЃРёСЃС‚РµРјРЅС‹С… РґР°РЅРЅС‹С… (Р·Р°РіРѕР»РѕРІРѕРє СЃР°Р№С‚Р°, РјРµС‚Р°С‚РµРіРё, РєР»СЋС‡РёРІС‹Рµ СЃР»РѕРІР°)
 @$myrow_meta = mysql_fetch_array($result_meta);
 
-if($myrow_meta != "") //Если результат запроса имеет данные...
+if($myrow_meta != "") //Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёРјРµРµС‚ РґР°РЅРЅС‹Рµ...
 {
-	$meta_title = 'Пользовательские отзывы';
-    $header_title = $meta_title." - ".$myrow_meta[title];//Заголовок страницы (Имя аккаунта - имя сайта)
-    $header_metaD = $myrow_meta[meta_d]; //метатеги
-    $header_metaK = $myrow_meta[meta_k]; //ключивые слова
+    $meta_title = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ РѕС‚Р·С‹РІС‹';
+    $header_title = $meta_title." - ".$myrow_meta[title];//Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ (РРјСЏ Р°РєРєР°СѓРЅС‚Р° - РёРјСЏ СЃР°Р№С‚Р°)
+    $header_metaD = $myrow_meta[meta_d]; //РјРµС‚Р°С‚РµРіРё
+    $header_metaK = $myrow_meta[meta_k]; //РєР»СЋС‡РёРІС‹Рµ СЃР»РѕРІР°
 }
 
-//------ОБРАБОТЧИК ОТПРАВКИ ОТЗЫВОВ
-//Определяю существование посланных переменных из формы отправки отзыва
-if(isset($_POST['post_title']))$post_title = $_POST['post_title'];//Заголовок
-if(isset($_POST['post_user_text']))$post_user_text = $_POST['post_user_text'];//Отзыв
-if(isset($_POST['post_author']))$post_author = $_POST['post_author'];//Подпись Автора отзыва
+//------РћР‘Р РђР‘РћРўР§РРљ РћРўРџР РђР’РљР РћРўР—Р«Р’РћР’
+//РћРїСЂРµРґРµР»СЏСЋ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РїРѕСЃР»Р°РЅРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С… РёР· С„РѕСЂРјС‹ РѕС‚РїСЂР°РІРєРё РѕС‚Р·С‹РІР°
+if(isset($_POST['post_title']))$post_title = $_POST['post_title'];//Р—Р°РіРѕР»РѕРІРѕРє
+if(isset($_POST['post_user_text']))$post_user_text = $_POST['post_user_text'];//РћС‚Р·С‹РІ
+if(isset($_POST['post_author']))$post_author = $_POST['post_author'];//РџРѕРґРїРёСЃСЊ РђРІС‚РѕСЂР° РѕС‚Р·С‹РІР°
 if(isset($_POST['post_id']))$post_id = $_POST['post_id'];
 
-if($post_title & $post_user_text & $post_author)//Если посланные переменные определены как существующие...
+if($post_title & $post_user_text & $post_author)//Р•СЃР»Рё РїРѕСЃР»Р°РЅРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РѕРїСЂРµРґРµР»РµРЅС‹ РєР°Рє СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ...
 {
-    //Функция "htmlspecialchars" преобразует html теги (если таковые были введены пользователем) в спец символы
-	$post_title = htmlspecialchars($post_title);
+    //Р¤СѓРЅРєС†РёСЏ "htmlspecialchars" РїСЂРµРѕР±СЂР°Р·СѓРµС‚ html С‚РµРіРё (РµСЃР»Рё С‚Р°РєРѕРІС‹Рµ Р±С‹Р»Рё РІРІРµРґРµРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј) РІ СЃРїРµС† СЃРёРјРІРѕР»С‹
+    $post_title = htmlspecialchars($post_title);
     $post_user_text = htmlspecialchars($post_user_text);
-	//Функция "htmlspecialchars" преобразует html теги (если таковые были введены пользователем) в спец символы
-	
-	//Проверка кода капчи
-    if($post_id != "")//Если поле было заполнено
-    {
-        session_start();//Открываю сессию
-        if(md5($post_id) != $_SESSION['code'])$error_reviews = "Выбранное Вами изображение не соответсвует заданному!";//Если код неправельный
-        unset($_SESSION['code']);//Уничтожаю код
-        session_destroy();//Уничтожаю сессию
-    }
-	
-	if(!isset($error_reviews))
-    {
-		//Замена символа (') на спец символ
-		$post_title = str_replace("'","&#039",$post_title);
-		$post_user_text = str_replace("'","&#039",$post_user_text);
-		$post_author = str_replace("'","&#039",$post_author);
-		//Замена символа (') на спец символ
-    
-		$post_user_text = str_replace("\n","<br>",$post_user_text);//Замена переноса строки пользователского текста на тег <br>
-		
-		$result_add_comm = mysql_query ("INSERT INTO reviews (status,author,post_date,title,user_text) VALUES ('0','$post_author',NOW(),'$post_title','$post_user_text')");//Запись данных в БД
-		header("location: reviews.php");//Перенаправление пользователя после отправки сообщения
-		exit;
-	}
-}
-//------ОБРАБОТЧИК ОТПРАВКИ ОТЗЫВОВ
+    //Р¤СѓРЅРєС†РёСЏ "htmlspecialchars" РїСЂРµРѕР±СЂР°Р·СѓРµС‚ html С‚РµРіРё (РµСЃР»Рё С‚Р°РєРѕРІС‹Рµ Р±С‹Р»Рё РІРІРµРґРµРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј) РІ СЃРїРµС† СЃРёРјРІРѕР»С‹
 
-function reviews($error)//Функция вывода одобренных отзывов
-{
-	$result_index = mysql_query("SELECT * FROM reviews WHERE status = '1' ORDER BY id DESC");//Вывожу из таблицы "reviews(отзывы)" все записи со статусом "1 = Опубликован" (сортировка по Убыванию)
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Проверка, на существоавние в таблице записей...
-		{ //Если хоть одна запись есть...
-			$templates = file("templates/reviews.html");//Подключаю шаблон
-			$templates = implode("",$templates);//Т.к. функция file() возвращает массив, его нужно склеить
-				do
-				{
-					$change_ids = $templates;/*Так как ниже придется править шаблон(заменить идентификаторы на информацию из запроса), сохраню его(шаблон) в отдельную переменную, 
-					иначе придется пользоваться функцией file() чаще чем 1 раз, а это дополнительная нагрузка на сервер*/
-					
-					//Замена идентификаторов на информацию из запроса
-					$change_ids = str_replace("[_author]",$myrow_index[author],$change_ids);//Подпись Автора отзыва
-					$change_ids = str_replace("[_post_date]",$myrow_index[post_date],$change_ids);//Дата размещения
-					$change_ids = str_replace("[_title]",$myrow_index[title],$change_ids);//Заголовок
-					$change_ids = str_replace("[_user_text]",$myrow_index[user_text],$change_ids);//Отзыв
-					$change_ids = str_replace("[_admin_text]",$myrow_index[admin_text],$change_ids);//Ответ Администратора
-					$comm .= $change_ids; //Склею весь сгенерированный код в одну переменную
-				}
-			while($myrow_index = mysql_fetch_array($result_index));
-		}
-		else 
-		{//Если записей нет, вывести сообщение...
-			$templates = file("templates/error.html"); //Подключение шаблона
-			$templates = implode("",$templates); //Склеивание массива, возвращенного функцией file()
-			$title = 'Сообщение сайта'; //Заголовок ошибки
-			$message = 'Ещё никто не писал отзыв о нашем сервисе. Помогите другим сделать свой выбор!'; //Выводимое сообщение
-			$templates = preg_replace("[err_title]",$title,$templates);//Замена идентификаторов на заголовок ошибки
-			$templates = preg_replace("[err_message]",$message,$templates);//Замена идентификаторов на выводимое сообщение
-			$comm .= $templates; //Склею весь сгенерированный код в одну переменную
-		}
-	$form = file("templates/reviews_form.html");//Подключаю шаблон с формой
-	$form = implode("",$form);//Т.к. функция file() возвращает массив, его нужно склеитьо
-	
-	//Вывод ошибки
-	if($error != "")//Если есть ошибки
-	{
-		$echoMESSAGE = '<font color="red"><strong>'.$error.'</strong></font>';//Ошибки
-		$form = str_replace("[_error]",$echoMESSAGE,$form);//Вывод ошибок на экран
-	}
-	else $form = str_replace("[_error]","",$form);//Если ошибок нет, то кодовое слово заменяется на пустоту
-	//Вывод ошибки
-	
-	//Капча
-	include ("moduls/capcha.php");
-	$cods = capcha();
-	for($i=0;$i<4;$i++)
-	{
-		$form = str_replace("[_code".$i."]",$cods[$i][1],$form);//В форму помещается 4 кода
-		$form = str_replace("[_img".$i."]",$cods[$i][3],$form);//В форму помещается 4 изображения
-		if($cods[$i][5] == "true")$form = str_replace("[_q]",$cods[$i][4],$form);//Помещаю вопрос в форму
-	}
-	//Капча
-	
-	$form .= $comm;
-	return $form;//Вывод сгенерированного html кода
+    //РџСЂРѕРІРµСЂРєР° РєРѕРґР° РєР°РїС‡Рё
+    if($post_id != "")//Р•СЃР»Рё РїРѕР»Рµ Р±С‹Р»Рѕ Р·Р°РїРѕР»РЅРµРЅРѕ
+    {
+        session_start();//РћС‚РєСЂС‹РІР°СЋ СЃРµСЃСЃРёСЋ
+        if(md5($post_id) != $_SESSION['code'])$error_reviews = "Р’С‹Р±СЂР°РЅРЅРѕРµ Р’Р°РјРё РёР·РѕР±СЂР°Р¶РµРЅРёРµ РЅРµ СЃРѕРѕС‚РІРµС‚СЃРІСѓРµС‚ Р·Р°РґР°РЅРЅРѕРјСѓ!";//Р•СЃР»Рё РєРѕРґ РЅРµРїСЂР°РІРµР»СЊРЅС‹Р№
+        unset($_SESSION['code']);//РЈРЅРёС‡С‚РѕР¶Р°СЋ РєРѕРґ
+        session_destroy();//РЈРЅРёС‡С‚РѕР¶Р°СЋ СЃРµСЃСЃРёСЋ
+    }
+
+    if(!isset($error_reviews))
+    {
+        //Р—Р°РјРµРЅР° СЃРёРјРІРѕР»Р° (') РЅР° СЃРїРµС† СЃРёРјРІРѕР»
+        $post_title = str_replace("'","&#039",$post_title);
+        $post_user_text = str_replace("'","&#039",$post_user_text);
+        $post_author = str_replace("'","&#039",$post_author);
+        //Р—Р°РјРµРЅР° СЃРёРјРІРѕР»Р° (') РЅР° СЃРїРµС† СЃРёРјРІРѕР»
+
+        $post_user_text = str_replace("\n","<br>",$post_user_text);//Р—Р°РјРµРЅР° РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЃРєРѕРіРѕ С‚РµРєСЃС‚Р° РЅР° С‚РµРі <br>
+
+        $result_add_comm = mysql_query ("INSERT INTO reviews (status,author,post_date,title,user_text) VALUES ('0','$post_author',NOW(),'$post_title','$post_user_text')");//Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С… РІ Р‘Р”
+        header("location: reviews.php");//РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ
+        exit;
+    }
 }
-?>
+//------РћР‘Р РђР‘РћРўР§РРљ РћРўРџР РђР’РљР РћРўР—Р«Р’РћР’
+
+function reviews($error)//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РѕРґРѕР±СЂРµРЅРЅС‹С… РѕС‚Р·С‹РІРѕРІ
+{
+    $result_index = mysql_query("SELECT * FROM reviews WHERE status = '1' ORDER BY id DESC");//Р’С‹РІРѕР¶Сѓ РёР· С‚Р°Р±Р»РёС†С‹ "reviews(РѕС‚Р·С‹РІС‹)" РІСЃРµ Р·Р°РїРёСЃРё СЃРѕ СЃС‚Р°С‚СѓСЃРѕРј "1 = РћРїСѓР±Р»РёРєРѕРІР°РЅ" (СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РЈР±С‹РІР°РЅРёСЋ)
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//РџСЂРѕРІРµСЂРєР°, РЅР° СЃСѓС‰РµСЃС‚РІРѕР°РІРЅРёРµ РІ С‚Р°Р±Р»РёС†Рµ Р·Р°РїРёСЃРµР№...
+    { //Р•СЃР»Рё С…РѕС‚СЊ РѕРґРЅР° Р·Р°РїРёСЃСЊ РµСЃС‚СЊ...
+        $templates = file("templates/reviews.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ
+        $templates = implode("",$templates);//Рў.Рє. С„СѓРЅРєС†РёСЏ file() РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ, РµРіРѕ РЅСѓР¶РЅРѕ СЃРєР»РµРёС‚СЊ
+        do
+        {
+            $change_ids = $templates;/*РўР°Рє РєР°Рє РЅРёР¶Рµ РїСЂРёРґРµС‚СЃСЏ РїСЂР°РІРёС‚СЊ С€Р°Р±Р»РѕРЅ(Р·Р°РјРµРЅРёС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅР° РёРЅС„РѕСЂРјР°С†РёСЋ РёР· Р·Р°РїСЂРѕСЃР°), СЃРѕС…СЂР°РЅСЋ РµРіРѕ(С€Р°Р±Р»РѕРЅ) РІ РѕС‚РґРµР»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ,
+					РёРЅР°С‡Рµ РїСЂРёРґРµС‚СЃСЏ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ С„СѓРЅРєС†РёРµР№ file() С‡Р°С‰Рµ С‡РµРј 1 СЂР°Р·, Р° СЌС‚Рѕ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РЅР°РіСЂСѓР·РєР° РЅР° СЃРµСЂРІРµСЂ*/
+
+            //Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РЅР° РёРЅС„РѕСЂРјР°С†РёСЋ РёР· Р·Р°РїСЂРѕСЃР°
+            $change_ids = str_replace("[_author]",$myrow_index[author],$change_ids);//РџРѕРґРїРёСЃСЊ РђРІС‚РѕСЂР° РѕС‚Р·С‹РІР°
+            $change_ids = str_replace("[_post_date]",$myrow_index[post_date],$change_ids);//Р”Р°С‚Р° СЂР°Р·РјРµС‰РµРЅРёСЏ
+            $change_ids = str_replace("[_title]",$myrow_index[title],$change_ids);//Р—Р°РіРѕР»РѕРІРѕРє
+            $change_ids = str_replace("[_user_text]",$myrow_index[user_text],$change_ids);//РћС‚Р·С‹РІ
+            $change_ids = str_replace("[_admin_text]",$myrow_index[admin_text],$change_ids);//РћС‚РІРµС‚ РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
+            $comm .= $change_ids; //РЎРєР»РµСЋ РІРµСЃСЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРґ РІ РѕРґРЅСѓ РїРµСЂРµРјРµРЅРЅСѓСЋ
+        }
+        while($myrow_index = mysql_fetch_array($result_index));
+    }
+    else
+    {//Р•СЃР»Рё Р·Р°РїРёСЃРµР№ РЅРµС‚, РІС‹РІРµСЃС‚Рё СЃРѕРѕР±С‰РµРЅРёРµ...
+        $templates = file("templates/error.html"); //РџРѕРґРєР»СЋС‡РµРЅРёРµ С€Р°Р±Р»РѕРЅР°
+        $templates = implode("",$templates); //РЎРєР»РµРёРІР°РЅРёРµ РјР°СЃСЃРёРІР°, РІРѕР·РІСЂР°С‰РµРЅРЅРѕРіРѕ С„СѓРЅРєС†РёРµР№ file()
+        $title = 'РЎРѕРѕР±С‰РµРЅРёРµ СЃР°Р№С‚Р°'; //Р—Р°РіРѕР»РѕРІРѕРє РѕС€РёР±РєРё
+        $message = 'Р•С‰С‘ РЅРёРєС‚Рѕ РЅРµ РїРёСЃР°Р» РѕС‚Р·С‹РІ Рѕ РЅР°С€РµРј СЃРµСЂРІРёСЃРµ. РџРѕРјРѕРіРёС‚Рµ РґСЂСѓРіРёРј СЃРґРµР»Р°С‚СЊ СЃРІРѕР№ РІС‹Р±РѕСЂ!'; //Р’С‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+        $templates = preg_replace("[err_title]",$title,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РЅР° Р·Р°РіРѕР»РѕРІРѕРє РѕС€РёР±РєРё
+        $templates = preg_replace("[err_message]",$message,$templates);//Р—Р°РјРµРЅР° РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РЅР° РІС‹РІРѕРґРёРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+        $comm .= $templates; //РЎРєР»РµСЋ РІРµСЃСЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРґ РІ РѕРґРЅСѓ РїРµСЂРµРјРµРЅРЅСѓСЋ
+    }
+    $form = file("templates/reviews_form.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ СЃ С„РѕСЂРјРѕР№
+    $form = implode("",$form);//Рў.Рє. С„СѓРЅРєС†РёСЏ file() РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ, РµРіРѕ РЅСѓР¶РЅРѕ СЃРєР»РµРёС‚СЊРѕ
+
+    //Р’С‹РІРѕРґ РѕС€РёР±РєРё
+    if($error != "")//Р•СЃР»Рё РµСЃС‚СЊ РѕС€РёР±РєРё
+    {
+        $echoMESSAGE = '<font color="red"><strong>'.$error.'</strong></font>';//РћС€РёР±РєРё
+        $form = str_replace("[_error]",$echoMESSAGE,$form);//Р’С‹РІРѕРґ РѕС€РёР±РѕРє РЅР° СЌРєСЂР°РЅ
+    }
+    else $form = str_replace("[_error]","",$form);//Р•СЃР»Рё РѕС€РёР±РѕРє РЅРµС‚, С‚Рѕ РєРѕРґРѕРІРѕРµ СЃР»РѕРІРѕ Р·Р°РјРµРЅСЏРµС‚СЃСЏ РЅР° РїСѓСЃС‚РѕС‚Сѓ
+    //Р’С‹РІРѕРґ РѕС€РёР±РєРё
+
+    //РљР°РїС‡Р°
+    include ("moduls/capcha.php");
+    $cods = capcha();
+    for($i=0;$i<4;$i++)
+    {
+        $form = str_replace("[_code".$i."]",$cods[$i][1],$form);//Р’ С„РѕСЂРјСѓ РїРѕРјРµС‰Р°РµС‚СЃСЏ 4 РєРѕРґР°
+        $form = str_replace("[_img".$i."]",$cods[$i][3],$form);//Р’ С„РѕСЂРјСѓ РїРѕРјРµС‰Р°РµС‚СЃСЏ 4 РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+        if($cods[$i][5] == "true")$form = str_replace("[_q]",$cods[$i][4],$form);//РџРѕРјРµС‰Р°СЋ РІРѕРїСЂРѕСЃ РІ С„РѕСЂРјСѓ
+    }
+    //РљР°РїС‡Р°
+
+    $form .= $comm;
+    return $form;//Р’С‹РІРѕРґ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ html РєРѕРґР°
+}

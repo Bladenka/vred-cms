@@ -1,57 +1,56 @@
 <?php
-@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Çàïðîñ íà âûâîä ñèñòåìíûõ äàííûõ (çàãîëîâîê ñàéòà, ìåòàòåãè, êëþ÷èâûå ñëîâà)
+@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð½Ð° Ð²Ñ‹Ð²Ð¾Ð´ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… (Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÐ°Ð¹Ñ‚Ð°, Ð¼ÐµÑ‚Ð°Ñ‚ÐµÐ³Ð¸, ÐºÐ»ÑŽÑ‡Ð¸Ð²Ñ‹Ðµ ÑÐ»Ð¾Ð²Ð°)
 @$myrow_meta = mysql_fetch_array($result_meta);
 
-if($myrow_meta != "") //Åñëè ðåçóëüòàò çàïðîñà èìååò äàííûå...
+if($myrow_meta != "") //Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ...
 {
-	$meta_title = 'Ïðîäàííûå àêêàóíòû DarkOrbit';
-    $header_title = $meta_title." - ".$myrow_meta[title];//Çàãîëîâîê ñòðàíèöû (Èìÿ àêêàóíòà - èìÿ ñàéòà)
-    $header_metaD = $myrow_meta[meta_d]; //ìåòàòåãè
-    $header_metaK = $myrow_meta[meta_k]; //êëþ÷èâûå ñëîâà
+    $meta_title = 'ÐŸÑ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ñ‹ DarkOrbit';
+    $header_title = $meta_title." - ".$myrow_meta[title];//Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ (Ð˜Ð¼Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð° - Ð¸Ð¼Ñ ÑÐ°Ð¹Ñ‚Ð°)
+    $header_metaD = $myrow_meta[meta_d]; //Ð¼ÐµÑ‚Ð°Ñ‚ÐµÐ³Ð¸
+    $header_metaK = $myrow_meta[meta_k]; //ÐºÐ»ÑŽÑ‡Ð¸Ð²Ñ‹Ðµ ÑÐ»Ð¾Ð²Ð°
 }
 
-function acc_sold()//Ôóíêöèÿ âûâîäà ïðîäàííûõ àêêàóíòîâ
+function acc_sold()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð¿Ñ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð²
 {
-global $pn; //Ïåðåìåííàÿ ïîñòðàíè÷íîé íàâèãàöèè
-include("moduls/sold_navigation.php"); //Ìîäóëü íàâèãàöèè
-$limit = sold_navigation(10,$pn); //Êîëè÷åñòâî âûâîäèìûõ òåì íà îäíó ñòðàíèöó
-$links = $limit[2];
+    global $pn; //ÐŸÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð¿Ð¾ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡Ð½Ð¾Ð¹ Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ð¸
+    include("moduls/sold_navigation.php"); //ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ð¸
+    $limit = sold_navigation(10,$pn); //ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ñ‹Ñ… Ñ‚ÐµÐ¼ Ð½Ð° Ð¾Ð´Ð½Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
+    $links = $limit[2];
 
-	$result_index = mysql_query("SELECT * FROM accounts WHERE status = '2' ORDER BY sold_date DESC LIMIT $limit[0], $limit[1]");//Âûâîä èç ãëàâíîé ÁÄ âñå çàïèñè ñî ñòàòóñîì "Â ïðîäàæå"
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Åñëè ðåçóëüòàò çàïðîñà èìååò äàííûå...
-		{
-			$templates = file("templates/sold.html");//Ïîäêëþ÷àþ øàáëîí
-			$templates = implode("",$templates);//Ñêëåèâàíèå ìàññèâà, âîçâðàùåííîãî ôóíêöèåé file()
-			preg_match("/\[_div_sold\](.*?)\[_div_sold\]/s",$templates,$div_content);//Ðåãóëÿðíîå âûðàæåíèå, ïîçâîëÿþùåå âûðåçàòü èç øàáëîíà òîëüêî òó ÷àñòü, êîòîðàÿ äîëæíà ïîâòîðÿòüñÿ (Ðåçóëüòàò çàíîñèòñÿ â $div_content)
-				do
-				{
-					$change_ids = $div_content[1];/*Òàê êàê íèæå ïðèäåòñÿ ïðàâèòü øàáëîí(çàìåíèòü èäåíòèôèêàòîðû íà èíôîðìàöèþ èç çàïðîñà), ñîõðàíþ åãî(øàáëîí) â îòäåëüíóþ ïåðåìåííóþ, 
-				èíà÷å ïðèäåòñÿ ïîëüçîâàòüñÿ ôóíêöèåé file() ÷àùå ÷åì 1 ðàç, à ýòî äîïîëíèòåëüíàÿ íàãðóçêà íà ñåðâåð*/
-					//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà ïåðåìåííûå èç ÁÄ
-					$change_ids = str_replace("[_id]",$myrow_index[id],$change_ids);//èä
-					$change_ids = str_replace("[_title]",$myrow_index[title],$change_ids);//Çàãîëîâîê
-					$change_ids = str_replace("[_preview_ship]",$myrow_index[preview_ship],$change_ids);//Ïðåäïðîñìîòð êîðàáëÿ
-					$change_ids = str_replace("[_server]",$myrow_index[server],$change_ids);//Ñåðâåð
-					$change_ids = str_replace("[_sold_date]",$myrow_index[sold_date],$change_ids);//Äàòà ïðîäàæè
-					$change_ids = str_replace("[_price]",number_format($myrow_index[price],0,'','.'),$change_ids);//Öåíà
-					$acc_sold .= $change_ids;//Ñêëåþ âåñü ñãåíåðèðîâàííûé êîä â îäíó ïåðåìåííóþ
-				}
-				while($myrow_index = mysql_fetch_array($result_index));
-			$acc_sold = preg_replace("/\[_div_sold\].*?\[_div_sold\]/s",$acc_sold,$templates);//Âìåñòî [_div_sold]...[_div_sold] âêëåèâàåòñÿ ñãåíåðèðîâàííûé html êîä èç $acc_sold
-			if($links > 1)$acc_sold .= listnav($links,$pn,4);//Âûâîä ññûëîê íà ñòðàíèöû (4 - ýòî êîëè÷åñòâî ññûëîê â öåíòðàëüíîé ÷àñòè ïàíåëè íàâèãàöèè)
-			return $acc_sold;
-		}
-		else
-		{
-			$templates = file("templates/error.html"); //Ïîäêëþ÷åíèå øàáëîíà îøèáêè
-			$templates = implode("",$templates); //Ñêëåèâàíèå ìàññèâà, âîçâðàùåííîãî ôóíêöèåé file()
-			$title = 'Ïðîäàííûå àêêàóíòû';//Çàãîëîâîê îøèáêè
-			$message = 'Ñòðàíèöà íå ñóùåñòâóåò ëèáî íåò ïðîäàííûõ àêêàóíòîâ'; //Âûâîäèìîå ñîîáùåíèå
-			$templates = preg_replace("[err_title]",$title,$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà çàãîëîâîê îøèáêè
-			$templates = preg_replace("[err_message]",$message,$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà âûâîäèìîå ñîîáùåíèå
-			$acc_sold .= $templates; //Ñêëåþ âåñü ñãåíåðèðîâàííûé êîä â îäíó ïåðåìåííóþ
-		}
-	return $acc_sold;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+    $result_index = mysql_query("SELECT * FROM accounts WHERE status = '2' ORDER BY sold_date DESC LIMIT $limit[0], $limit[1]");//Ð’Ñ‹Ð²Ð¾Ð´ Ð¸Ð· Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ Ð‘Ð” Ð²ÑÐµ Ð·Ð°Ð¿Ð¸ÑÐ¸ ÑÐ¾ ÑÑ‚Ð°Ñ‚ÑƒÑÐ¾Ð¼ "Ð’ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ðµ"
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ...
+    {
+        $templates = file("templates/sold.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+        $templates = implode("",$templates);//Ð¡ÐºÐ»ÐµÐ¸Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°, Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file()
+        preg_match("/\[_div_sold\](.*?)\[_div_sold\]/s",$templates,$div_content);//Ð ÐµÐ³ÑƒÐ»ÑÑ€Ð½Ð¾Ðµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ, Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÑŽÑ‰ÐµÐµ Ð²Ñ‹Ñ€ÐµÐ·Ð°Ñ‚ÑŒ Ð¸Ð· ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ñƒ Ñ‡Ð°ÑÑ‚ÑŒ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð´Ð¾Ð»Ð¶Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑÑ‚ÑŒÑÑ (Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð½Ð¾ÑÐ¸Ñ‚ÑÑ Ð² $div_content)
+        do
+        {
+            $change_ids = $div_content[1];/*Ð¢Ð°Ðº ÐºÐ°Ðº Ð½Ð¸Ð¶Ðµ Ð¿Ñ€Ð¸Ð´ÐµÑ‚ÑÑ Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑˆÐ°Ð±Ð»Ð¾Ð½(Ð·Ð°Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð½Ð° Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¸Ð· Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°), ÑÐ¾Ñ…Ñ€Ð°Ð½ÑŽ ÐµÐ³Ð¾(ÑˆÐ°Ð±Ð»Ð¾Ð½) Ð² Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½ÑƒÑŽ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ,
+				Ð¸Ð½Ð°Ñ‡Ðµ Ð¿Ñ€Ð¸Ð´ÐµÑ‚ÑÑ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒÑÑ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file() Ñ‡Ð°Ñ‰Ðµ Ñ‡ÐµÐ¼ 1 Ñ€Ð°Ð·, Ð° ÑÑ‚Ð¾ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð½Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€*/
+            //Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ Ð¸Ð· Ð‘Ð”
+            $change_ids = str_replace("[_id]",$myrow_index[id],$change_ids);//Ð¸Ð´
+            $change_ids = str_replace("[_title]",$myrow_index[title],$change_ids);//Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº
+            $change_ids = str_replace("[_preview_ship]",$myrow_index[preview_ship],$change_ids);//ÐŸÑ€ÐµÐ´Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ ÐºÐ¾Ñ€Ð°Ð±Ð»Ñ
+            $change_ids = str_replace("[_server]",$myrow_index[server],$change_ids);//Ð¡ÐµÑ€Ð²ÐµÑ€
+            $change_ids = str_replace("[_sold_date]",$myrow_index[sold_date],$change_ids);//Ð”Ð°Ñ‚Ð° Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ð¸
+            $change_ids = str_replace("[_price]",number_format($myrow_index[price],0,'','.'),$change_ids);//Ð¦ÐµÐ½Ð°
+            $acc_sold .= $change_ids;//Ð¡ÐºÐ»ÐµÑŽ Ð²ÐµÑÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð² Ð¾Ð´Ð½Ñƒ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+        }
+        while($myrow_index = mysql_fetch_array($result_index));
+        $acc_sold = preg_replace("/\[_div_sold\].*?\[_div_sold\]/s",$acc_sold,$templates);//Ð’Ð¼ÐµÑÑ‚Ð¾ [_div_sold]...[_div_sold] Ð²ÐºÐ»ÐµÐ¸Ð²Ð°ÐµÑ‚ÑÑ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ html ÐºÐ¾Ð´ Ð¸Ð· $acc_sold
+        if($links > 1)$acc_sold .= listnav($links,$pn,4);//Ð’Ñ‹Ð²Ð¾Ð´ ÑÑÑ‹Ð»Ð¾Ðº Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ (4 - ÑÑ‚Ð¾ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑÑ‹Ð»Ð¾Ðº Ð² Ñ†ÐµÐ½Ñ‚Ñ€Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸ Ð¿Ð°Ð½ÐµÐ»Ð¸ Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ð¸)
+        return $acc_sold;
+    }
+    else
+    {
+        $templates = file("templates/error.html"); //ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $templates = implode("",$templates); //Ð¡ÐºÐ»ÐµÐ¸Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°, Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file()
+        $title = 'ÐŸÑ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ñ‹';//Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $message = 'Ð¡Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð»Ð¸Ð±Ð¾ Ð½ÐµÑ‚ Ð¿Ñ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð²'; //Ð’Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+        $templates = preg_replace("[err_title]",$title,$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $templates = preg_replace("[err_message]",$message,$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+        $acc_sold .= $templates; //Ð¡ÐºÐ»ÐµÑŽ Ð²ÐµÑÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð² Ð¾Ð´Ð½Ñƒ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+    }
+    return $acc_sold;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
 }
-?>

@@ -1,35 +1,34 @@
 <?php
-//Œ¡–¿¡Œ“◊»  ƒŒ¡¿¬À≈Õ»ﬂ ÕŒ¬Œ—“≈…
+//–û–ë–†–ê–ë–û–¢–ß–ò–ö –î–û–ë–ê–í–õ–ï–ù–ò–Ø –ù–û–í–û–°–¢–ï–ô
 if($_POST['post_title'])$post_title = $_POST['post_title'];
 if($_POST['post_text'])$post_text = $_POST['post_text'];
 if($_POST['post_metad'])$post_metad = $_POST['post_metad'];
 if($_POST['post_metak'])$post_metak = $_POST['post_metak'];
 
-if($post_title & $post_text)//≈ÒÎË ÔÓÒÎ‡ÌÌ˚Â ÔÂÂÏÂÌÌ˚Â ÓÔÂ‰ÂÎÂÌ˚ Í‡Í ÒÛ˘ÂÒÚ‚Û˛˘ËÂ...
+if($post_title & $post_text)//–ï—Å–ª–∏ –ø–æ—Å–ª–∞–Ω–Ω—ã–µ –ø–µ—Ä–µ–º–µ–Ω–Ω—ã–µ –æ–ø—Ä–µ–¥–µ–ª–µ–Ω—ã –∫–∞–∫ —Å—É—â–µ—Å—Ç–≤—É—é—â–∏–µ...
 {
-	//«‡ÏÂÌ‡ ÚÂ„Ó‚ html Ì‡ ÒÔÂˆ ÒËÏ‚ÓÎ˚
-	$post_metad = htmlspecialchars($post_metad);
-	$post_metak = htmlspecialchars($post_metak);
-	//«‡ÏÂÌ‡ ÚÂ„Ó‚ html Ì‡ ÒÔÂˆ ÒËÏ‚ÓÎ˚
-		
-	//«‡ÏÂÌ‡ ÒËÏ‚ÓÎ‡ (') Ì‡ ÒÔÂˆ ÒËÏ‚ÓÎ
-	$post_title = str_replace("'","&#039",$post_title);
-	$post_text = str_replace("'","&#039",$post_text);
-	$post_metad = str_replace("'","&#039",$post_metad);
-	$post_metak = str_replace("'","&#039",$post_metak);
-	//«‡ÏÂÌ‡ ÒËÏ‚ÓÎ‡ (') Ì‡ ÒÔÂˆ ÒËÏ‚ÓÎ
-		
-	$result_add_cont = mysql_query ("INSERT INTO news (block,status,title,text,date_pub,meta_d,meta_k) VALUES ('0','0','$post_title','$post_text',NOW(),'$post_metad','$post_metak')");//«‡ÔËÒ¸ ‰‡ÌÌ˚ı ‚ ¡ƒ
-	$id = mysql_insert_id();//¬ÓÁ‚‡˘‡ÂÚ Ë‰ÂÌÚËÙËÍ‡ÚÓ, Ò„ÂÌÂËÓ‚‡ÌÌ˚È ÍÓÎÓÌÍÓÈ Ò AUTO_INCREMENT ÔÓÒÎÂ‰ÌËÏ Á‡ÔÓÒÓÏ
-	header("location: ?page=news_config&id=$id");//œÂÂÌ‡Ô‡‚ÎÂÌËÂ Ì‡ ÒÚ‡ÌËˆÛ Ò Ì‡ÒÚÓÈÍ‡ÏË ‰Ó·‡‚ÎÂÌÓÈ ÌÓ‚ÓÒÚË
-	exit;
-}
-//Œ¡–¿¡Œ“◊»  ƒŒ¡¿¬À≈Õ»ﬂ ÕŒ¬Œ—“≈…
+    //–ó–∞–º–µ–Ω–∞ —Ç–µ–≥–æ–≤ html –Ω–∞ —Å–ø–µ—Ü —Å–∏–º–≤–æ–ª—ã
+    $post_metad = htmlspecialchars($post_metad);
+    $post_metak = htmlspecialchars($post_metak);
+    //–ó–∞–º–µ–Ω–∞ —Ç–µ–≥–æ–≤ html –Ω–∞ —Å–ø–µ—Ü —Å–∏–º–≤–æ–ª—ã
 
-function news_add()//‘ÛÌÍˆËˇ ‚˚‚Ó‰‡ ÙÓÏ˚ ‰Ó·‡‚ÎÂÌËˇ ÌÓ‚ÓÒÚÂÈ
-{
-	$sm_read = file("templates/news_add.html");//œÓ‰ÍÎ˛˜‡˛ ¯‡·ÎÓÌ
-	$sm_read = implode("",$sm_read);//“.Í. ÙÛÌÍˆËˇ file() ‚ÓÁ‚‡˘‡ÂÚ Ï‡ÒÒË‚, Â„Ó ÌÛÊÌÓ ÒÍÎÂËÚ¸
-	return $sm_read;//¬˚‚Ó‰ Ò„ÂÌÂËÓ‚‡ÌÌÓ„Ó html ÍÓ‰‡
+    //–ó–∞–º–µ–Ω–∞ —Å–∏–º–≤–æ–ª–∞ (') –Ω–∞ —Å–ø–µ—Ü —Å–∏–º–≤–æ–ª
+    $post_title = str_replace("'","&#039",$post_title);
+    $post_text = str_replace("'","&#039",$post_text);
+    $post_metad = str_replace("'","&#039",$post_metad);
+    $post_metak = str_replace("'","&#039",$post_metak);
+    //–ó–∞–º–µ–Ω–∞ —Å–∏–º–≤–æ–ª–∞ (') –Ω–∞ —Å–ø–µ—Ü —Å–∏–º–≤–æ–ª
+
+    $result_add_cont = mysql_query ("INSERT INTO news (block,status,title,text,date_pub,meta_d,meta_k) VALUES ('0','0','$post_title','$post_text',NOW(),'$post_metad','$post_metak')");//–ó–∞–ø–∏—Å—å –¥–∞–Ω–Ω—ã—Ö –≤ –ë–î
+    $id = mysql_insert_id();//–í–æ–∑–≤—Ä–∞—â–∞–µ—Ç –∏–¥–µ–Ω—Ç–∏—Ñ–∏–∫–∞—Ç–æ—Ä, —Å–≥–µ–Ω–µ—Ä–∏—Ä–æ–≤–∞–Ω–Ω—ã–π –∫–æ–ª–æ–Ω–∫–æ–π —Å AUTO_INCREMENT –ø–æ—Å–ª–µ–¥–Ω–∏–º –∑–∞–ø—Ä–æ—Å–æ–º
+    header("location: ?page=news_config&id=$id");//–ü–µ—Ä–µ–Ω–∞–ø—Ä–∞–≤–ª–µ–Ω–∏–µ –Ω–∞ —Å—Ç—Ä–∞–Ω–∏—Ü—É —Å –Ω–∞—Å—Ç—Ä–æ–π–∫–∞–º–∏ –¥–æ–±–∞–≤–ª–µ–Ω–æ–π –Ω–æ–≤–æ—Å—Ç–∏
+    exit;
 }
-?>
+//–û–ë–†–ê–ë–û–¢–ß–ò–ö –î–û–ë–ê–í–õ–ï–ù–ò–Ø –ù–û–í–û–°–¢–ï–ô
+
+function news_add()//–§—É–Ω–∫—Ü–∏—è –≤—ã–≤–æ–¥–∞ —Ñ–æ—Ä–º—ã –¥–æ–±–∞–≤–ª–µ–Ω–∏—è –Ω–æ–≤–æ—Å—Ç–µ–π
+{
+    $sm_read = file("templates/news_add.html");//–ü–æ–¥–∫–ª—é—á–∞—é —à–∞–±–ª–æ–Ω
+    $sm_read = implode("",$sm_read);//–¢.–∫. —Ñ—É–Ω–∫—Ü–∏—è file() –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç –º–∞—Å—Å–∏–≤, –µ–≥–æ –Ω—É–∂–Ω–æ —Å–∫–ª–µ–∏—Ç—å
+    return $sm_read;//–í—ã–≤–æ–¥ —Å–≥–µ–Ω–µ—Ä–∏—Ä–æ–≤–∞–Ω–Ω–æ–≥–æ html –∫–æ–¥–∞
+}

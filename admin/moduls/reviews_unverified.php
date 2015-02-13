@@ -1,49 +1,48 @@
 <?php
-//ÓÄÀËÅÍÈÅ
-if($_GET['del_post'])$del_post = $_GET['del_post'];//Îáúÿâëÿþ GET-ïåðåìåííóþ ñîäåðæàùåþ ID óäàëÿåìîãî îòçûâà
-if($del_post)//Åñëè ïåðåìåííàÿ ñóùåñòâóåò...
+//Ð£Ð”ÐÐ›Ð•ÐÐ˜Ð•
+if($_GET['del_post'])$del_post = $_GET['del_post'];//ÐžÐ±ÑŠÑÐ²Ð»ÑÑŽ GET-Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‰ÐµÑŽ ID ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ð³Ð¾ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
+if($del_post)//Ð•ÑÐ»Ð¸ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚...
 {
-    $result_del_post = mysql_query ("DELETE FROM reviews WHERE id='$del_post'");//Óäàëÿþ çàïèñü â êîòîðîé id ðàâåí GET-ïåðåìåííîé
-    header("location: ?page=reviews_unverified");//Ïåðåíàïðàâëåíèå ïîëüçîâàòåëÿ ïîñëå óäàëåíèÿ îòçûâà
+    $result_del_post = mysql_query ("DELETE FROM reviews WHERE id='$del_post'");//Ð£Ð´Ð°Ð»ÑÑŽ Ð·Ð°Ð¿Ð¸ÑÑŒ Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¹ id Ñ€Ð°Ð²ÐµÐ½ GET-Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹
+    header("location: ?page=reviews_unverified");//ÐŸÐµÑ€ÐµÐ½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð¿Ð¾ÑÐ»Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
     exit;
 }
-//ÓÄÀËÅÍÈÅ
+//Ð£Ð”ÐÐ›Ð•ÐÐ˜Ð•
 
-function reviews_unverified()//Ôóíêöèÿ âûâîäà íåïîäòâåðæäåííûõ îòçûâîâ
+function reviews_unverified()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð½ÐµÐ¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ñ… Ð¾Ñ‚Ð·Ñ‹Ð²Ð¾Ð²
 {
-	$result_index = mysql_query("SELECT * FROM reviews WHERE status = '0' ORDER BY post_date ASC");//Âûâîæó èç òàáëèöû "reviews(îòçûâû)" âñå çàïèñè ñî ñòàòóñîì "0 = Îæèäàåò" (ñîðòèðîâêà ïî Âîçðàñòàíèþ)
-	$myrow_index = mysql_fetch_array($result_index);
-		if($myrow_index != "")//Åñëè ðåçóëüòàò çàïðîñà èìååò äàííûå...
-		{
-			$templates = file("templates/reviews_unverified.html");//Ïîäêëþ÷àþ øàáëîí
-			$templates = implode("",$templates);//Ò.ê. ôóíêöèÿ file() âîçâðàùàåò ìàññèâ, åãî íóæíî ñêëåèòü
-			preg_match("/\[_while\](.*?)\[_while\]/s",$templates,$tamp_while);//Ðåãóëÿðíîå âûðàæåíèå, ïîçâîëÿþùåå âûðåçàòü èç øàáëîíà òîëüêî òó ÷àñòü, êîòîðàÿ äîëæíà ïîâòîðÿòüñÿ
-				do
-				{
-					$copy_tamp = $tamp_while[1];/*Òàê êàê íèæå ïðèäåòñÿ ïðàâèòü øàáëîí(çàìåíèòü èäåíòèôèêàòîðû íà èíôîðìàöèþ èç çàïðîñà), ñîõðàíþ åãî(øàáëîí) â îòäåëüíóþ ïåðåìåííóþ, 
-					èíà÷å ïðèäåòñÿ ïîëüçîâàòüñÿ ôóíêöèåé file() ÷àùå ÷åì 1 ðàç, à ýòî äîïîëíèòåëüíàÿ íàãðóçêà íà ñåðâåð*/
-					
-					//Çàìåíà èäåíòèôèêàòîðîâ íà èíôîðìàöèþ èç çàïðîñà
-					$copy_tamp = str_replace("[_id]",$myrow_index[id],$copy_tamp);//ID
-					$copy_tamp = str_replace("[_title]",$myrow_index[title],$copy_tamp);//Çàãîëîâîê
-					$copy_tamp = str_replace("[_user_text]",$myrow_index[user_text],$copy_tamp);//Îòçûâ
-					$copy_tamp = str_replace("[_author]",$myrow_index[author],$copy_tamp);//Ïîäïèñü Àâòîðà îòçûâà
-					$copy_tamp = str_replace("[_admin_text]",$myrow_index[admin_text],$copy_tamp);//Îòâåò Àäìèíèñòðàòîðà
-					$copy_tamp = str_replace("[_post_date]",$myrow_index[post_date],$copy_tamp);//Äàòà ðàçìåùåíèÿ
-					$list .= $copy_tamp;//Ñêëåþ âåñü ñãåíåðèðîâàííûé êîä â îäíó ïåðåìåííóþ
-				}
-				while($myrow_index = mysql_fetch_array($result_index));
-			$templates = preg_replace("/\[_while\].*?\[_while\]/s",$list,$templates);//Âìåñòî [_while]...[_while] âêëåèâàåòñÿ ñãåíåðèðîâàííûé html êîä èç $list
-		}
-		else 
-		{//Åñëè ðåçóëüòàò çàïðîñà äàííûõ íå èìååò (ïóñòîé)...
-			$templates = file("templates/error.html"); //Ïîäêëþ÷åíèå øàáëîíà
-			$templates = implode("",$templates); //Ñêëåèâàíèå ìàññèâà, âîçâðàùåííîãî ôóíêöèåé file()
-			$title = 'Íîâûå îòçûâû'; //Çàãîëîâîê îøèáêè
-			$message = 'Íåò çàïèñåé â áàçå äàííûõ'; //Âûâîäèìîå ñîîáùåíèå
-			$templates = preg_replace("[err_title]",$title,$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà çàãîëîâîê îøèáêè
-			$templates = preg_replace("[err_message]",$message,$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà âûâîäèìîå ñîîáùåíèå
-		}
-	return $templates;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+    $result_index = mysql_query("SELECT * FROM reviews WHERE status = '0' ORDER BY post_date ASC");//Ð’Ñ‹Ð²Ð¾Ð¶Ñƒ Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ "reviews(Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹)" Ð²ÑÐµ Ð·Ð°Ð¿Ð¸ÑÐ¸ ÑÐ¾ ÑÑ‚Ð°Ñ‚ÑƒÑÐ¾Ð¼ "0 = ÐžÐ¶Ð¸Ð´Ð°ÐµÑ‚" (ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¿Ð¾ Ð’Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ)
+    $myrow_index = mysql_fetch_array($result_index);
+    if($myrow_index != "")//Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ...
+    {
+        $templates = file("templates/reviews_unverified.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+        $templates = implode("",$templates);//Ð¢.Ðº. Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ file() Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð², ÐµÐ³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐºÐ»ÐµÐ¸Ñ‚ÑŒ
+        preg_match("/\[_while\](.*?)\[_while\]/s",$templates,$tamp_while);//Ð ÐµÐ³ÑƒÐ»ÑÑ€Ð½Ð¾Ðµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ, Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÑŽÑ‰ÐµÐµ Ð²Ñ‹Ñ€ÐµÐ·Ð°Ñ‚ÑŒ Ð¸Ð· ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ñƒ Ñ‡Ð°ÑÑ‚ÑŒ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð´Ð¾Ð»Ð¶Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑÑ‚ÑŒÑÑ
+        do
+        {
+            $copy_tamp = $tamp_while[1];/*Ð¢Ð°Ðº ÐºÐ°Ðº Ð½Ð¸Ð¶Ðµ Ð¿Ñ€Ð¸Ð´ÐµÑ‚ÑÑ Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑˆÐ°Ð±Ð»Ð¾Ð½(Ð·Ð°Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð½Ð° Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¸Ð· Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°), ÑÐ¾Ñ…Ñ€Ð°Ð½ÑŽ ÐµÐ³Ð¾(ÑˆÐ°Ð±Ð»Ð¾Ð½) Ð² Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½ÑƒÑŽ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ,
+					Ð¸Ð½Ð°Ñ‡Ðµ Ð¿Ñ€Ð¸Ð´ÐµÑ‚ÑÑ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒÑÑ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file() Ñ‡Ð°Ñ‰Ðµ Ñ‡ÐµÐ¼ 1 Ñ€Ð°Ð·, Ð° ÑÑ‚Ð¾ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð½Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€*/
+
+            //Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð½Ð° Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¸Ð· Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
+            $copy_tamp = str_replace("[_id]",$myrow_index[id],$copy_tamp);//ID
+            $copy_tamp = str_replace("[_title]",$myrow_index[title],$copy_tamp);//Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº
+            $copy_tamp = str_replace("[_user_text]",$myrow_index[user_text],$copy_tamp);//ÐžÑ‚Ð·Ñ‹Ð²
+            $copy_tamp = str_replace("[_author]",$myrow_index[author],$copy_tamp);//ÐŸÐ¾Ð´Ð¿Ð¸ÑÑŒ ÐÐ²Ñ‚Ð¾Ñ€Ð° Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
+            $copy_tamp = str_replace("[_admin_text]",$myrow_index[admin_text],$copy_tamp);//ÐžÑ‚Ð²ÐµÑ‚ ÐÐ´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð°
+            $copy_tamp = str_replace("[_post_date]",$myrow_index[post_date],$copy_tamp);//Ð”Ð°Ñ‚Ð° Ñ€Ð°Ð·Ð¼ÐµÑ‰ÐµÐ½Ð¸Ñ
+            $list .= $copy_tamp;//Ð¡ÐºÐ»ÐµÑŽ Ð²ÐµÑÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð² Ð¾Ð´Ð½Ñƒ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+        }
+        while($myrow_index = mysql_fetch_array($result_index));
+        $templates = preg_replace("/\[_while\].*?\[_while\]/s",$list,$templates);//Ð’Ð¼ÐµÑÑ‚Ð¾ [_while]...[_while] Ð²ÐºÐ»ÐµÐ¸Ð²Ð°ÐµÑ‚ÑÑ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ html ÐºÐ¾Ð´ Ð¸Ð· $list
+    }
+    else
+    {//Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð½Ðµ Ð¸Ð¼ÐµÐµÑ‚ (Ð¿ÑƒÑÑ‚Ð¾Ð¹)...
+        $templates = file("templates/error.html"); //ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
+        $templates = implode("",$templates); //Ð¡ÐºÐ»ÐµÐ¸Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°, Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file()
+        $title = 'ÐÐ¾Ð²Ñ‹Ðµ Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹'; //Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $message = 'ÐÐµÑ‚ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…'; //Ð’Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+        $templates = preg_replace("[err_title]",$title,$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        $templates = preg_replace("[err_message]",$message,$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+    }
+    return $templates;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
 }
-?>

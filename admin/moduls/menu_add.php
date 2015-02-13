@@ -1,23 +1,22 @@
 <?php
-//ÎÁÐÀÁÎÒ×ÈÊ ÄÎÁÀÂËÅÍÈß ÏÓÍÊÒÎÂ ÌÅÍÞ
+//ÐžÐ‘Ð ÐÐ‘ÐžÐ¢Ð§Ð˜Ðš Ð”ÐžÐ‘ÐÐ’Ð›Ð•ÐÐ˜Ð¯ ÐŸÐ£ÐÐšÐ¢ÐžÐ’ ÐœÐ•ÐÐ®
 if(isset($_POST['addname_p']))$addname_p = $_POST['addname_p'];
 if(isset($_POST['addhref_p']))$addhref_p = $_POST['addhref_p'];
 if(isset($addname_p) AND isset($addhref_p))
-{	
-    $result_index = mysql_query("SELECT COUNT(*) FROM menu");//Âûâîæó èç ÁÄ êîëè÷åñòâî ïóíêòîâ ìåíþ
+{
+    $result_index = mysql_query("SELECT COUNT(*) FROM menu");//Ð’Ñ‹Ð²Ð¾Ð¶Ñƒ Ð¸Ð· Ð‘Ð” ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ
     $myrow_index = mysql_fetch_array($result_index);
     $col = $myrow_index[0];
     $col++;
     $result_add_menu = mysql_query ("INSERT INTO menu (name,href,position) VALUES ('$addname_p','$addhref_p','$col')");
-    header("location: ?page=menu_list");//Ïåðåíàïðàâëåíèå ê ñïèñêó ïóíêòîâ ìåíþ
+    header("location: ?page=menu_list");//ÐŸÐµÑ€ÐµÐ½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ðº ÑÐ¿Ð¸ÑÐºÑƒ Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ
     exit;
 }
-//ÎÁÐÀÁÎÒ×ÈÊ ÄÎÁÀÂËÅÍÈß ÏÓÍÊÒÎÂ ÌÅÍÞ
+//ÐžÐ‘Ð ÐÐ‘ÐžÐ¢Ð§Ð˜Ðš Ð”ÐžÐ‘ÐÐ’Ð›Ð•ÐÐ˜Ð¯ ÐŸÐ£ÐÐšÐ¢ÐžÐ’ ÐœÐ•ÐÐ®
 
-function menu_add()//Ôóíêöèÿ âûâîäà ôîðìû ðåäàêòèðîâàíèÿ ìåíþ
+function menu_add()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¼ÐµÐ½ÑŽ
 {
-    $sm_read = file("templates/menu_add.html");//Ïîäêëþ÷àþ øàáëîí
-    $sm_read = implode("",$sm_read);//Ò.ê. ôóíêöèÿ file() âîçâðàùàåò ìàññèâ, åãî íóæíî ñêëåèòü
-    return $sm_read;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+    $sm_read = file("templates/menu_add.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+    $sm_read = implode("",$sm_read);//Ð¢.Ðº. Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ file() Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð², ÐµÐ³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐºÐ»ÐµÐ¸Ñ‚ÑŒ
+    return $sm_read;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
 }
-?>

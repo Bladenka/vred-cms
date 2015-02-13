@@ -1,16 +1,15 @@
 <?php
-function news_fixed()//Ôóíêöèÿ âûâîäà çàêðåïëåííîãî ïîñòà
+function news_fixed()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð¿Ð¾ÑÑ‚Ð°
 {
-    $result_index = mysql_query("SELECT title,text FROM news WHERE block='1'");//Âûâîæó èç ÁÄ ïîñò, ãäå êîëîíêà block ðàâíà åäèíèöå, ò.å. "çàêðåïëåí"
+    $result_index = mysql_query("SELECT title,text FROM news WHERE block='1'");//Ð’Ñ‹Ð²Ð¾Ð¶Ñƒ Ð¸Ð· Ð‘Ð” Ð¿Ð¾ÑÑ‚, Ð³Ð´Ðµ ÐºÐ¾Ð»Ð¾Ð½ÐºÐ° block Ñ€Ð°Ð²Ð½Ð° ÐµÐ´Ð¸Ð½Ð¸Ñ†Ðµ, Ñ‚.Ðµ. "Ð·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½"
     $myrow_index = mysql_fetch_array($result_index);
-    if($myrow_index != "")//Åñëè ðåçóëüòàò çàïðîñà èìååò äàííûå...
+    if($myrow_index != "")//Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¸Ð¼ÐµÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ...
     {
-        $templates = file("templates/news_topic.html");//Ïîäêëþ÷àþ øàáëîí
-        $templates = implode("",$templates);//Ò.ê. ôóíêöèÿ file() âîçâðàùàåò ìàññèâ, åãî íóæíî ñêëåèòü
-		$templates = str_replace("[_title]",$myrow_index[title],$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà çàãîëîâîê çàêðåïëåííîãî ïîñòà
-        $templates = str_replace("[_text]",$myrow_index[text],$templates);//Çàìåíà èäåíòèôèêàòîðîâ â øàáëîíå íà òåêñò çàêðåïëåííîãî ïîñòà
-        return $templates;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+        $templates = file("templates/news_topic.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+        $templates = implode("",$templates);//Ð¢.Ðº. Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ file() Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð², ÐµÐ³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐºÐ»ÐµÐ¸Ñ‚ÑŒ
+        $templates = str_replace("[_title]",$myrow_index[title],$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð¿Ð¾ÑÑ‚Ð°
+        $templates = str_replace("[_text]",$myrow_index[text],$templates);//Ð—Ð°Ð¼ÐµÐ½Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ Ð½Ð° Ñ‚ÐµÐºÑÑ‚ Ð·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð¿Ð¾ÑÑ‚Ð°
+        return $templates;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
     }
-    else return "";//...åñëè íåò - ðåçóëüòàòîì ôóíêöèè áóäåò ïóñòîòà
+    else return "";//...ÐµÑÐ»Ð¸ Ð½ÐµÑ‚ - Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð¼ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð±ÑƒÐ´ÐµÑ‚ Ð¿ÑƒÑÑ‚Ð¾Ñ‚Ð°
 }
-?>

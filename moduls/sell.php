@@ -1,20 +1,20 @@
 <?php
-@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Запрос на вывод системных данных (заголовок сайта, метатеги, ключивые слова)
+@$result_meta = mysql_query("SELECT * FROM page WHERE id='1'"); //Р—Р°РїСЂРѕСЃ РЅР° РІС‹РІРѕРґ СЃРёСЃС‚РµРјРЅС‹С… РґР°РЅРЅС‹С… (Р·Р°РіРѕР»РѕРІРѕРє СЃР°Р№С‚Р°, РјРµС‚Р°С‚РµРіРё, РєР»СЋС‡РёРІС‹Рµ СЃР»РѕРІР°)
 @$myrow_meta = mysql_fetch_array($result_meta);
 
-if($myrow_meta != "") //Если результат запроса имеет данные...
+if($myrow_meta != "") //Р•СЃР»Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёРјРµРµС‚ РґР°РЅРЅС‹Рµ...
 {
-    $header_title = "Продать DarkOrbit - ".$myrow_meta[title];//Заголовок страницы (Имя аккаунта - имя сайта)
-    $header_metaD = $myrow_meta[meta_d]; //метатеги
-    $header_metaK = $myrow_meta[meta_k]; //ключивые слова
+    $header_title = "РџСЂРѕРґР°С‚СЊ DarkOrbit - ".$myrow_meta[title];//Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ (РРјСЏ Р°РєРєР°СѓРЅС‚Р° - РёРјСЏ СЃР°Р№С‚Р°)
+    $header_metaD = $myrow_meta[meta_d]; //РјРµС‚Р°С‚РµРіРё
+    $header_metaK = $myrow_meta[meta_k]; //РєР»СЋС‡РёРІС‹Рµ СЃР»РѕРІР°
 }
 
-//------ОБРАБОТЧИК ОТПРАВКИ ОТЗЫВОВ
-//Определяю существование посланных переменных из формы отправки отзыва
-//--------Основное--------
-if(isset($_POST['post_preview_ship']))$post_preview_ship = $_POST['post_preview_ship'];//Превью корабля
-if(isset($_POST['post_title']))$post_title = $_POST['post_title'];//Заголовок
-if(isset($_POST['post_id']))$post_id = $_POST['post_id'];//id аккаунта
+//------РћР‘Р РђР‘РћРўР§РРљ РћРўРџР РђР’РљР РћРўР—Р«Р’РћР’
+//РћРїСЂРµРґРµР»СЏСЋ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РїРѕСЃР»Р°РЅРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С… РёР· С„РѕСЂРјС‹ РѕС‚РїСЂР°РІРєРё РѕС‚Р·С‹РІР°
+//--------РћСЃРЅРѕРІРЅРѕРµ--------
+if(isset($_POST['post_preview_ship']))$post_preview_ship = $_POST['post_preview_ship'];//РџСЂРµРІСЊСЋ РєРѕСЂР°Р±Р»СЏ
+if(isset($_POST['post_title']))$post_title = $_POST['post_title'];//Р—Р°РіРѕР»РѕРІРѕРє
+if(isset($_POST['post_id']))$post_id = $_POST['post_id'];//id Р°РєРєР°СѓРЅС‚Р°
 if(isset($_POST['post_server']))$post_server = $_POST['post_server'];
 if(isset($_POST['post_corp']))$post_corp = $_POST['post_corp'];
 if(isset($_POST['post_level']))$post_level = $_POST['post_level'];
@@ -27,9 +27,9 @@ if(isset($_POST['post_jackpot']))$post_jackpot = $_POST['post_jackpot'];
 if(isset($_POST['post_hangar']))$post_hangar = $_POST['post_hangar'];
 if(isset($_POST['post_tech']))$post_tech = $_POST['post_tech'];
 if(isset($_POST['post_prog']))$post_prog = $_POST['post_prog'];
-//--------Основное--------
+//--------РћСЃРЅРѕРІРЅРѕРµ--------
 
-//--------Дроиды--------
+//--------Р”СЂРѕРёРґС‹--------
 if(isset($_POST['post_drone1']))$post_drone1 = $_POST['post_drone1'];
 if(isset($_POST['post_drone2']))$post_drone2 = $_POST['post_drone2'];
 if(isset($_POST['post_drone3']))$post_drone3 = $_POST['post_drone3'];
@@ -40,16 +40,16 @@ if(isset($_POST['post_drone7']))$post_drone7 = $_POST['post_drone7'];
 if(isset($_POST['post_drone8']))$post_drone8 = $_POST['post_drone8'];
 if(isset($_POST['post_drone9']))$post_drone9 = $_POST['post_drone9'];
 if(isset($_POST['post_drone10']))$post_drone10 = $_POST['post_drone10'];
-//--------Дроиды--------
+//--------Р”СЂРѕРёРґС‹--------
 
-//--------Оружие/Генераторы--------
+//--------РћСЂСѓР¶РёРµ/Р“РµРЅРµСЂР°С‚РѕСЂС‹--------
 if(isset($_POST['post_lf3']))$post_lf3 = $_POST['post_lf3'];
 if(isset($_POST['post_lf4']))$post_lf4 = $_POST['post_lf4'];
 if(isset($_POST['post_g3n7900']))$post_g3n7900 = $_POST['post_g3n7900'];
 if(isset($_POST['post_sg3nb02']))$post_sg3nb02 = $_POST['post_sg3nb02'];
-//--------Оружие/Генераторы--------
+//--------РћСЂСѓР¶РёРµ/Р“РµРЅРµСЂР°С‚РѕСЂС‹--------
 
-//--------Боеприпасы--------
+//--------Р‘РѕРµРїСЂРёРїР°СЃС‹--------
 if(isset($_POST['post_mcb25']))$post_mcb25 = $_POST['post_mcb25'];
 if(isset($_POST['post_mcb50']))$post_mcb50 = $_POST['post_mcb50'];
 if(isset($_POST['post_sab50']))$post_sab50 = $_POST['post_sab50'];
@@ -70,11 +70,11 @@ if(isset($_POST['post_subm01']))$post_subm01 = $_POST['post_subm01'];
 if(isset($_POST['post_ddm01']))$post_ddm01 = $_POST['post_ddm01'];
 if(isset($_POST['post_slm01']))$post_slm01 = $_POST['post_slm01'];
 if(isset($_POST['post_emp01']))$post_emp01 = $_POST['post_emp01'];
-//--------Боеприпасы--------
+//--------Р‘РѕРµРїСЂРёРїР°СЃС‹--------
 
-if(isset($_POST['post_more']))$post_more = $_POST['post_more']; //Дополнительное описание
+if(isset($_POST['post_more']))$post_more = $_POST['post_more']; //Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ РѕРїРёСЃР°РЅРёРµ
 
-//--------Личные данные--------
+//--------Р›РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ--------
 if(isset($_POST['post_login_acc']))$post_login_acc = $_POST['post_login_acc'];
 if(isset($_POST['post_pass_acc']))$post_pass_acc = $_POST['post_pass_acc'];
 if(isset($_POST['post_mail']))$post_mail = $_POST['post_mail'];
@@ -82,18 +82,18 @@ if(isset($_POST['post_mail_pass']))$post_mail_pass = $_POST['post_mail_pass'];
 if(isset($_POST['post_price']))$post_price = $_POST['post_price'];
 if(isset($_POST['post_wallet']))$post_wallet = $_POST['post_wallet'];
 if(isset($_POST['post_wallet_type']))$post_wallet_type = $_POST['post_wallet_type'];
-//--------Личные данные--------
+//--------Р›РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ--------
 
-if($post_title & $post_id & $post_server & $post_corp & $post_level & $post_uri & $post_cr & $post_login_acc & $post_pass_acc & $post_mail & $post_mail_pass & $post_price & $post_wallet & $post_wallet_type)//Если посланные переменные определены как существующие...
+if($post_title & $post_id & $post_server & $post_corp & $post_level & $post_uri & $post_cr & $post_login_acc & $post_pass_acc & $post_mail & $post_mail_pass & $post_price & $post_wallet & $post_wallet_type)//Р•СЃР»Рё РїРѕСЃР»Р°РЅРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РѕРїСЂРµРґРµР»РµРЅС‹ РєР°Рє СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ...
 {
-	if($post_preview_ship == 'spearhead' OR $post_preview_ship == 'citadel' OR $post_preview_ship == 'aegis')
-	{
-		$post_preview_ship .= '_'.$post_corp; //Корабли, с цветом корпорации
-	}
-	$post_drones = $post_drone1.$post_drone2.$post_drone3.$post_drone4.$post_drone5.$post_drone6.$post_drone7.$post_drone8.$post_drone9.$post_drone10;//Дроиды
-	
-    //Функция "htmlspecialchars" преобразует html теги (если таковые были введены пользователем) в спец символы
-	$post_preview_ship = htmlspecialchars($post_preview_ship);/*--*/$post_preview_ship = str_replace("'","&#039",$post_preview_ship);
+    if($post_preview_ship == 'spearhead' OR $post_preview_ship == 'citadel' OR $post_preview_ship == 'aegis')
+    {
+        $post_preview_ship .= '_'.$post_corp; //РљРѕСЂР°Р±Р»Рё, СЃ С†РІРµС‚РѕРј РєРѕСЂРїРѕСЂР°С†РёРё
+    }
+    $post_drones = $post_drone1.$post_drone2.$post_drone3.$post_drone4.$post_drone5.$post_drone6.$post_drone7.$post_drone8.$post_drone9.$post_drone10;//Р”СЂРѕРёРґС‹
+
+    //Р¤СѓРЅРєС†РёСЏ "htmlspecialchars" РїСЂРµРѕР±СЂР°Р·СѓРµС‚ html С‚РµРіРё (РµСЃР»Рё С‚Р°РєРѕРІС‹Рµ Р±С‹Р»Рё РІРІРµРґРµРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј) РІ СЃРїРµС† СЃРёРјРІРѕР»С‹
+    $post_preview_ship = htmlspecialchars($post_preview_ship);/*--*/$post_preview_ship = str_replace("'","&#039",$post_preview_ship);
     $post_title = htmlspecialchars($post_title);/*--*/$post_title = str_replace("'","&#039",$post_title);
     $post_id = htmlspecialchars($post_id);/*--*/$post_id = str_replace("'","&#039",$post_id);
     $post_server = htmlspecialchars($post_server);/*--*/$post_server = str_replace("'","&#039",$post_server);
@@ -133,32 +133,31 @@ if($post_title & $post_id & $post_server & $post_corp & $post_level & $post_uri 
     $post_ddm01 = htmlspecialchars($post_ddm01);/*--*/$post_ddm01 = str_replace("'","&#039",$post_ddm01);
     $post_slm01 = htmlspecialchars($post_slm01);/*--*/$post_slm01 = str_replace("'","&#039",$post_slm01);
     $post_emp01 = htmlspecialchars($post_emp01);/*--*/$post_emp01 = str_replace("'","&#039",$post_emp01);
-	$post_more = htmlspecialchars($post_more);/*--*/$post_more = str_replace("'","&#039",$post_more);
+    $post_more = htmlspecialchars($post_more);/*--*/$post_more = str_replace("'","&#039",$post_more);
     $post_login_acc = htmlspecialchars($post_login_acc);/*--*/$post_login_acc = str_replace("'","&#039",$post_login_acc);
     $post_pass_acc = htmlspecialchars($post_pass_acc);/*--*/$post_pass_acc = str_replace("'","&#039",$post_pass_acc);
     $post_mail = htmlspecialchars($post_mail);/*--*/$post_mail = str_replace("'","&#039",$post_mail);
     $post_mail_pass = htmlspecialchars($post_mail_pass);/*--*/$post_mail_pass = str_replace("'","&#039",$post_mail_pass);
     $post_price = htmlspecialchars($post_price);/*--*/$post_price = str_replace("'","&#039",$post_price);
-	$post_wallet = htmlspecialchars($post_wallet);/*--*/$post_wallet = str_replace("'","&#039",$post_wallet);
-	$post_wallet_type = htmlspecialchars($post_wallet_type);/*--*/$post_wallet_type = str_replace("'","&#039",$post_wallet_type);
-	//Функция "htmlspecialchars" преобразует html теги (если таковые были введены пользователем) в спец символы
-		   
-	$post_more = str_replace("\n","<br>",$post_more);//Замена переноса строки пользователского текста на тег <br>
-    
-	$result = mysql_query ("
-	INSERT INTO accounts (status,id_acc,preview_ship,title,server,corp,level,exp,honor,rank,uri,cr,jackpot,hangar,tech,prog,drones,lf3,lf4,g3n7900,sg3nb02,mcb25,mcb50,sab50,ucb100,rsb75,cbo100,job100,plt2021,plt3030,dcr250,hstrm01,ubr100,sar02,cbr,acm1,empm01,subm01,ddm01,slm01,emp01,more,admin_text,login_acc,pass_acc,mail,mail_pass,price,wallet,wallet_type,payout) 	
+    $post_wallet = htmlspecialchars($post_wallet);/*--*/$post_wallet = str_replace("'","&#039",$post_wallet);
+    $post_wallet_type = htmlspecialchars($post_wallet_type);/*--*/$post_wallet_type = str_replace("'","&#039",$post_wallet_type);
+    //Р¤СѓРЅРєС†РёСЏ "htmlspecialchars" РїСЂРµРѕР±СЂР°Р·СѓРµС‚ html С‚РµРіРё (РµСЃР»Рё С‚Р°РєРѕРІС‹Рµ Р±С‹Р»Рё РІРІРµРґРµРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј) РІ СЃРїРµС† СЃРёРјРІРѕР»С‹
+
+    $post_more = str_replace("\n","<br>",$post_more);//Р—Р°РјРµРЅР° РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЃРєРѕРіРѕ С‚РµРєСЃС‚Р° РЅР° С‚РµРі <br>
+
+    $result = mysql_query ("
+	INSERT INTO accounts (status,id_acc,preview_ship,title,server,corp,level,exp,honor,rank,uri,cr,jackpot,hangar,tech,prog,drones,lf3,lf4,g3n7900,sg3nb02,mcb25,mcb50,sab50,ucb100,rsb75,cbo100,job100,plt2021,plt3030,dcr250,hstrm01,ubr100,sar02,cbr,acm1,empm01,subm01,ddm01,slm01,emp01,more,admin_text,login_acc,pass_acc,mail,mail_pass,price,wallet,wallet_type,payout)
 	VALUES ('0','$post_id','$post_preview_ship','$post_title','$post_server','$post_corp','$post_level','$post_exp','$post_honor','$post_rank','$post_uri','$post_cr','$post_jackpot','$post_hangar','$post_tech','$post_prog',
 	'$post_drones','$post_lf3','$post_lf4','$post_g3n7900','$post_sg3nb02','$post_mcb25','$post_mcb50','$post_sab50','$post_ucb100','$post_rsb75','$post_cbo100','$post_job100','$post_plt2021','$post_plt3030','$post_dcr250',
-	'$post_hstrm01','$post_ubr100','$post_sar02','$post_cbr','$post_acm1','$post_empm01','$post_subm01','$post_ddm01','$post_slm01','$post_emp01','$post_more','Аккаунт находится в очереди на проверку соответствия описанию','$post_login_acc','$post_pass_acc','$post_mail',
-	'$post_mail_pass','$post_price','$post_wallet','$post_wallet_type','0')");//Запись данных в БД
-	$id = mysql_insert_id();//Возвращает идентификатор, сгенерированный колонкой с AUTO_INCREMENT последним запросом
-	header("location: buy.php?id=$id");//Перенаправление пользователя после отправки сообщения
-	exit;
+	'$post_hstrm01','$post_ubr100','$post_sar02','$post_cbr','$post_acm1','$post_empm01','$post_subm01','$post_ddm01','$post_slm01','$post_emp01','$post_more','РђРєРєР°СѓРЅС‚ РЅР°С…РѕРґРёС‚СЃСЏ РІ РѕС‡РµСЂРµРґРё РЅР° РїСЂРѕРІРµСЂРєСѓ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ РѕРїРёСЃР°РЅРёСЋ','$post_login_acc','$post_pass_acc','$post_mail',
+	'$post_mail_pass','$post_price','$post_wallet','$post_wallet_type','0')");//Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С… РІ Р‘Р”
+    $id = mysql_insert_id();//Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ, СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕР»РѕРЅРєРѕР№ СЃ AUTO_INCREMENT РїРѕСЃР»РµРґРЅРёРј Р·Р°РїСЂРѕСЃРѕРј
+    header("location: buy.php?id=$id");//РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ
+    exit;
 }
-function sell()//Функция вывода одобренных отзывов
+function sell()//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РѕРґРѕР±СЂРµРЅРЅС‹С… РѕС‚Р·С‹РІРѕРІ
 {
-	$sm_read = file("templates/sell.html");//Подключаю шаблон
-	$sm_read = implode("",$sm_read);//Т.к. функция file() возвращает массив, его нужно склеить
-	return $sm_read;//Вывод сгенерированного html кода
+    $sm_read = file("templates/sell.html");//РџРѕРґРєР»СЋС‡Р°СЋ С€Р°Р±Р»РѕРЅ
+    $sm_read = implode("",$sm_read);//Рў.Рє. С„СѓРЅРєС†РёСЏ file() РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ, РµРіРѕ РЅСѓР¶РЅРѕ СЃРєР»РµРёС‚СЊ
+    return $sm_read;//Р’С‹РІРѕРґ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ html РєРѕРґР°
 }
-?>

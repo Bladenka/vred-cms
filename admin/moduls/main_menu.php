@@ -1,35 +1,34 @@
 <?php
-function main_menu()//Ôóíêöèÿ âûâîäà ãëàâíîãî áëîêà íàâèãàöèè
+function main_menu()//Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð³Ð¾ Ð±Ð»Ð¾ÐºÐ° Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ð¸
 {
-	$templates = file("templates/main_menu.html");//Ïîäêëþ÷àþ øàáëîí
-	$templates = implode("",$templates);//Ñêëåèâàíèå ìàññèâà, âîçâðàùåííîãî ôóíêöèåé file()
-		$count_menu = mysql_query("SELECT COUNT(*) FROM menu");//Âûâîä êîëè÷åñòâà ïóíêòîâ ïîëüçîâàòåëüñêîãî ìåíþ
-		$count_menu = mysql_fetch_array($count_menu);
-	$templates = str_replace("[_countMENU]",$count_menu[0],$templates);
-	
-		$count_news = mysql_query("SELECT COUNT(*) FROM news");//Âûâîä êîëè÷åñòâà íîâîñòíûõ ñòàòåé
-		$count_news = mysql_fetch_array($count_news);
-	$templates = str_replace("[_countNEWS]",$count_news[0],$templates);
-	
-		$count_new = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='0'");//Âûâîä êîëè÷åñòâà íîâûõ àêêàóíòîâ
-		$count_new = mysql_fetch_array($count_new);
-	$templates = str_replace("[_countNEW]",$count_new[0],$templates);
-	
-		$count_sale = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='1'");//Âûâîä êîëè÷åñòâà îäîáðåííûõ àêêàóíòîâ	
-		$count_sale = mysql_fetch_array($count_sale);
-	$templates = str_replace("[_countSALE]",$count_sale[0],$templates);
-	
-		$count_sold = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='2'");//Âûâîä êîëè÷åñòâà ïðîäàííûõ àêêàóíòîâ	
-		$count_sold = mysql_fetch_array($count_sold);	
-	$templates = str_replace("[_countSOLD]",$count_sold[0],$templates);
-	
-		$count_unverified = mysql_query("SELECT COUNT(*) FROM reviews WHERE status='0'");//Âûâîä êîëè÷åñòâà íîâûõ îòçûâîâ
-		$count_unverified = mysql_fetch_array($count_unverified);
-	$templates = str_replace("[_countUNVERIFIED]",$count_unverified[0],$templates);
-	
-		$count_verified = mysql_query("SELECT COUNT(*) FROM reviews WHERE status='1'");//Âûâîä êîëè÷åñòâà îäîáðåííûõ îòçûâîâ
-		$count_verified = mysql_fetch_array($count_verified);
-	$templates = str_replace("[_countVERIFIED]",$count_verified[0],$templates);
-	return $templates;//Âûâîä ñãåíåðèðîâàííîãî html êîäà
+    $templates = file("templates/main_menu.html");//ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÑŽ ÑˆÐ°Ð±Ð»Ð¾Ð½
+    $templates = implode("",$templates);//Ð¡ÐºÐ»ÐµÐ¸Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°, Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÐµÐ¹ file()
+    $count_menu = mysql_query("SELECT COUNT(*) FROM menu");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð¼ÐµÐ½ÑŽ
+    $count_menu = mysql_fetch_array($count_menu);
+    $templates = str_replace("[_countMENU]",$count_menu[0],$templates);
+
+    $count_news = mysql_query("SELECT COUNT(*) FROM news");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð½Ð¾Ð²Ð¾ÑÑ‚Ð½Ñ‹Ñ… ÑÑ‚Ð°Ñ‚ÐµÐ¹
+    $count_news = mysql_fetch_array($count_news);
+    $templates = str_replace("[_countNEWS]",$count_news[0],$templates);
+
+    $count_new = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='0'");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð½Ð¾Ð²Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð²
+    $count_new = mysql_fetch_array($count_new);
+    $templates = str_replace("[_countNEW]",$count_new[0],$templates);
+
+    $count_sale = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='1'");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð¾Ð´Ð¾Ð±Ñ€ÐµÐ½Ð½Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð²
+    $count_sale = mysql_fetch_array($count_sale);
+    $templates = str_replace("[_countSALE]",$count_sale[0],$templates);
+
+    $count_sold = mysql_query("SELECT COUNT(*) FROM accounts WHERE status='2'");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð¿Ñ€Ð¾Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð²
+    $count_sold = mysql_fetch_array($count_sold);
+    $templates = str_replace("[_countSOLD]",$count_sold[0],$templates);
+
+    $count_unverified = mysql_query("SELECT COUNT(*) FROM reviews WHERE status='0'");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð½Ð¾Ð²Ñ‹Ñ… Ð¾Ñ‚Ð·Ñ‹Ð²Ð¾Ð²
+    $count_unverified = mysql_fetch_array($count_unverified);
+    $templates = str_replace("[_countUNVERIFIED]",$count_unverified[0],$templates);
+
+    $count_verified = mysql_query("SELECT COUNT(*) FROM reviews WHERE status='1'");//Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð¾Ð´Ð¾Ð±Ñ€ÐµÐ½Ð½Ñ‹Ñ… Ð¾Ñ‚Ð·Ñ‹Ð²Ð¾Ð²
+    $count_verified = mysql_fetch_array($count_verified);
+    $templates = str_replace("[_countVERIFIED]",$count_verified[0],$templates);
+    return $templates;//Ð’Ñ‹Ð²Ð¾Ð´ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ html ÐºÐ¾Ð´Ð°
 }
-?>
