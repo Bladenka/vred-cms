@@ -1,0 +1,33 @@
+<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+		<td class="header_block" height="16"><font>Настройки темы #[_id]</font></td>
+	</tr>
+	<tr>
+		<td class="body_block">
+			<form action="?page=news_config&id=[_id]" method="post" name="form">
+			<input name="update_post_id" type="hidden" value="[_id]">
+			<table width="100%" border="0" cellpadding="5" cellspacing="0">
+				<tr>
+					<td class="bottom_cfg" align="right">
+						<select tabindex="1" name="block">
+							[_cfgblock]
+						</select>
+					</td>
+					<td class="bottom_cfg" align="left"><font>Закрепить новость на Главной странице?</font></td>
+				</tr>
+				<tr>				
+					<td class="bottom_cfg" align="left">
+						<select tabindex="1" name="status">
+							[_cfgvi]
+						</select>
+					</td>
+					<td class="bottom_cfg" width="100%" align="left"><font>Опубликовать новость?</font></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2"><input tabindex="1" class="button" type="submit" value="Сохранить"></td>
+				</tr>	
+			</table>
+			</form>
+		</td>
+	</tr>
+</table>

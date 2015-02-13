@@ -1,0 +1,16 @@
+<?php
+include("moduls/db.php");//ÏÎÄÊËÞ×ÅÍÈÅ Ê ÁÀÇÅ ÄÀÍÍÛÕ
+
+//ÌÎÄÓËÜ ÌÅÍÞ
+include("moduls/menu.php");
+$menu = menu();//Âûâîä ðåçóëüòàòà ôóíêöèè â ïåðåìåííóþ	
+//ÌÎÄÓËÜ ÌÅÍÞ
+
+//ÌÎÄÓËÜ ÎÒÇÛÂÎÂ
+include("moduls/reviews.php");
+if(!isset($error_reviews))$error_reviews = "";
+$content2 = reviews($error_reviews);//Âûâîä ðåçóëüòàòà ôóíêöèè â ïåðåìåííóþ
+//ÌÎÄÓËÜ ÎÒÇÛÂÎÂ
+
+include("templates/index.html");//Ïîäêëþ÷åíèå øàáëîíà
+?>

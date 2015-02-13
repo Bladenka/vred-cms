@@ -1,0 +1,21 @@
+<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+		<td class="header_block" width="16" height="16"><a tabindex="1" href="?page=news_add" title="Добавить"><img src="templates/img/icons/add.png" border="0px"></a></td>
+		<td class="header_block" height="16"><font>Новости</font></td>
+	</tr>
+	<tr>
+		<td class="body_block" colspan="2" style="border-bottom: none;">
+			<table width="100%" border="0" cellpadding="5" cellspacing="0">
+		[_while]<tr>	
+					<td class="bottom_cfg" width="16" height="16"><a tabindex="2" href="?page=news_config&id=[_id]" title="Настройки"><img src="templates/img/icons/config.png" border="0"></a></td>
+					<td class="bottom_cfg" width="16" height="16"><img src="templates/img/icons/block/[_block].png" border="0"></td>
+					<td class="bottom_cfg" width="16" height="16"><img src="templates/img/icons/eye/[_status].png" border="0"></td>
+					<td class="bottom_cfg" width="16" height="16"><a tabindex="2" href="?page=news_update&id=[_id]" title="Редактировать"><img src="templates/img/icons/update.png" border="0"></a></td>
+					<td class="bottom_cfg"><strong>[_title]</strong></td>
+					<td class="bottom_cfg" width="125" align="center">[_date_pub]</td>
+					<td class="bottom_cfg" width="16" height="16"><a tabindex="2" href="?page=news_update&del_post=[_id]" title="Удалить"><img src="templates/img/icons/delete.png" border="0"></a></td>
+				</tr>[_while]
+			</table>
+		</td>
+	</tr>
+</table>

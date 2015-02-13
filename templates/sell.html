@@ -1,0 +1,529 @@
+<form name="form" action="sell.php" method="post" id="registration">
+	<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1" align="center">
+		<tr>
+			<td class="header_block"><font>Продать</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td align="center"><font class="star" color="rgb(165, 42, 42)"><strong>Внимание!</strong></font></td>
+						</tr>
+						<tr>
+							<td>
+								<ul type="square">
+									<li><font>Несмотря на то что описывается один сервер, <strong>аккаунт продается со всеми серверами сразу</strong></font></li>
+									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные через darkorbit.rambler.ru</font></li>
+									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные с почтой gmail.com</font></li>
+									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные с почтой rambler.ru</font></li>
+									<li><font><strong>НЕ ПРИНИМАЮТСЯ!</strong> аккаунты зарегистрированные с корпоративной почтой</font></li>
+									<li><font>Комиссия за продажу составляет <strong>20%</strong>, назначайте цену по формуле <i><желаемая сумма * 1.20></i></font></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><font class="star"><strong>Строки отмеченные звездочкой ОБЯЗАТЕЛЬНЫ для заполнения! Если Вы хотите, что бы Ваш аккаунт быстрее продался, заполняйте максимальное количество полей.
+							<br>ВВОДИТЕ ЧИСЛОВЫЕ ДАННЫЕ ТОЛЬКО ЦЕЛЫМИ ЧИСЛАМИ, БЕЗ ЗАПЯТЫХ И ТОЧЕК!</strong></font></td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Укажите, какой корабль будет отображен на главной странице</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td>
+								<input type="radio" name="post_preview_ship" value="aegis">&nbsp;<font>Aegis</font>
+									<br>
+								<input type="radio" name="post_preview_ship" value="citadel">&nbsp;<font>Citadel</font>
+									<br>
+								<input type="radio" name="post_preview_ship" value="spearhead">&nbsp;<font>Spearhead</font>
+									<br>
+								<input type="radio" name="post_preview_ship" value="goliath">&nbsp;<font>Goliath</font>
+									<br>
+								<input type="radio" name="post_preview_ship" value="vengeance">&nbsp;<font>Vengeance</font>
+									<br>
+								<input type="radio" name="post_preview_ship" value="leonov">&nbsp;<font>Leonov</font>
+							</td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Основное</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td width="20%"><font>Заголовок</font><font class="star">*</font></td>
+							<td width="80%" colspan="2"><input type="text" name="post_title" value="" maxlength="255" style="width:99%" /></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>ID</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_id" value="" maxlength="10" style="width:95%" /></td>
+							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Сервер</font><font class="star">*</font></td>
+							<td width="20%">
+								<select name="post_server" style="width:99%" >
+									<option value="">Пусто</option>
+									<option value="Америка 1">Америка 1</option>
+									<option value="Америка 2">Америка 2</option>
+									<option value="Америка 3">Америка 3</option>
+									<option value="Америка 4">Америка 4</option>
+									<option value="Америка 5">Америка 5</option>
+									<option value="Англия 1">Англия 1</option>
+									<option value="Англия 2">Англия 2</option>
+									<option value="Бразилия 1">Бразилия 1</option>
+									<option value="Бразилия 2">Бразилия 2</option>
+									<option value="Великобритания 1">Великобритания 1</option>
+									<option value="Венгрия 1">Венгрия 1</option>
+									<option value="Германия 1">Германия 1</option>
+									<option value="Германия 2">Германия 2</option>
+									<option value="Германия 3">Германия 3</option>
+									<option value="Германия 4">Германия 4</option>
+									<option value="Германия 5">Германия 5</option>
+									<option value="Германия 6">Германия 6</option>
+									<option value="Германия 7">Германия 7</option>
+									<option value="Европа 1">Европа 1</option>
+									<option value="Европа 2">Европа 2</option>
+									<option value="Европа 3">Европа 3</option>
+									<option value="Европа 4">Европа 4</option>
+									<option value="Европа 5">Европа 5</option>
+									<option value="Европа 6">Европа 6</option>
+									<option value="Европа 7">Европа 7</option>
+									<option value="Испания 1">Испания 1</option>
+									<option value="Испания 2">Испания 2</option>
+									<option value="Испания 3">Испания 3</option>
+									<option value="Испания 4">Испания 4</option>
+									<option value="Италия 1">Италия 1</option>
+									<option value="Италия 2">Италия 2</option>
+									<option value="Италия 3">Италия 3</option>
+									<option value="Мексика 1">Мексика 1</option>
+									<option value="Польша 1">Польша 1</option>
+									<option value="Польша 2">Польша 2</option>
+									<option value="Польша 3">Польша 3</option>
+									<option value="Россия 1">Россия 1</option>
+									<option value="Россия 2">Россия 2</option>
+									<option value="Россия 3">Россия 3</option>
+									<option value="Россия 4">Россия 4</option>
+									<option value="Россия 5">Россия 5</option>
+									<option value="Россия 6">Россия 6</option>
+									<option value="Скандинавия 1">Скандинавия 1</option>
+									<option value="Скандинавия 2">Скандинавия 2</option>
+									<option value="США Восток 1">США Восток 1</option>
+									<option value="США Восток 2">США Восток 2</option>
+									<option value="США Восток 3">США восток 3</option>
+									<option value="США Запад 1">США Запад 1</option>
+									<option value="Турция 1">Турция 1</option>
+									<option value="Турция 2">Турция 2</option>
+									<option value="Турция 3">Турция 3</option>
+									<option value="Турция 4">Турция 4</option>
+									<option value="Турция 5">Турция 5</option>
+									<option value="Турция 6">Турция 6</option>
+									<option value="Франция 1">Франция 1</option>
+									<option value="Франция 2">Франция 2</option>
+									<option value="Франция 3">Франция 3</option>
+									<option value="Франция 4">Франция 4</option>
+									<option value="Чехия 1">Чехия 1</option>
+									<option value="Чехия 2">Чехия 2</option>
+									<option value="Чехия 3">Чехия 3</option>
+								</select>
+							</td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Компания</font><font class="star">*</font></td>
+							<td width="20%">
+								<select name="post_corp" style="width:99%" >
+									<option value="">Пусто</option>
+									<option value="MMO">MMO</option>
+									<option value="EIC">EIC</option>
+									<option value="VRU">VRU</option>
+								</select>
+							</td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Игровой уровень</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_level" value="" maxlength="2" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Опыт</font></td>
+							<td width="20%"><input type="text" name="post_exp" value="" maxlength="15" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Честь</font></td>
+							<td width="20%"><input type="text" name="post_honor" value="" maxlength="15" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Очки ранга</font></td>
+							<td width="20%"><input type="text" name="post_rank" value="" maxlength="15" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Уридиум</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_uri" value="" maxlength="15" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Кредиты</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_cr" value="" maxlength="15" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Джекпот</font></td>
+							<td width="20%"><input type="text" name="post_jackpot" value="" maxlength="5" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Округляйте значение Джекпота до целого числа! (<b>1234,56</b> = <b>1235</b>)</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Количество ангаров</font></td>
+							<td width="20%">
+								<select name="post_hangar" style="width:99%">
+									<option value="">Пусто</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Количество слотов хай-тек</font></td>
+							<td width="20%">
+								<select name="post_tech" style="width:99%">
+									<option value="">Пусто</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</td>
+							<td width="60%"></td>
+						</tr>
+						<tr>
+							<td><font>Очки прогресса</font></td>
+							<td><input type="text" name="post_prog" value="" maxlength="2" style="width:95%"/></td>
+							<td width="60%"></td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Дроиды</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table border="0" cellpadding="2" cellspacing="0" align="center">
+						<tr>
+							<td>
+								<select name="post_drone1">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone2">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone3">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone4">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone5">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone6">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone7">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone8">
+									<option value="">Пусто</option>
+									<option value="F">Flax</option>
+									<option value="I">Iris</option>
+								</select>&nbsp;
+								<select name="post_drone9">
+									<option value="">Пусто</option>
+									<option value="A">Apis</option>
+								</select>&nbsp;
+								<select name="post_drone10">
+									<option value="">Пусто</option>
+									<option value="Z">Zeus</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Оружие</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td width="20%"><font>Лазеры типа LF-3</font></td>
+							<td width="20%"><input type="text" name="post_lf3" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Мощный лазер. Наносит до 150 ед. урона за выстрел</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Лазеры типа LF-4</font></td>
+							<td width="20%"><input type="text" name="post_lf4" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Убер-лазер. Наносит до 200 ед. урона за выстрел</font></td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Генераторы</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td width="20%"><font>Двигатели G3N-7900</font></td>
+							<td width="20%"><input type="text" name="post_g3n7900" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Увеличивает скорость корабля на 10</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Щиты SG3N-B02</font></td>
+							<td width="20%"><input type="text" name="post_sg3nb02" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Лучший щит! Добавляет 10 000 ед. к прочности щита и абсорбирует 80% урона</font></td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Боеприпасы</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td width="20%"><font>Батареи типа MCB-25</font></td>
+							<td width="20%"><input type="text" name="post_mcb25" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Базовый урон от лазера х2</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Батареи типа MCB-50</font></td>
+							<td width="20%"><input type="text" name="post_mcb50" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Базовый урон от лазера х3</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Батареи типа SAB-50</font></td>
+							<td width="20%"><input type="text" name="post_sab50" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Трансфер энергии щита х2</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Батареи типа UCB-100</font></td>
+							<td width="20%"><input type="text" name="post_ucb100" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Базовый урон от лазера х4</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Батареи типа RSB-75</font></td>
+							<td width="20%"><input type="text" name="post_rsb75" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Базовый урон от лазера х6</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Батареи типа CBO-100</font></td>
+							<td width="20%"><input type="text" name="post_cbo100" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Базовый урон от лазера х3 / Трансфер энергии щита х1</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Батареи типа JOB-100</font></td>
+							<td width="20%"><input type="text" name="post_job100" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Базовый урон от лазера х2 PVP / х1,75 PVE</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракеты типа PLT-2021</font></td>
+							<td width="20%"><input type="text" name="post_plt2021" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Средний урон: 4000</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракеты типа PLT-3030</font></td>
+							<td width="20%"><input type="text" name="post_plt3030" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Средний урон: 6000</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракеты типа DCR-250</font></td>
+							<td width="20%"><input type="text" name="post_dcr250" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Снижает скорость противника на 30% длительность: 5 секунд</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракетомёты типа HSTRM-01</font></td>
+							<td width="20%"><input type="text" name="post_hstrm01" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Средний урон: 4000</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракетомёты типа UBR-100</font></td>
+							<td width="20%"><input type="text" name="post_ubr100" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Средний урон: 7500</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракетомёты типа SAR-02</font></td>
+							<td width="20%"><input type="text" name="post_sar02" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Средний трансфер энергии щита: 4000</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Ракетомёты типа CBR</font></td>
+							<td width="20%"><input type="text" name="post_cbr" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Средний урон: 3000 / Средний трансфер энергии щита: 3000</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Мины типа ACM-1</font></td>
+							<td width="20%"><input type="text" name="post_acm1" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Наносит 20% урона</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Мины типа EMP-M01</font></td>
+							<td width="20%"><input type="text" name="post_empm01" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Снимает камуфляж противника</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Мины типа SUB-M01</font></td>
+							<td width="20%"><input type="text" name="post_subm01" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Снижает энергию щита противника на 50%</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Мины типа DD-M01</font></td>
+							<td width="20%"><input type="text" name="post_ddm01" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Наносит 20% урона от базовой прочности корабля</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Мины типа SL-M01</font></td>
+							<td width="20%"><input type="text" name="post_slm01" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Снижает скорость на 50% длительность: 5 секунд</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Импульс EMP-01</font></td>
+							<td width="20%"><input type="text" name="post_emp01" value="" maxlength="10" style="width:95%"/></td>
+							<td width="60%"><font class="footnote">- Снимает камуфляж противника</font></td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Дополнительное описание</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td><textarea name="post_more" rows="15" style="width:99%;"></textarea></td>
+						</tr>
+					</table>
+				</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td class="subtitle_block"><font>Личные данные</font></td>
+		</tr>
+		<tr>
+			<td class="body_block">
+				<blockquote>
+					<table width="100%" border="0" cellpadding="2" cellspacing="0">
+						<tr>
+							<td colspan="3"><font class="star"><strong>Данные авторизации, которые будут выданы покупателю! Внимание, указывайте только сложные пароли!</strong></font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Логин</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_login_acc" value="" maxlength="20" style="width:95%;"/></td>
+							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Пароль</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_pass_acc" value="" maxlength="45" style="width:95%;"/></td>
+							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>E-mail</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_mail" value="" maxlength="255" style="width:95%;"/></td>
+							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Пароль E-mail</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_mail_pass" value="" maxlength="255" style="width:95%;"/></td>
+							<td width="60%"><font class="footnote">- Доступно только Администрации</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><font class="star"><strong>Цена аккаунта не должна быть меньше 400 руб. Заявки с ценой меньше 400 руб рассматриваться не будут</strong></font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Цена</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_price" value="" maxlength="6" style="width:95%;"/></td>
+							<td width="60%"><font class="footnote">- Рублей</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><font class="star"><strong>Указывайте Ваши действительные реквизиты, так как выплата средств будет осуществлятся на указаный счет.</strong></font></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Тип кошелька</font><font class="star">*</font></td>
+							<td width="20%">
+								<select name="post_wallet_type" style="width:99%;">
+									<option value="" selected="selected">Пусто</option>
+									<option value="ЯндексДеньги">ЯндексДеньги</option>
+									<option value="WebMoney">WebMoney</option>
+								</select>
+							</td>
+							<td width="40%"></td>
+						</tr>
+						<tr>
+							<td width="20%"><font>Номер счета</font><font class="star">*</font></td>
+							<td width="20%"><input type="text" name="post_wallet" value="" maxlength="32" style="width:95%;"/></td>
+							<td width="40%"><font class="footnote">- Доступно только Администрации</font></td>
+						</tr>
+					</table>
+				</blockquote>
+				<table width="100%" border="0" cellpadding="10" cellspacing="0" >
+					<tr>
+						<td align="center"><input type="submit" class="button" value="Продолжить" onclick="return form_sell()"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>

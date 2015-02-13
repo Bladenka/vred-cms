@@ -1,0 +1,67 @@
+<div class="padding_bottom">
+<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1" align="center">
+	<tr>
+		<td class="header_block"><font>Добавить отзыв</font></td>
+	</tr>		
+	<tr>
+		<td class="body_block" width="70%">
+		<form action="reviews.php" method="post" name="form">
+			<table width="100%" border="0" cellpadding="5" cellspacing="0">
+				<tr>
+					<td align="center">
+						<select name="post_title" style="width:96%;">
+							<option selected="selected" value="">Ваша оценка</option>
+							<option value="Отлично!">Отлично!</option>
+							<option value="Хорошо">Хорошо</option>
+							<option value="Средне">Средне</option>
+							<option value="Ниже среднего">Ниже среднего</option>
+							<option value="Жуть!">Жуть!</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="center"><textarea style="width:95%;" name="post_user_text" id="post_user_text" placeholder="Опишите Ваши впечатления о работе нашего сервиса" rows="10"></textarea></td>
+				</tr>
+				<tr>
+					<td align="center"><input type="text" name="post_author" id="post_author" placeholder="Представьтесь пожалуйста" value="" maxlength="25" style="width:95%;"></td>
+				</tr>
+				<tr>
+					<td align="center">
+						<font>Если вы человек, нажмите на "<span style="font-weight:bold;">[_q]</span>"</font>
+						<input type="hidden" name="post_id" id="post_id" value="">
+						<table border="0" cellpadding="5" cellspacing="0">
+							<tr>
+								<td>
+									<img id="cp1OK" style="position:absolute;display:none;" src="templates/img/capcha/okCPha.png" border="0">
+									<img style="cursor:pointer;" onclick="capcha(1,'[_code0]');" src="[_img0]" border="0">
+								</td>
+								<td>
+									<img id="cp2OK" style="position:absolute;display:none;" src="templates/img/capcha/okCPha.png" border="0">
+									<img style="cursor:pointer;" onclick="capcha(2,'[_code1]');" src="[_img1]" border="0">
+								</td>
+								<td>
+									<img id="cp3OK" style="position:absolute;display:none;" src="templates/img/capcha/okCPha.png" border="0">
+									<img style="cursor:pointer;" onclick="capcha(3,'[_code2]');" src="[_img2]" border="0">
+								</td>
+								<td>
+									<img id="cp4OK" style="position:absolute;display:none;" src="templates/img/capcha/okCPha.png" border="0">
+									<img style="cursor:pointer;" onclick="capcha(4,'[_code3]');" src="[_img3]" border="0">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						[_error]
+					</td>
+				</tr>
+				<tr>
+					<td align="center"><input type="submit" class="button" value="Добавить отзыв" onclick="return form_reviews()"></td>
+				</tr>
+			</table>
+		</form>
+		</td>
+	</tr>
+</table>
+</div>

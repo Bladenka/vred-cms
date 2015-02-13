@@ -1,0 +1,141 @@
+<?
+$header_title = "Ïàíåëü Àäìèíèñòðàòîðà";
+$header_metaD = "";
+$header_metaK = "";
+
+include("moduls/db.php");//ÏÎÄÊËÞ×ÅÍÈÅ Ê ÁÀÇÅ ÄÀÍÍÛÕ
+
+//ÑÊÐÈÏÒ ÏÐÎÂÅÐÊÈ ÀÂÒÎÐÈÇÀÖÈÈ
+if(isset($_GET['logSESS'])) {$logSESS = $_GET['logSESS'];unset($logSESS);}
+if(isset($_POST['logSESS'])) {$logSESS = $_POST['logSESS'];unset($logSESS);}
+session_start();
+$logSESS = $_SESSION['$logSESS'];
+if(!isset($logSESS))
+{
+	header("location: login.php");
+	exit;  
+}
+//ÑÊÐÈÏÒ ÏÐÎÂÅÐÊÈ ÀÂÒÎÐÈÇÀÖÈÈ
+
+if($_GET['id'])$id = $_GET['id'];
+if($_GET['page'])$page = $_GET['page'];//Îïðåäåëÿþ ñòðàíèöó, êîòîðàÿ ñåé÷àñ îòêðûòà
+else $page = "index";//Åñëè ïåðåìåííîé íå ñóùåñòâóåò, çíà÷èò îòêðûòà ãëàâíàÿ ñòðàíèöà
+
+//ÃËÀÂÍÎÅ ÑÒÐÀÍÈÖÀ
+if($page == "index")//Åñëè îòêðûòà ãëàâíàÿ ñòðàíèöà
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+}
+//ÃËÀÂÍÎÅ ÑÒÐÀÍÈÖÀ
+
+//---------------------------ÏÎËÜÇÎÂÀÒÅËÜÑÊÎÅ ÌÅÍÞ
+//ÄÎÁÀÂËÅÍÈÅ ÏÓÍÊÒÀ ÏÎËÜÇÎÂÀÒÅËÜÑÊÎÃÎ ÌÅÍÞ
+if($page == "menu_add")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/menu_add.php");
+	$content = menu_add();
+}
+//ÄÎÁÀÂËÅÍÈÅ ÏÓÍÊÒÀ ÏÎËÜÇÎÂÀÒÅËÜÑÊÎÃÎ ÌÅÍÞ
+//ÐÅÄÀÊÒÎÐ ÏÎËÜÇÎÂÀÒÅËÜÑÊÎÃÎ ÌÅÍÞ
+if($page == "menu_list" || $page == "menu_update")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/menu_list.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	if($page == "menu_list")$content = menu_list();
+	if($page == "menu_update")$content = menu_update($id);
+}
+//ÐÅÄÀÊÒÎÐ ÏÎËÜÇÎÂÀÒÅËÜÑÊÎÃÎ ÌÅÍÞ
+//---------------------------ÏÎËÜÇÎÂÀÒÅËÜÑÊÎÅ ÌÅÍÞ
+
+//---------------------------ÍÎÂÎÑÒÈ
+//ÄÎÁÀÂËÅÍÈÅ ÍÎÂÎÑÒÅÉ
+if($page == "news_add")//Åñëè îòêðûòà ñòðàíèöà äîáàâëåíèÿ íîâîñòåé
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/news_add.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$content = news_add();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+}
+//ÄÎÁÀÂËÅÍÈÅ ÍÎÂÎÑÒÅÉ
+//ÐÅÄÀÊÒÎÐ È ÂÛÂÎÄ ÍÎÂÎÑÒÅÉ
+if($page == "news_list" || $page == "news_update")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/news_list.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	if($page == "news_list")$content = news_list();//Åñëè íîâîñòü åùå ÍÅ âûáðàíà äëÿ ðåäàêòèðîâàíèÿ
+	if($page == "news_update")$content = news_update($id);//Åñëè íîâîñòü âûáðàíà
+}
+//ÐÅÄÀÊÒÎÐ È ÂÛÂÎÄ ÍÎÂÎÑÒÅÉ
+//ÍÀÑÒÐÎÉÊÀ ÍÎÂÎÑÒÍÛÕ ÑÒÀÒÅÉ
+if($page == "news_config")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/news_config.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$content = news_config($id);
+}
+//ÍÀÑÒÐÎÉÊÀ ÍÎÂÎÑÒÍÛÕ ÑÒÀÒÅÉ
+//---------------------------ÍÎÂÎÑÒÈ
+
+//---------------------------ÊÀÒÀËÎÃ ÀÊÊÀÓÍÒÎÂ
+//ÐÅÄÀÊÒÎÐ ÊÀÒÀËÎÃÀ ÀÊÊÀÓÍÒÎÂ
+if($page == "accs_unverified" || $page == "accs_verified" || $page == "accs_sold" || $page == "accs_update")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/accs_list.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	if($page == "accs_unverified")$content = accs_unverified();//Ñòðàíèöà ñ íîâûìè àêêàóíòàìè
+	if($page == "accs_verified")$content = accs_verified();//Ñòðàíèöà ñ îäîáðåííûìè àêêàóíòàìè
+	if($page == "accs_sold")$content = accs_sold();//Ñïèñîê ïðîäàííûõ
+	if($page == "accs_update")$content = accs_update($id);//Ðåäàêòèðîâàíèå èíôîðìàöèè
+}
+//ÐÅÄÀÊÒÎÐ ÊÀÒÀËÎÃÀ ÀÊÊÀÓÍÒÎÂ
+//ÍÀÑÒÐÎÉÊÀ ÊÀÒÀËÎÃÀ ÀÊÊÀÓÍÒÎÂ
+if($page == "accs_config")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/accs_config.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	if($page == "accs_config")$content = accs_config($id);//Åñëè íîâîñòü âûáðàíà
+}
+//ÍÀÑÒÐÎÉÊÀ ÊÀÒÀËÎÃÀ ÀÊÊÀÓÍÒÎÂ
+//---------------------------ÊÀÒÀËÎÃ ÀÊÊÀÓÍÒÎÂ
+
+//---------------------------ÎÒÇÛÂÛ
+//ÐÅÄÀÊÒÎÐ ÎÒÇÛÂÎÂ
+if($page == "reviews_verified" || $page == "reviews_update")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/reviews_verified.php");//Ïîäêëþ÷àåì íàø ìîäóëü
+	if($page == "reviews_verified")$content = reviews_verified();//Åñëè îòçûâ åùå ÍÅ âûáðàí äëÿ ðåäàêòèðîâàíèÿ
+	if($page == "reviews_update")$content = reviews_update($id);//Åñëè îòçûâ âûáðàí
+}
+//ÐÅÄÀÊÒÎÐ ÎÒÇÛÂÎÂ
+//ÌÎÄÅÐÀÖÈß ÎÒÇÛÂÎÂ
+if($page == "reviews_unverified")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/reviews_unverified.php");
+	$content = reviews_unverified();
+}
+//ÌÎÄÅÐÀÖÈß ÎÒÇÛÂÎÂ
+//---------------------------ÎÒÇÛÂÛ
+
+//---------------------------ÍÀÑÒÐÎÉÊÈ ÑÀÉÒÀ
+if($page == "config")
+{
+	include("moduls/main_menu.php");//Ïîäêëþ÷åíèå ìîäóëÿ
+	$main_menu = main_menu();//Ïîìåùàþ html êîä øàáëîíà â ïåðåìåííóþ
+	include("moduls/global_config.php");//ïîäêëþ÷àåì ìîäóëü
+	$content = global_config();
+}
+//---------------------------ÍÀÑÒÐÎÉÊÈ ÑÀÉÒÀ
+include("templates/index.html");//Âûâîä ãëàâíîãî øàáëîíà íà ýêðàí
+?>

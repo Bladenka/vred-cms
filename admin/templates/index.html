@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title><?=$header_title?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=ANSI">
+<meta name="description" content="<?=$header_metaD?>">
+<meta name="keywords" content="<?=$header_metaK?>">
+<link rel="stylesheet" type="text/css" href="templates/style.css">
+<link rel="shortcut icon" href="/templates/img/body/myicon.ico" type="image/x-icon">
+<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode : "exact",
+		elements : "post_text",
+        language:"ru",
+		menubar : false,
+		plugins: "advlist link image preview hr anchor searchreplace wordcount visualblocks code  insertdatetime media nonbreaking textcolor",
+		toolbar: "fontsizeselect | bold italic underline strikethrough hr forecolor | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link unlink anchor image media fullpage | preview code | removeformat",
+   });
+</script>
+</head>
+<body>
+	<div class="div_body_center">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="left_top" width="22px" height="22px"></td>
+				<td class="top_reap"></td>
+				<td class="right_top" width="22px" height="22px"></td>
+			</tr>
+			<tr>
+				<td class="left" width="22px"></td>
+				<td class="center" valign="top">
+					<table width="100%" height="100%" border="0" cellpadding="10" cellspacing="0">
+						<tr valign="top">
+							<td width="230px">
+								<?=$main_menu?>
+							</td>
+							<td>
+								<?=$content?>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="right" width="22px"></td>
+			</tr>
+			<tr>
+				<td class="left_bottom" width="22px" height="22px"></td>
+				<td class="bottom_reap"></td>
+				<td class="right_bottom" width="22px" height="22px"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

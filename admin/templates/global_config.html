@@ -1,0 +1,55 @@
+<table class="block" width="100%" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+		<td class="header_block" height="16"><font>Глобальные настройки</font></td>
+	</tr>
+	<tr>
+		<td class="body_block">
+			<form action="?page=config" method="post" name="form">
+			<input name="update_post_id" type="hidden" value="[_id]">
+			<table width="100%" border="0" cellpadding="5" cellspacing="0">
+				<tr>
+					<td class="bottom_cfg" colspan="2"><legend>Заголовок Вашего сайта:</legend><div align="center"><input tabindex="1" type="text" name="cfgtitle" value="[_title]" style="width:95%"></div></td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" colspan="2"><legend>Описание Вашего сайта:</legend><div align="center"><input tabindex="1" type="text" name="cfgmetaD" value="[_metaD]" style="width:95%"></div></td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" colspan="2"><legend>Ключевые слова Вашего сайта:</legend><div align="center"><textarea tabindex="1" name="cfgmetaK" rows="5" dir="ltr" style="width:95%">[_metaK]</textarea></div></td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" colspan="2" align="left"><font><strong>Настройка доступа в панель Администратора</strong></font></td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" align="left"><input tabindex="1" type="text" name="cfglogin" value="[_login]"></td>
+					<td class="bottom_cfg" width="100%" align="left">Новый логин</td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" align="left"><input tabindex="1" type="password" name="cfgpassD" value=""></td>
+					<td class="bottom_cfg" align="left">Новый пароль</td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" colspan="2" align="left"><font><strong>Контактные данные</strong></font></td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" align="left"><input tabindex="1" type="text" name="cfgskype" value="[_skype]"></td>
+					<td class="bottom_cfg" width="100%" align="left">Skype</td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" align="left"><input tabindex="1" type="text" name="cfgicq" value="[_icq]"></td>
+					<td class="bottom_cfg" align="left">ICQ</td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" align="left"><input tabindex="1" type="text" name="cfgmail" value="[_mail]"></td>
+					<td class="bottom_cfg" align="left">eMail</td>
+				</tr>
+				<tr>
+					<td class="bottom_cfg" colspan="2"><legend>Примечание:</legend><div align="center"><textarea tabindex="1" name="cfgnote" rows="5" dir="ltr" style="width:95%">[_note]</textarea></div></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2"><input tabindex="1" class="button" type="submit" value="Сохранить"></td>
+				</tr>	
+			</table>
+			</form>
+		</td>
+	</tr>
+</table>

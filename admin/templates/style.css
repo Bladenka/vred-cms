@@ -1,0 +1,81 @@
+body{
+	margin:0px;
+	font-family:verdana;
+	font-weight:100;
+	font-size:8pt;
+	background: url(img/body/body_bg.png);
+	color:black;}
+
+p{margin:0px;}
+
+/* Ссылки */
+a{font-weight:bold;}
+a:link {color:#0074a2; text-decoration:none;}
+a:visited {color:#0074a2; text-decoration:none;}
+a:hover {color:#2ea2cc; text-decoration:none;}
+/* Ссылки */
+
+textarea, select, input{
+	padding:3px;
+	font: 10pt verdana;
+	background:#ffffff;
+	border:1px solid #bbb}
+
+/* Тело */
+.div_body_center {padding:15px;} /* Центральный контент */
+/* Тело */
+
+.left_top{background:url(img/body/top_left.png) no-repeat left top;}
+.top_reap{background:url(img/body/top_reap.png) repeat-x top;}
+.right_top{background:url(img/body/top_right.png) no-repeat right top;}
+
+.left{background:url(img/body/left_reap.png) repeat-y left;}
+.center{background:#ffffff;}
+.right{background:url(img/body/right_reap.png) repeat-y right;}
+
+.left_bottom{background:url(img/body/bottom_left.png) no-repeat left top;}
+.bottom_reap{background:url(img/body/bottom_reap.png) repeat-x top;}
+.right_bottom{background:url(img/body/bottom_right.png) no-repeat right top;}
+
+/*Отсуп между блоками*/	
+.padding_bottom{padding-bottom:30px;}
+/*Отсуп между блоками*/	
+
+/*Тело блока*/
+.block{
+	background: #ffffff;
+	border: 1px solid #b0b0b0;}	
+/*Тело блока*/
+
+/*Заголовок блока*/
+.header_block {
+	font-weight:bold;
+	padding:6px;
+	background: #ecf1ff;
+	border: 1px solid #b0b0b0;} 
+/*Заголовок блока*/	
+
+/*Информация в блоке*/
+.body_block{
+	background: #ecf1ff;
+	border: 1px solid #b0b0b0;}
+/*Информация в блоке*/
+
+.fieldset{border: 2px solid #b0b0b0;}
+
+/*Оформление заголовока*/
+.title{font-size:14pt;} 
+/*Оформление заголовока*/
+.menu_link{padding:5px;}
+.bottom_cfg{border-bottom:1px solid #b0b0b0;}
+
+.button {
+	display: inline-block;
+	cursor:pointer;
+	padding:5px 10px 5px 10px;
+	color: #ffffff;
+	border: 1px solid #0074a2;
+	border-radius: 3px;
+	background: #2ea2cc;
+	box-shadow: inset 0 1px 0 #78c8e6;}
+.button:hover{background:#2e8acc;}
